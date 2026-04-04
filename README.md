@@ -53,8 +53,8 @@ cp .env.example .env
 Required variables:
 ```
 SUPABASE_URL=https://your-project.supabase.co
-SUPABASE_KEY=your-service-role-key          # for pipeline writes
-SUPABASE_ANON_KEY=your-anon-key             # for dashboard reads
+SUPABASE_SECRET_KEY=sb_secret_...     # for pipeline writes (trusted backend only)
+SUPABASE_PUBLISHABLE_KEY=sb_publishable_...  # for dashboard reads
 EODHD_API_KEY=your-eodhd-api-key
 SEC_CONTACT_EMAIL=your@email.com
 ```
@@ -109,19 +109,20 @@ python scripts/seed_supabase.py  # (create this script once Supabase is set up)
 4. In **Secrets**, add:
    ```toml
    SUPABASE_URL = "https://your-project.supabase.co"
-   SUPABASE_ANON_KEY = "your-anon-key"
+   SUPABASE_PUBLISHABLE_KEY = "sb_publishable_..."
    EODHD_API_KEY = "your-eodhd-key"
    ```
+   Note: Do NOT add `SUPABASE_SECRET_KEY` here — the dashboard only needs read access.
 
 ### GitHub Actions (Daily Pipeline)
 
 1. Go to your repo → **Settings → Secrets and variables → Actions**
 2. Add repository secrets:
    - `SUPABASE_URL`
-   - `SUPABASE_KEY` (service role key — NOT anon key)
+   - `SUPABASE_SECRET_KEY` (secret key — full write access, never anon/publishable)
    - `EODHD_API_KEY`
    - `SEC_CONTACT_EMAIL`
-   - `MLFLOW_TRACKING_URI` (optional)
+   - `MLFLOW_TRACKING_URI` (optional — your DagsHub URL)
 3. The workflow runs automatically at **7:07 AM America/Mexico_City** (13:07 UTC)
 4. Trigger manually: **Actions → Daily Pipeline → Run workflow**
 
@@ -182,11 +183,11 @@ biotech-trading-dashboard/
 | Variable | Required By | Description |
 |----------|------------|-------------|
 | `SUPABASE_URL` | Pipeline + Dashboard | Supabase project URL |
-| `SUPABASE_KEY` | Pipeline | Service role key (write access) |
-| `SUPABASE_ANON_KEY` | Dashboard | Anon key (read-only access) |
+| `SUPABASE_SECRET_KEY` | Pipeline only | Secret key — full write access (never expose to browser) |
+| `SUPABASE_PUBLISHABLE_KEY` | Dashboard | Publishable key — safe for read operations |
 | `EODHD_API_KEY` | Pipeline + Dashboard | Stock price API |
 | `SEC_CONTACT_EMAIL` | Pipeline | Required by SEC EDGAR |
-| `MLFLOW_TRACKING_URI` | Pipeline (optional) | Remote MLflow server |
+| `MLFLOW_TRACKING_URI` | Pipeline (optional) | Remote MLflow server (e.g. DagsHub) |
 | `INITIAL_CAPITAL` | Pipeline (optional) | Starting capital (default: 1000000) |
 | `MAX_OPEN_POSITIONS` | Pipeline (optional) | Max concurrent positions (default: 20) |
 | `MAX_WEIGHT` | Pipeline (optional) | Max position weight (default: 0.07) |

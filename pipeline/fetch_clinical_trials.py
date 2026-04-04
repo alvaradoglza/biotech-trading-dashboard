@@ -1,20 +1,14 @@
 """
 fetch_clinical_trials.py — Fetch ClinicalTrials.gov announcements.
-
-Wraps biotech-monitor/src/clients/clinicaltrials.py and extraction pipeline.
 Returns a list of announcement dicts ready for Supabase upsert.
 
-IMPORTANT: ClinicalTrials.gov client must use `requests` (not httpx) due to
-TLS fingerprinting. This is documented in biotech-monitor/CLAUDE.md.
+NOTE: ClinicalTrials.gov client uses `requests` (not httpx) due to TLS fingerprinting.
 """
 
 import logging
-import sys
 from datetime import datetime, timedelta
-from pathlib import Path
 
-# Allow imports from biotech-monitor
-sys.path.insert(0, str(Path(__file__).parent.parent / "biotech-monitor"))
+from pipeline.clients.clinicaltrials import ClinicalTrialsClient
 
 logger = logging.getLogger(__name__)
 
@@ -25,9 +19,6 @@ def fetch_clinical_trials_announcements(
 ) -> list[dict]:
     """Fetch recent ClinicalTrials.gov updates for the given tickers.
 
-    Queries for trial updates (status changes, results postings, new trials).
-    Returns a list of announcement dicts with keys matching the Supabase schema.
-
     Args:
         tickers: List of stock tickers to query.
         days_back: How many days back to look for announcements (default 7).
@@ -37,12 +28,6 @@ def fetch_clinical_trials_announcements(
         source, ticker, company_name, event_type, title, announcement_url,
         published_at, raw_text, external_id.
     """
-    try:
-        from src.clients.clinicaltrials import ClinicalTrialsClient
-    except ImportError as e:
-        logger.error("Cannot import ClinicalTrials client: %s", e)
-        return []
-
     since = datetime.utcnow() - timedelta(days=days_back)
     announcements = []
 

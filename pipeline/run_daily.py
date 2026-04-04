@@ -199,7 +199,7 @@ def main(dry_run: bool = False, skip_fetch: bool = False) -> None:
 
 def _load_tickers() -> list[str]:
     """Load stock tickers from local stocks.csv or fall back to a small default list."""
-    stocks_path = Path(__file__).parent.parent / "biotech-monitor" / "data" / "stocks.csv"
+    stocks_path = Path(__file__).parent.parent / "data" / "stocks.csv"
 
     if stocks_path.exists():
         try:
@@ -219,23 +219,33 @@ def _load_tickers() -> list[str]:
 
 
 def _load_announcements_from_supabase(sb) -> pd.DataFrame:
-    """Load all announcements from Supabase for model training."""
+    """Load all announcements from Supabase for model training using pagination."""
     if sb is None:
         return pd.DataFrame()
     try:
-        # Load announcements that have return_30d (labeled) + recent ones
-        response = (
-            sb.table("announcements")
-            .select("id, ticker, source, event_type, published_at, raw_text, return_30d, return_5d")
-            .order("published_at", desc=True)
-            .limit(10000)
-            .execute()
-        )
-        if not response.data:
+        all_rows = []
+        page_size = 1000
+        offset = 0
+
+        while True:
+            response = (
+                sb.table("announcements")
+                .select("id, ticker, source, event_type, published_at, raw_text, return_30d, return_5d")
+                .order("published_at", desc=False)
+                .range(offset, offset + page_size - 1)
+                .execute()
+            )
+            batch = response.data or []
+            all_rows.extend(batch)
+            if len(batch) < page_size:
+                break  # last page
+            offset += page_size
+
+        if not all_rows:
             return pd.DataFrame()
 
-        df = pd.DataFrame(response.data)
-        logger.debug("Loaded %d announcements from Supabase", len(df))
+        df = pd.DataFrame(all_rows)
+        logger.info("Loaded %d announcements from Supabase (paginated)", len(df))
         return df
     except Exception as e:
         logger.error("Failed to load announcements from Supabase: %s", e)
@@ -244,7 +254,7 @@ def _load_announcements_from_supabase(sb) -> pd.DataFrame:
 
 def _load_local_parquet_fallback() -> pd.DataFrame:
     """Load local announcements2.parquet as fallback for initial runs."""
-    parquet_path = Path(__file__).parent.parent / "backtesting-biotech" / "announcements2.parquet"
+    parquet_path = Path(__file__).parent.parent / "data" / "announcements2.parquet"
 
     if not parquet_path.exists():
         return pd.DataFrame()

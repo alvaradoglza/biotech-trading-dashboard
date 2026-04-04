@@ -19,14 +19,14 @@ dist/
 build/
 .eggs/
 
-# Large data files (too heavy for git)
-backtesting-biotech/announcements2.parquet
-backtesting-biotech/data/ohlcv/
-biotech-monitor/data/prices/
-biotech-monitor/data/raw/
-biotech-monitor/data/text/
-biotech-monitor/logs/
-backtesting-biotech/output/
+# Large data files (too heavy for git — keep locally as fallback seed)
+data/announcements2.parquet
+
+# venvs
+venv/
+.venv/
+.venv2/
+.venvtrading/
 
 # MLflow
 mlruns/

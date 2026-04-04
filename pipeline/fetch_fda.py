@@ -1,17 +1,12 @@
 """
 fetch_fda.py — Fetch FDA announcements (approvals + recalls) via OpenFDA API.
-
-Wraps biotech-monitor/src/clients/openfda.py and extraction pipeline.
 Returns a list of announcement dicts ready for Supabase upsert.
 """
 
 import logging
-import sys
 from datetime import datetime, timedelta
-from pathlib import Path
 
-# Allow imports from biotech-monitor
-sys.path.insert(0, str(Path(__file__).parent.parent / "biotech-monitor"))
+from pipeline.clients.openfda import OpenFDAClient
 
 logger = logging.getLogger(__name__)
 
@@ -34,12 +29,6 @@ def fetch_fda_announcements(
         source, ticker, company_name, event_type, title, announcement_url,
         published_at, raw_text, external_id.
     """
-    try:
-        from src.clients.openfda import OpenFDAClient
-    except ImportError as e:
-        logger.error("Cannot import OpenFDA client: %s", e)
-        return []
-
     since = datetime.utcnow() - timedelta(days=days_back)
     announcements = []
 

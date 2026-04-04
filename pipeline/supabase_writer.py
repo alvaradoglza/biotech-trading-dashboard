@@ -7,8 +7,20 @@ Uses upserts with ON CONFLICT to prevent duplicates.
 
 import logging
 import os
+import re
 from datetime import date, datetime
 from typing import Any
+
+_UUID_RE = re.compile(
+    r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.I
+)
+
+
+def _valid_uuid(value) -> str | None:
+    """Return value if it is a valid UUID string, otherwise None."""
+    if value and _UUID_RE.match(str(value)):
+        return str(value)
+    return None
 
 from supabase import create_client, Client
 
@@ -18,11 +30,11 @@ logger = logging.getLogger(__name__)
 def get_client() -> Client:
     """Create and return a Supabase client using environment variables."""
     url = os.environ.get("SUPABASE_URL")
-    key = os.environ.get("SUPABASE_KEY")
+    key = os.environ.get("SUPABASE_SECRET_KEY")
     if not url or not key:
         raise ValueError(
-            "SUPABASE_URL and SUPABASE_KEY must be set in environment. "
-            "Use the service_role key for pipeline writes."
+            "SUPABASE_URL and SUPABASE_SECRET_KEY must be set in environment. "
+            "Use the secret key for pipeline writes."
         )
     return create_client(url, key)
 
@@ -119,19 +131,28 @@ def upsert_predictions(predictions: list[dict], client: Client | None = None) ->
     rows = []
     for pred in predictions:
         rows.append({
-            "announcement_id": pred["announcement_id"],
-            "model_run_id": pred.get("model_run_id"),
+            # Only set announcement_id if it's a real Supabase UUID.
+            # Predictions from the local-parquet fallback carry a 16-char hex id
+            # (not a UUID) so we leave it NULL until the data is seeded.
+            "announcement_id": _valid_uuid(pred.get("announcement_id")),
+            "model_run_id": _valid_uuid(pred.get("model_run_id")),
             "model_version": pred.get("model_version", "v1"),
             "predicted_label": int(pred["predicted_label"]),
             "predicted_probability": float(pred["predicted_probability"]),
             "expected_return_30d": pred.get("expected_return_30d"),
         })
 
-    response = (
-        sb.table("predictions")
-        .upsert(rows, on_conflict="announcement_id,model_version")
-        .execute()
-    )
+    # If all announcement_ids are null (parquet fallback), plain insert is safe.
+    # Once announcements are seeded in Supabase, upsert with proper conflict key.
+    has_ann_ids = any(r["announcement_id"] for r in rows)
+    if has_ann_ids:
+        response = (
+            sb.table("predictions")
+            .upsert(rows, on_conflict="announcement_id,model_version")
+            .execute()
+        )
+    else:
+        response = sb.table("predictions").insert(rows).execute()
     count = len(response.data) if response.data else 0
     logger.info("Upserted %d predictions", count)
     return count

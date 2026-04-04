@@ -1,0 +1,779 @@
+ticker,company_name,exchange,market_cap,market_cap_category,sector,industry,sic,sic_description,cik,website,ir_url,data_quality_score,data_source,shares_outstanding,last_price,isin,cusip,country,currency
+SLNO,SOLENO THERAPEUTICS INC,NASDAQ,1991152490.88,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001484565,,,60,sec_fallback,51624384.0,38.57,,,US,USD
+STOK,"Stoke Therapeutics, Inc.",NASDAQ,1979109247.5,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001623526,,,60,sec_fallback,57117150.0,34.65,,,US,USD
+AUPH,Aurinia Pharmaceuticals Inc.,NASDAQ,1959992230.46,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001600620,,,60,sec_fallback,132970979.0,14.74,,,US,USD
+CLDX,"Celldex Therapeutics, Inc.",NASDAQ,1954387918.56,small,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0000744218,,,60,sec_fallback,66566346.0,29.36,,,US,USD
+STRO,"SUTRO BIOPHARMA, INC.",NASDAQ,1915544025.0,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001382101,,,60,sec_fallback,85135290.0,22.5,,,US,USD
+SNDX,Syndax Pharmaceuticals Inc,NASDAQ,1903368861.6799998,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001395937,,,60,sec_fallback,88200596.0,21.58,,,US,USD
+ATEC,"Alphatec Holdings, Inc.",NASDAQ,1902552713.4,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001350653,,,60,sec_fallback,151356620.0,12.57,,,US,USD
+IOVA,"IOVANCE BIOTHERAPEUTICS, INC.",NASDAQ,1886784160.06,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001425205,,,60,sec_fallback,411961607.0,4.58,,,US,USD
+TYRA,"Tyra Biosciences, Inc.",NASDAQ,1860570152.1,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001863127,,,60,sec_fallback,53867115.0,34.54,,,US,USD
+ANIP,ANI PHARMACEUTICALS INC,NASDAQ,1846321343.9999998,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001023024,,,60,sec_fallback,24422240.0,75.6,,,US,USD
+ZYME,Zymeworks Inc.,NASDAQ,1828990253.6000001,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001937653,,,60,sec_fallback,73749607.0,24.8,,,US,USD
+AORT,"ARTIVION, INC.",NYSE,1812884340.42,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000784199,,,60,sec_fallback,47883897.0,37.86,,,US,USD
+VALN,Valneva SE,NASDAQ,1805614131.6399999,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001836564,,,60,sec_fallback,162521524.0,11.11,,,US,USD
+INSP,"Inspire Medical Systems, Inc.",NYSE,1785687115.8600001,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001609550,,,60,sec_fallback,28589291.0,62.46,,,US,USD
+ELVN,"Enliven Therapeutics, Inc.",NASDAQ,1751553891.74,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001672619,,,60,sec_fallback,59800406.0,29.29,,,US,USD
+DFTX,"Definium Therapeutics, Inc.",NASDAQ,1749702163.95,small,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001813814,,,60,sec_fallback,99698129.0,17.55,,,US,USD
+OGN,Organon & Co.,NYSE,1746718011.5,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001821825,,,60,sec_fallback,260315650.0,6.71,,,US,USD
+VCEL,Vericel Corp,NASDAQ,1725952846.0,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000887359,,,60,sec_fallback,50763319.0,34.0,,,US,USD
+RLAY,"Relay Therapeutics, Inc.",NASDAQ,1722916798.76,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001812364,,,60,sec_fallback,178725809.0,9.64,,,US,USD
+ZLAB,Zai Lab Ltd,NASDAQ,1709832219.9,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001704292,,,60,sec_fallback,88592343.0,19.3,,,US,USD
+SRPT,"Sarepta Therapeutics, Inc.",NASDAQ,1703983999.56,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000873303,,,60,sec_fallback,104989772.0,16.23,,,US,USD
+TRVI,"Trevi Therapeutics, Inc.",NASDAQ,1677250152.72,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001563880,,,60,sec_fallback,128230134.0,13.08,,,US,USD
+HRMY,"Harmony Biosciences Holdings, Inc.",NASDAQ,1649035905.14,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001802665,,,60,sec_fallback,57840614.0,28.51,,,US,USD
+ANAB,"ANAPTYSBIO, INC",NASDAQ,1646700046.4,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001370053,,,60,sec_fallback,28748255.0,57.28,,,US,USD
+INVA,"Innoviva, Inc.",NASDAQ,1642953468.28,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001080014,,,60,sec_fallback,74073646.0,22.18,,,US,USD
+NVAX,NOVAVAX INC,NASDAQ,1627730090.55,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001000694,,,60,sec_fallback,162935945.0,9.99,,,US,USD
+AGIO,"AGIOS PHARMACEUTICALS, INC.",NASDAQ,1621831320.96,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001439222,,,60,sec_fallback,58592172.0,27.68,,,US,USD
+NVCR,NovoCure Ltd,NASDAQ,1619294255.0800002,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001645113,,,60,sec_fallback,113794396.0,14.23,,,US,USD
+IMCR,Immunocore Holdings plc,NASDAQ,1618693840.54,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001671927,,,60,sec_fallback,50695078.0,31.93,,,US,USD
+RAPT,"RAPT Therapeutics, Inc.",NASDAQ,1607369072.355,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001673772,,,60,sec_fallback,27710871.0,58.005,,,US,USD
+ORKA,"Oruka Therapeutics, Inc.",NASDAQ,1605734225.44,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000907654,,,60,sec_fallback,48409232.0,33.17,,,US,USD
+PVLA,"PALVELLA THERAPEUTICS, INC.",NASDAQ,1597334325.4999998,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001583648,,,60,sec_fallback,11836490.0,134.95,,,US,USD
+NBTX,Nanobiotix S.A.,NASDAQ,1588799508.5,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001760854,,,60,sec_fallback,47426851.0,33.5,,,US,USD
+NUVB,Nuvation Bio Inc.,NYSE,1566748788.8100002,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001811063,,,60,sec_fallback,342833433.0,4.57,,,US,USD
+NRIX,"Nurix Therapeutics, Inc.",NASDAQ,1565270642.64,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001549595,,,60,sec_fallback,102843012.0,15.22,,,US,USD
+UFPT,UFP TECHNOLOGIES INC,NASDAQ,1560631989.0,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000914156,,,60,sec_fallback,7713300.0,202.33,,,US,USD
+AMLX,"Amylyx Pharmaceuticals, Inc.",NASDAQ,1558570910.3999999,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001658551,,,60,sec_fallback,110536944.0,14.1,,,US,USD
+SION,"Sionna Therapeutics, Inc.",NASDAQ,1555133402.88,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002036042,,,60,sec_fallback,44998073.0,34.56,,,US,USD
+NTLA,"Intellia Therapeutics, Inc.",NASDAQ,1553456129.9,small,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0001652130,,,60,sec_fallback,118133546.0,13.15,,,US,USD
+BHVN,Biohaven Ltd.,NYSE,1550800136.04,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001935979,,,60,sec_fallback,150417084.0,10.31,,,US,USD
+OLMA,"Olema Pharmaceuticals, Inc.",NASDAQ,1548967862.8799999,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001750284,,,60,sec_fallback,68659923.0,22.56,,,US,USD
+TNDM,TANDEM DIABETES CARE INC,NASDAQ,1546215728.01,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001438133,,,60,sec_fallback,68325927.0,22.63,,,US,USD
+PRGO,PERRIGO Co plc,NYSE,1541672742.3999999,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001585364,,,60,sec_fallback,137649352.0,11.2,,,US,USD
+ARDX,"ARDELYX, INC.",NASDAQ,1537701367.29,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001437402,,,60,sec_fallback,245247427.0,6.27,,,US,USD
+AXGN,"Axogen, Inc.",NASDAQ,1513336407.1200001,small,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0000805928,,,60,sec_fallback,51897682.0,29.16,,,US,USD
+ATRC,"AtriCure, Inc.",NASDAQ,1509738099.31,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001323885,,,60,sec_fallback,49809901.0,30.31,,,US,USD
+NKTR,NEKTAR THERAPEUTICS,NASDAQ,1473748123.05,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000906709,,,60,sec_fallback,20341589.0,72.45,,,US,USD
+QDEL,QuidelOrtho Corp,NASDAQ,1457630631.47,small,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0001906324,,,60,sec_fallback,68081767.0,21.41,,,US,USD
+IXHL,Incannex Healthcare Inc.,NASDAQ,1433317472.0,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001873875,,,60,sec_fallback,358329368.0,4.0,,,US,USD
+PRCT,PROCEPT BioRobotics Corp,NASDAQ,1429491468.6000001,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001588978,,,60,sec_fallback,56390196.0,25.35,,,US,USD
+EVAX,Evaxion A/S,NASDAQ,1417836570.3999999,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001828253,,,60,sec_fallback,417010756.0,3.4,,,US,USD
+RAPP,"Rapport Therapeutics, Inc.",NASDAQ,1413152741.7,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002012593,,,60,sec_fallback,47661138.0,29.65,,,US,USD
+MBX,"MBX Biosciences, Inc.",NASDAQ,1411503863.37,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001776111,,,60,sec_fallback,44902302.0,31.435,,,US,USD
+PHVS,Pharvaris N.V.,NASDAQ,1405166047.44,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001830487,,,60,sec_fallback,54379491.0,25.84,,,US,USD
+ORIC,"Oric Pharmaceuticals, Inc.",NASDAQ,1389961651.7,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001796280,,,60,sec_fallback,100358242.0,13.85,,,US,USD
+KMTS,"KESTRA MEDICAL TECHNOLOGIES, LTD.",NASDAQ,1382872556.1,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001877184,,,60,sec_fallback,58349053.0,23.7,,,US,USD
+IMTX,Immatics N.V.,NASDAQ,1360825034.8,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001809196,,,60,sec_fallback,134071432.0,10.15,,,US,USD
+ZBIO,"Zenas BioPharma, Inc.",NASDAQ,1355935733.16,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001953926,,,60,sec_fallback,53679166.0,25.26,,,US,USD
+HROW,"HARROW, INC.",NASDAQ,1346598429.8500001,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001360214,,,60,sec_fallback,37229705.0,36.17,,,US,USD
+KOD,Kodiak Sciences Inc.,NASDAQ,1334698448.48,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001468748,,,60,sec_fallback,53048428.0,25.16,,,US,USD
+PMN,ProMIS Neurosciences Inc.,NASDAQ,1333977416.8999999,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001374339,,,60,sec_fallback,53811110.0,24.79,,,US,USD
+DAWN,"Day One Biopharmaceuticals, Inc.",NASDAQ,1320144490.98,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001845337,,,60,sec_fallback,103297691.0,12.78,,,US,USD
+EYPT,"EyePoint, Inc.",NASDAQ,1314887532.0,small,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001314102,,,60,sec_fallback,83431950.0,15.76,,,US,USD
+ATAI,Atai Beckley N.V.,NASDAQ,1285694447.88,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001840904,,,60,sec_fallback,363190522.0,3.54,,,US,USD
+CNMD,CONMED Corp,NYSE,1276508390.3999999,small,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0000816956,,,60,sec_fallback,30833536.0,41.4,,,US,USD
+IRMD,IRADIMED CORP,NASDAQ,1273387715.6,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001325618,,,60,sec_fallback,12721156.0,100.1,,,US,USD
+VIR,"Vir Biotechnology, Inc.",NASDAQ,1269607229.8,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001706431,,,60,sec_fallback,139517278.0,9.1,,,US,USD
+PLSE,"PULSE BIOSCIENCES, INC.",NASDAQ,1263237069.2399998,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001625101,,,60,sec_fallback,67989078.0,18.58,,,US,USD
+ALVO,Alvotech,NASDAQ,1255511616.32,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001898416,,,60,sec_fallback,301805677.0,4.16,,,US,USD
+SEPN,"Septerna, Inc.",NASDAQ,1229947054.24,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001984086,,,60,sec_fallback,44774192.0,27.47,,,US,USD
+TSHA,"Taysha Gene Therapies, Inc.",NASDAQ,1229897984.77,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001806310,,,60,sec_fallback,273919373.0,4.49,,,US,USD
+CRVS,"Corvus Pharmaceuticals, Inc.",NASDAQ,1199390864.32,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001626971,,,60,sec_fallback,74681872.0,16.06,,,US,USD
+PGEN,"PRECIGEN, INC.",NASDAQ,1192388561.63,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001356090,,,60,sec_fallback,353824499.0,3.37,,,US,USD
+COLL,"COLLEGIUM PHARMACEUTICAL, INC",NASDAQ,1183759706.08,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001267565,,,60,sec_fallback,31753211.0,37.28,,,US,USD
+CAPR,"CAPRICOR THERAPEUTICS, INC.",NASDAQ,1180451024.5,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001133869,,,60,sec_fallback,45718475.0,25.82,,,US,USD
+GLUE,"Monte Rosa Therapeutics, Inc.",NASDAQ,1168863809.95,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001826457,,,60,sec_fallback,65117761.0,17.95,,,US,USD
+ASRT,"Assertio Holdings, Inc.",NASDAQ,1150212439.6499999,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001808665,,,60,sec_fallback,96252087.0,11.95,,,US,USD
+ACET,"Adicet Bio, Inc.",NASDAQ,1143286634.26,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001720580,,,60,sec_fallback,153255581.0,7.46,,,US,USD
+SVRA,Savara Inc,NASDAQ,1117038469.05,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001160308,,,60,sec_fallback,203467845.0,5.49,,,US,USD
+AVBP,"ArriVent BioPharma, Inc.",NASDAQ,1116090955.5,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001868279,,,60,sec_fallback,44201622.0,25.25,,,US,USD
+ABCL,AbCellera Biologics Inc.,NASDAQ,1088346148.33,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001703057,,,60,sec_fallback,303160487.0,3.59,,,US,USD
+XERS,"Xeris Biopharma Holdings, Inc.",NASDAQ,1041484991.6,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001867096,,,60,sec_fallback,172431290.0,6.04,,,US,USD
+INBX,"Inhibrx Biosciences, Inc.",NASDAQ,1027660527.0799999,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002007919,,,60,sec_fallback,14543738.0,70.66,,,US,USD
+BCAX,Bicara Therapeutics Inc.,NASDAQ,1013466075.0,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002023658,,,60,sec_fallback,54781950.0,18.5,,,US,USD
+VTYX,"Ventyx Biosciences, Inc.",NASDAQ,999020932.0,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001851194,,,60,sec_fallback,71358638.0,14.0,,,US,USD
+CMPX,"Compass Therapeutics, Inc.",NASDAQ,995886169.95,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001738021,,,60,sec_fallback,180087915.0,5.53,,,US,USD
+CRON,Cronos Group Inc.,NASDAQ,974161332.14,small,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001656472,,,60,sec_fallback,379051102.0,2.57,,,US,USD
+BLFS,BIOLIFE SOLUTIONS INC,NASDAQ,971796000.0,small,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0000834365,,,60,sec_fallback,48300000.0,20.12,,,US,USD
+URGN,UroGen Pharma Ltd.,NASDAQ,954659510.8,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001668243,,,60,sec_fallback,48682280.0,19.61,,,US,USD
+SSII,"SS Innovations International, Inc.",NASDAQ,954552264.5699999,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001676163,,,60,sec_fallback,193621149.0,4.93,,,US,USD
+MLTX,MoonLake Immunotherapeutics,NASDAQ,949674020.22,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001821586,,,60,sec_fallback,52701111.0,18.02,,,US,USD
+GHRS,GH Research PLC,NASDAQ,940985922.15,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001855129,,,60,sec_fallback,62029395.0,15.17,,,US,USD
+AMPH,"Amphastar Pharmaceuticals, Inc.",NASDAQ,927366295.24,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001297184,,,60,sec_fallback,45370171.0,20.44,,,US,USD
+PCRX,"Pacira BioSciences, Inc.",NASDAQ,925598976.84,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001396814,,,60,sec_fallback,40489894.0,22.86,,,US,USD
+NNNN,Anbio Biotechnology,NASDAQ,921948203.6,small,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0001982708,,,60,sec_fallback,42291202.0,21.8,,,US,USD
+CGEM,"Cullinan Therapeutics, Inc.",NASDAQ,921589640.4,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001789972,,,60,sec_fallback,59076259.0,15.6,,,US,USD
+SANA,"Sana Biotechnology, Inc.",NASDAQ,910016118.77,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001770121,,,60,sec_fallback,266866897.0,3.41,,,US,USD
+GERN,GERON CORP,NASDAQ,909573418.62,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000886744,,,60,sec_fallback,640544661.0,1.42,,,US,USD
+ADXN,Addex Therapeutics Ltd.,NASDAQ,904465431.4499999,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001574232,,,60,sec_fallback,128292969.0,7.05,,,US,USD
+ABUS,Arbutus Biopharma Corp,NASDAQ,903922879.9,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001447028,,,60,sec_fallback,192324017.0,4.7,,,US,USD
+EVMN,"Evommune, Inc.",NYSE,903700953.48,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002044725,,,60,sec_fallback,36018372.0,25.09,,,US,USD
+SPRY,"ARS Pharmaceuticals, Inc.",NASDAQ,901499332.3199999,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001671858,,,60,sec_fallback,98848611.0,9.12,,,US,USD
+OPK,"OPKO HEALTH, INC.",NASDAQ,888108689.52,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000944809,,,60,sec_fallback,759067256.0,1.17,,,US,USD
+ARVN,"ARVINAS, INC.",NASDAQ,877544878.84,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001655759,,,60,sec_fallback,63960997.0,13.72,,,US,USD
+MNKD,MANNKIND CORP,NASDAQ,871924225.39,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000899460,,,60,sec_fallback,308100433.0,2.83,,,US,USD
+INMD,InMode Ltd.,NASDAQ,852175187.5,small,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001742692,,,60,sec_fallback,63358750.0,13.45,,,US,USD
+JANX,"Janux Therapeutics, Inc.",NASDAQ,849818234.32,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001817713,,,60,sec_fallback,60831656.0,13.97,,,US,USD
+PHAT,"Phathom Pharmaceuticals, Inc.",NASDAQ,846298166.88,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001783183,,,60,sec_fallback,78798712.0,10.74,,,US,USD
+TLRY,"Tilray Brands, Inc.",NASDAQ,822538826.9599999,small,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001731348,,,60,sec_fallback,116506916.0,7.06,,,US,USD
+SDGR,"Schrodinger, Inc.",NASDAQ,820594427.48,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001490978,,,60,sec_fallback,62977316.0,13.03,,,US,USD
+KALV,"KalVista Pharmaceuticals, Inc.",NASDAQ,819355409.5300001,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001348911,,,60,sec_fallback,50546293.0,16.21,,,US,USD
+XNCR,Xencor Inc,NASDAQ,818459244.72,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001326732,,,60,sec_fallback,73338642.0,11.16,,,US,USD
+MPLT,"MapLight Therapeutics, Inc.",NASDAQ,814899672.6800001,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001770069,,,60,sec_fallback,45373033.0,17.96,,,US,USD
+OMER,OMEROS CORP,NASDAQ,814646273.91,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001285819,,,60,sec_fallback,70900459.0,11.49,,,US,USD
+CTMX,"CytomX Therapeutics, Inc.",NASDAQ,808206834.15,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001501989,,,60,sec_fallback,169435395.0,4.77,,,US,USD
+BBOT,"BridgeBio Oncology Therapeutics, Inc.",NASDAQ,791524619.47,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001869105,,,60,sec_fallback,80032823.0,9.89,,,US,USD
+SLN,Silence Therapeutics plc,NASDAQ,779360164.0,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001479615,,,60,sec_fallback,141701848.0,5.5,,,US,USD
+IART,INTEGRA LIFESCIENCES HOLDINGS CORP,NASDAQ,770798987.12,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000917520,,,60,sec_fallback,77937208.0,9.89,,,US,USD
+GYRE,"GYRE THERAPEUTICS, INC.",NASDAQ,754288619.3100001,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001124105,,,60,sec_fallback,96333157.0,7.83,,,US,USD
+SLS,"SELLAS Life Sciences Group, Inc.",NASDAQ,752095021.9200001,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001390478,,,60,sec_fallback,142442239.0,5.28,,,US,USD
+KURA,"Kura Oncology, Inc.",NASDAQ,751686249.09,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001422143,,,60,sec_fallback,88329759.0,8.51,,,US,USD
+BIOA,"BioAge Labs, Inc.",NASDAQ,730725654.06,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001709941,,,60,sec_fallback,35855037.0,20.38,,,US,USD
+PRME,"Prime Medicine, Inc.",NASDAQ,709570063.47,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001894562,,,60,sec_fallback,180552179.0,3.93,,,US,USD
+MDXG,"MIMEDX GROUP, INC.",NASDAQ,705691283.5,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001376339,,,60,sec_fallback,148566586.0,4.75,,,US,USD
+LXRX,"LEXICON PHARMACEUTICALS, INC.",NASDAQ,694836202.04,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001062822,,,60,sec_fallback,423680611.0,1.64,,,US,USD
+CMMB,Chemomab Therapeutics Ltd.,NASDAQ,690151962.6,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001534248,,,60,sec_fallback,377132220.0,1.83,,,US,USD
+TBPH,"Theravance Biopharma, Inc.",NASDAQ,688131612.98,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001583107,,,60,sec_fallback,50672431.0,13.58,,,US,USD
+NBP,NovaBridge Biosciences,NASDAQ,682327081.8000001,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001778016,,,60,sec_fallback,187452495.0,3.64,,,US,USD
+CBLL,"Ceribell, Inc.",NASDAQ,673401586.8100001,small,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001861107,,,60,sec_fallback,37641229.0,17.89,,,US,USD
+QURE,uniQure N.V.,NASDAQ,665938195.2,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001590560,,,60,sec_fallback,62529408.0,10.65,,,US,USD
+ESPR,"Esperion Therapeutics, Inc.",NASDAQ,662205720.49,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001434868,,,60,sec_fallback,239063437.0,2.77,,,US,USD
+TCMD,TACTILE SYSTEMS TECHNOLOGY INC,NASDAQ,659928813.66,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001027838,,,60,sec_fallback,22438926.0,29.41,,,US,USD
+CMPS,COMPASS Pathways plc,NASDAQ,650515473.1,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001816590,,,60,sec_fallback,96017044.0,6.775,,,US,USD
+SVA,SINOVAC BIOTECH LTD,NASDAQ,644658138.2099999,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001084201,,,60,sec_fallback,99638043.0,6.47,,,US,USD
+ANRO,"Alto Neuroscience, Inc.",NYSE,639345174.3,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001999480,,,60,sec_fallback,31066335.0,20.58,,,US,USD
+JBIO,"Jade Biosciences, Inc.",NASDAQ,638538365.4000001,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001798749,,,60,sec_fallback,46004205.0,13.88,,,US,USD
+XTLB,XTL BIOPHARMACEUTICALS LTD,NASDAQ,626400444.5832,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001023549,,,60,sec_fallback,881385176.0,0.7107,,,US,USD
+SIBN,"SI-BONE, Inc.",NASDAQ,621405588.09,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001459839,,,60,sec_fallback,44165287.0,14.07,,,US,USD
+BVS,Bioventus Inc.,NASDAQ,606265942.1,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001665988,,,60,sec_fallback,66622631.0,9.1,,,US,USD
+ATOS,"ATOSSA THERAPEUTICS, INC.",NASDAQ,604522264.3199999,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001488039,,,60,sec_fallback,129171424.0,4.68,,,US,USD
+RXRX,"RECURSION PHARMACEUTICALS, INC.",NASDAQ,595855437.3,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001601830,,,60,sec_fallback,168320745.0,3.54,,,US,USD
+LBRX,LB PHARMACEUTICALS INC,NASDAQ,595793852.1,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001691082,,,60,sec_fallback,25299102.0,23.55,,,US,USD
+IRWD,IRONWOOD PHARMACEUTICALS INC,NASDAQ,590271103.9200001,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001446847,,,60,sec_fallback,163058316.0,3.62,,,US,USD
+ENGN,enGene Holdings Inc.,NASDAQ,583478248.86,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001980845,,,60,sec_fallback,66989466.0,8.71,,,US,USD
+REPL,"Replimune Group, Inc.",NASDAQ,581311237.76,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001737953,,,60,sec_fallback,82572619.0,7.04,,,US,USD
+IVA,Inventiva S.A.,NASDAQ,578757465.55,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001756594,,,60,sec_fallback,95662391.0,6.05,,,US,USD
+DSGN,"Design Therapeutics, Inc.",NASDAQ,574764308.13,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001807120,,,60,sec_fallback,56963757.0,10.09,,,US,USD
+OCGN,"Ocugen, Inc.",NASDAQ,570541295.04,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001372299,,,60,sec_fallback,327897296.0,1.74,,,US,USD
+CTKB,"Cytek Biosciences, Inc.",NASDAQ,563049595.68,small,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001831915,,,60,sec_fallback,128550136.0,4.38,,,US,USD
+MGTX,MeiraGTx Holdings plc,NASDAQ,562631314.11,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001735438,,,60,sec_fallback,80490889.0,6.99,,,US,USD
+EMBC,Embecta Corp.,NASDAQ,559035421.76,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001872789,,,60,sec_fallback,59219854.0,9.44,,,US,USD
+EVO,Evotec SE,NASDAQ,553966782.72,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001412558,,,60,sec_fallback,177553456.0,3.12,,,US,USD
+RIGL,RIGEL PHARMACEUTICALS INC,NASDAQ,545326797.6,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001034842,,,60,sec_fallback,18473130.0,29.52,,,US,USD
+FULC,"Fulcrum Therapeutics, Inc.",NASDAQ,543457705.44,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001680581,,,60,sec_fallback,66600209.0,8.16,,,US,USD
+VSTM,"Verastem, Inc.",NASDAQ,540185901.9,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001526119,,,60,sec_fallback,87835106.0,6.15,,,US,USD
+MRVI,"MARAVAI LIFESCIENCES HOLDINGS, INC.",NASDAQ,531244800.0,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001823239,,,60,sec_fallback,144360000.0,3.68,,,US,USD
+TECX,"Tectonic Therapeutic, Inc.",NASDAQ,522929034.1,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001681087,,,60,sec_fallback,18776626.0,27.85,,,US,USD
+AQST,"Aquestive Therapeutics, Inc.",NASDAQ,519911908.73999995,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001398733,,,60,sec_fallback,122045049.0,4.26,,,US,USD
+KMDA,KAMADA LTD,NASDAQ,519270429.92999995,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001567529,,,60,sec_fallback,57505031.0,9.03,,,US,USD
+ALLO,"Allogene Therapeutics, Inc.",NASDAQ,519126632.64,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001737287,,,60,sec_fallback,224730144.0,2.31,,,US,USD
+ADCT,ADC Therapeutics SA,NYSE,519045095.09000003,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001771910,,,60,sec_fallback,123877111.0,4.19,,,US,USD
+PRTA,PROTHENA CORP PUBLIC LTD CO,NASDAQ,509260009.72,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001559053,,,60,sec_fallback,53832982.0,9.46,,,US,USD
+OFIX,Orthofix Medical Inc.,NASDAQ,504615070.29,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000884624,,,60,sec_fallback,40144397.0,12.57,,,US,USD
+RCKT,"ROCKET PHARMACEUTICALS, INC.",NASDAQ,503760823.52,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001281895,,,60,sec_fallback,108569143.0,4.64,,,US,USD
+NMRA,"Neumora Therapeutics, Inc.",NASDAQ,501267342.0,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001885522,,,60,sec_fallback,167089114.0,3.0,,,US,USD
+DRTS,Alpha Tau Medical Ltd.,NASDAQ,501109658.40000004,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001871321,,,60,sec_fallback,70380570.0,7.12,,,US,USD
+CRMD,CorMedix Inc.,NASDAQ,498017488.5,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001410098,,,60,sec_fallback,79050395.0,6.3,,,US,USD
+ZVRA,"ZEVRA THERAPEUTICS, INC.",NASDAQ,494855332.65,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001434647,,,60,sec_fallback,56297535.0,8.79,,,US,USD
+LXEO,"Lexeo Therapeutics, Inc.",NASDAQ,493394330.52,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001907108,,,60,sec_fallback,72987327.0,6.76,,,US,USD
+BBNX,"Beta Bionics, Inc.",NASDAQ,493085642.06,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001674632,,,60,sec_fallback,44382146.0,11.11,,,US,USD
+IVVD,"Invivyd, Inc.",NASDAQ,491714828.46,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001832038,,,60,sec_fallback,282594729.0,1.74,,,US,USD
+MYGN,MYRIAD GENETICS INC,NASDAQ,479696886.45,small,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0000899923,,,60,sec_fallback,93508165.0,5.13,,,US,USD
+BWAY,Brainsway Ltd.,NASDAQ,474845508.73999995,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001505065,,,60,sec_fallback,37626427.0,12.62,,,US,USD
+LYEL,"Lyell Immunopharma, Inc.",NASDAQ,467861684.85,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001806952,,,60,sec_fallback,21218217.0,22.05,,,US,USD
+VNDA,Vanda Pharmaceuticals Inc.,NASDAQ,467544517.3,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001347178,,,60,sec_fallback,59108030.0,7.91,,,US,USD
+INTS,"INTENSITY THERAPEUTICS, INC.",NASDAQ,463701529.8,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001567264,,,60,sec_fallback,60064965.0,7.72,,,US,USD
+ETON,"Eton Pharmaceuticals, Inc.",NASDAQ,462200215.72499996,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001710340,,,60,sec_fallback,26817535.0,17.235,,,US,USD
+PACB,"PACIFIC BIOSCIENCES OF CALIFORNIA, INC.",NASDAQ,459037403.84000003,small,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001299130,,,60,sec_fallback,301998292.0,1.52,,,US,USD
+LCTX,"Lineage Cell Therapeutics, Inc.",NYSE MKT,458321053.36,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000876343,,,60,sec_fallback,249087529.0,1.84,,,US,USD
+NPCE,NeuroPace Inc,NASDAQ,457870492.8,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001528287,,,60,sec_fallback,33666948.0,13.6,,,US,USD
+RLYB,Rallybio Corp,NASDAQ,456232759.20000005,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001739410,,,60,sec_fallback,42243774.0,10.8,,,US,USD
+NATR,NATURES SUNSHINE PRODUCTS INC,NASDAQ,452085347.92,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000275053,,,60,sec_fallback,17495563.0,25.84,,,US,USD
+GNFTY,Genfit S.A.,NASDAQ,450965588.7,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001757064,,,60,sec_fallback,49996185.0,9.02,,,US,USD
+KIDS,ORTHOPEDIATRICS CORP,NASDAQ,450467984.34000003,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001425450,,,60,sec_fallback,25278787.0,17.82,,,US,USD
+RGNX,REGENXBIO Inc.,NASDAQ,450065220.48,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001590877,,,60,sec_fallback,51612984.0,8.72,,,US,USD
+ANGO,ANGIODYNAMICS INC,NASDAQ,448032985.82,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001275187,,,60,sec_fallback,41217386.0,10.87,,,US,USD
+SIGA,SIGA TECHNOLOGIES INC,NASDAQ,446854524.48,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001010086,,,60,sec_fallback,71611302.0,6.24,,,US,USD
+LRMR,"Larimar Therapeutics, Inc.",NASDAQ,446781846.23999995,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001374690,,,60,sec_fallback,85590392.0,5.22,,,US,USD
+TRDA,"Entrada Therapeutics, Inc.",NASDAQ,444863717.05999994,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001689375,,,60,sec_fallback,38284313.0,11.62,,,US,USD
+AVXL,ANAVEX LIFE SCIENCES CORP.,NASDAQ,441117568.08,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001314052,,,60,sec_fallback,92671758.0,4.76,,,US,USD
+ZURA,Zura Bio Ltd,NASDAQ,439557562.08,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001855644,,,60,sec_fallback,65023308.0,6.76,,,US,USD
+ASMB,"ASSEMBLY BIOSCIENCES, INC.",NASDAQ,437502092.4,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001426800,,,60,sec_fallback,15817140.0,27.66,,,US,USD
+SLDB,Solid Biosciences Inc.,NASDAQ,437076440.79,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001707502,,,60,sec_fallback,77910239.0,5.61,,,US,USD
+EBS,Emergent BioSolutions Inc.,NYSE,436946033.08,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001367644,,,60,sec_fallback,51770857.0,8.44,,,US,USD
+FDMT,"4D Molecular Therapeutics, Inc.",NASDAQ,430083017.28000003,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001650648,,,60,sec_fallback,49778127.0,8.64,,,US,USD
+CYRX,"Cryoport, Inc.",NASDAQ,418576037.44,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001124524,,,60,sec_fallback,50068904.0,8.36,,,US,USD
+UPB,"Upstream Bio, Inc.",NASDAQ,414475992.96999997,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002022626,,,60,sec_fallback,54038591.0,7.67,,,US,USD
+AVIR,"Atea Pharmaceuticals, Inc.",NASDAQ,414072018.8,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001593899,,,60,sec_fallback,78126796.0,5.3,,,US,USD
+NAGE,"Niagen Bioscience, Inc.",NASDAQ,408410488.79999995,small,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001386570,,,60,sec_fallback,80080488.0,5.1,,,US,USD
+SNDL,SNDL Inc.,NASDAQ,402423425.91,small,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001766600,,,60,sec_fallback,263021847.0,1.53,,,US,USD
+ENTA,ENANTA PHARMACEUTICALS INC,NASDAQ,398725786.56,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001177648,,,60,sec_fallback,29019344.0,13.74,,,US,USD
+ARMP,"Armata Pharmaceuticals, Inc.",NYSE MKT,398175068.32000005,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000921114,,,60,sec_fallback,36329842.0,10.96,,,US,USD
+DNA,"Ginkgo Bioworks Holdings, Inc.",NYSE,398137918.32,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001830214,,,60,sec_fallback,58207298.0,6.84,,,US,USD
+DMAC,DiaMedica Therapeutics Inc.,NASDAQ,395267762.01,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001401040,,,60,sec_fallback,52077439.0,7.59,,,US,USD
+AUTL,Autolus Therapeutics plc,NASDAQ,395222779.71000004,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001730463,,,60,sec_fallback,266143286.0,1.485,,,US,USD
+CGC,Canopy Growth Corp,NASDAQ,392977139.36,small,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001737927,,,60,sec_fallback,377862634.0,1.04,,,US,USD
+LAB,STANDARD BIOTOOLS INC.,NASDAQ,392256722.28000003,small,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001162194,,,60,sec_fallback,384565414.0,1.02,,,US,USD
+CERS,CERUS CORP,NASDAQ,391069564.16,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001020214,,,60,sec_fallback,192171776.0,2.035,,,US,USD
+ABSI,Absci Corp,NASDAQ,389462265.28999996,small,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0001672688,,,60,sec_fallback,150371531.0,2.59,,,US,USD
+PEPG,PepGen Inc.,NASDAQ,380479682.46,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001835597,,,60,sec_fallback,69115292.0,5.505,,,US,USD
+FBRX,"Forte Biosciences, Inc.",NASDAQ,379315591.8,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001419041,,,60,sec_fallback,12526935.0,30.28,,,US,USD
+CATX,"Perspective Therapeutics, Inc.",NYSE MKT,379123749.0,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000728387,,,60,sec_fallback,74337990.0,5.1,,,US,USD
+LENZ,"LENZ Therapeutics, Inc.",NASDAQ,377357026.14000005,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001815776,,,60,sec_fallback,31289969.0,12.06,,,US,USD
+ACRS,"Aclaris Therapeutics, Inc.",NASDAQ,376256989.68,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001557746,,,60,sec_fallback,120595189.0,3.12,,,US,USD
+ORGO,Organogenesis Holdings Inc.,NASDAQ,373057945.9,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001661181,,,60,sec_fallback,128640671.0,2.9,,,US,USD
+MNPR,Monopar Therapeutics,NASDAQ,372888187.2,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001645469,,,60,sec_fallback,6682584.0,55.8,,,US,USD
+EOLS,"Evolus, Inc.",NASDAQ,368239543.40000004,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001570562,,,60,sec_fallback,65059990.0,5.66,,,US,USD
+KYTX,"Kyverna Therapeutics, Inc.",NASDAQ,367449866.3,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001994702,,,60,sec_fallback,43796170.0,8.39,,,US,USD
+ALT,"Altimmune, Inc.",NASDAQ,365410876.365,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001326190,,,60,sec_fallback,104254173.0,3.505,,,US,USD
+STTK,"Shattuck Labs, Inc.",NASDAQ,364977506.7,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001680367,,,60,sec_fallback,71564217.0,5.1,,,US,USD
+BNTC,Benitec Biopharma Inc.,NASDAQ,364155940.4,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001808898,,,60,sec_fallback,34354334.0,10.6,,,US,USD
+AURA,"Aura Biosciences, Inc.",NASDAQ,361968633.3,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001501796,,,60,sec_fallback,63503269.0,5.7,,,US,USD
+CELG-RI,BRISTOL MYERS SQUIBB CO,NYSE,358215724.7095,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000014272,,,60,sec_fallback,2036473705.0,0.1759,,,US,USD
+CLYM,"Climb Bio, Inc.",NASDAQ,353005372.2,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001768446,,,60,sec_fallback,47767980.0,7.39,,,US,USD
+DRUG,BRIGHT MINDS BIOSCIENCES INC.,NASDAQ,351973968.59999996,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001827401,,,60,sec_fallback,4524087.0,77.8,,,US,USD
+NGNE,Neurogene Inc.,NASDAQ,342789274.0,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001404644,,,60,sec_fallback,15489800.0,22.13,,,US,USD
+GLSI,"Greenwich LifeSciences, Inc.",NASDAQ,341791477.13,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001799788,,,60,sec_fallback,13854539.0,24.67,,,US,USD
+USNA,USANA HEALTH SCIENCES INC,NYSE,332711597.4,small,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0000896264,,,60,sec_fallback,18280857.0,18.2,,,US,USD
+CARL,"CARLSMED, INC.",NASDAQ,329338141.44,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001794546,,,60,sec_fallback,26731992.0,12.32,,,US,USD
+IRD,"Opus Genetics, Inc.",NASDAQ,328959272.15999997,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001228627,,,60,sec_fallback,68964208.0,4.77,,,US,USD
+XOMA,XOMA Royalty Corp,NASDAQ,325799439.93,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000791908,,,60,sec_fallback,12383103.0,26.31,,,US,USD
+RLMD,"RELMADA THERAPEUTICS, INC.",NASDAQ,324867945.46,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001553643,,,60,sec_fallback,73333622.0,4.43,,,US,USD
+XFOR,"X4 Pharmaceuticals, Inc",NASDAQ,323515745.6,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001501697,,,60,sec_fallback,87436688.0,3.7,,,US,USD
+NRC,NATIONAL RESEARCH CORP,NASDAQ,319359413.88,small,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0000070487,,,60,sec_fallback,22746397.0,14.04,,,US,USD
+CTNM,"Contineum Therapeutics, Inc.",NASDAQ,318999579.13,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001855175,,,60,sec_fallback,23099173.0,13.81,,,US,USD
+FHTX,Foghorn Therapeutics Inc.,NASDAQ,318949269.96,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001822462,,,60,sec_fallback,56551289.0,5.64,,,US,USD
+AVTX,"Avalo Therapeutics, Inc.",NASDAQ,318795157.44,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001534120,,,60,sec_fallback,18133968.0,17.58,,,US,USD
+AKBA,"Akebia Therapeutics, Inc.",NASDAQ,318776294.40999997,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001517022,,,60,sec_fallback,267879239.0,1.19,,,US,USD
+PBYI,"PUMA BIOTECHNOLOGY, INC.",NASDAQ,316960514.01000005,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001401667,,,60,sec_fallback,50876487.0,6.23,,,US,USD
+DCTH,"DELCATH SYSTEMS, INC.",NASDAQ,315495377.96,small,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000872912,,,60,sec_fallback,34746187.0,9.08,,,US,USD
+NUVL,"Nuvalent, Inc.",NASDAQ,313345219.91999996,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001861560,,,60,sec_fallback,3129384.0,100.13,,,US,USD
+CBIO,"CRESCENT BIOPHARMA, INC.",NASDAQ,312218170.11,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001253689,,,60,sec_fallback,27556767.0,11.33,,,US,USD
+MREO,Mereo BioPharma Group plc,NASDAQ,311102475.064,small,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001719714,,,60,sec_fallback,795658504.0,0.391,,,US,USD
+NAUT,"Nautilus Biotechnology, Inc.",NASDAQ,308817314.12,small,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001808805,,,60,sec_fallback,126564473.0,2.44,,,US,USD
+CABA,"Cabaletta Bio, Inc.",NASDAQ,306123348.72,small,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001759138,,,60,sec_fallback,96265204.0,3.18,,,US,USD
+RZLT,"Rezolute, Inc.",NASDAQ,299533754.05,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001509261,,,60,sec_fallback,95697685.0,3.13,,,US,USD
+CCCC,"C4 Therapeutics, Inc.",NASDAQ,295661870.25,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001662579,,,60,sec_fallback,97578175.0,3.03,,,US,USD
+TLSI,"TriSalus Life Sciences, Inc.",NASDAQ,292431704.48999995,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001826667,,,60,sec_fallback,61306437.0,4.77,,,US,USD
+OABI,"OmniAb, Inc.",NASDAQ,289565294.0,micro,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0001846253,,,60,sec_fallback,144782647.0,2.0,,,US,USD
+IMMX,"Immix Biopharma, Inc.",NASDAQ,286755035.41999996,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001873835,,,60,sec_fallback,33577873.0,8.54,,,US,USD
+ALGS,"Aligos Therapeutics, Inc.",NASDAQ,283774554.72,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001799448,,,60,sec_fallback,42608792.0,6.66,,,US,USD
+ALDX,"Aldeyra Therapeutics, Inc.",NASDAQ,279849936.3,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001341235,,,60,sec_fallback,60182782.0,4.65,,,US,USD
+NCNA,NuCana plc,NASDAQ,278407113.7599,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001709626,,,60,sec_fallback,142037199.0,1.9601,,,US,USD
+ACIU,AC Immune SA,NASDAQ,274120329.21,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001651625,,,60,sec_fallback,100410377.0,2.73,,,US,USD
+VACHU,Voyager Acquisition Corp./Cayman Islands,NASDAQ,271975000.0,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002006815,,,60,sec_fallback,25300000.0,10.75,,,US,USD
+PROF,Profound Medical Corp.,NASDAQ,271839363.6,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001628808,,,60,sec_fallback,36293640.0,7.49,,,US,USD
+VACH,Voyager Acquisition Corp./Cayman Islands,NASDAQ,270457000.0,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002006815,,,60,sec_fallback,25300000.0,10.69,,,US,USD
+SI,"SHOULDER INNOVATIONS, INC.",NYSE,268439942.52,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001699350,,,60,sec_fallback,20601684.0,13.03,,,US,USD
+CADL,"Candel Therapeutics, Inc.",NASDAQ,266256769.54999998,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001841387,,,60,sec_fallback,54898303.0,4.85,,,US,USD
+ABEO,ABEONA THERAPEUTICS INC.,NASDAQ,263911928.07,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000318306,,,60,sec_fallback,54191361.0,4.87,,,US,USD
+LFCR,"LIFECORE BIOMEDICAL, INC. \DE\",NASDAQ,263013791.04,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001005286,,,60,sec_fallback,37466352.0,7.02,,,US,USD
+CLPT,"ClearPoint Neuro, Inc.",NASDAQ,262915599.0,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001285550,,,60,sec_fallback,28423308.0,9.25,,,US,USD
+TRIB,TRINITY BIOTECH PLC,NASDAQ,262857790.1276,micro,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0000888721,,,60,sec_fallback,359193482.0,0.7318,,,US,USD
+CNTX,Context Therapeutics Inc.,NASDAQ,262774446.22,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001842952,,,60,sec_fallback,91879177.0,2.86,,,US,USD
+CLLS,Cellectis S.A.,NASDAQ,262609395.66,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001627281,,,60,sec_fallback,71751201.0,3.66,,,US,USD
+FBIO,"Fortress Biotech, Inc.",NASDAQ,258144017.51,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001429260,,,60,sec_fallback,82474127.0,3.13,,,US,USD
+OBIO,"Orchestra BioMed Holdings, Inc.",NASDAQ,254655936.81,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001814114,,,60,sec_fallback,56464731.0,4.51,,,US,USD
+QTRX,Quanterix Corp,NASDAQ,249251267.24999997,micro,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001503274,,,60,sec_fallback,46939975.0,5.31,,,US,USD
+SRZN,"Surrozen, Inc./DE",NASDAQ,245056926.39,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001824893,,,60,sec_fallback,8571421.0,28.59,,,US,USD
+NVNO,enVVeno Medical Corp,NASDAQ,244858323.712,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001661053,,,60,sec_fallback,20216176.0,12.112,,,US,USD
+PALI,"PALISADE BIO, INC.",NASDAQ,244365264.39999998,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001357459,,,60,sec_fallback,149003210.0,1.64,,,US,USD
+NVCT,"Nuvectis Pharma, Inc.",NASDAQ,239484986.07999998,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001875558,,,60,sec_fallback,26491702.0,9.04,,,US,USD
+CAMP,Camp4 Therapeutics Corp,NASDAQ,238309683.39,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001736730,,,60,sec_fallback,51919321.0,4.59,,,US,USD
+CV,"CapsoVision, Inc",NASDAQ,237026718.49999997,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001378325,,,60,sec_fallback,46843225.0,5.06,,,US,USD
+ACHV,"ACHIEVE LIFE SCIENCES, INC.",NASDAQ,234229547.20000002,micro,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0000949858,,,60,sec_fallback,53233988.0,4.4,,,US,USD
+KROS,"Keros Therapeutics, Inc.",NASDAQ,230892311.43,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001664710,,,60,sec_fallback,19717533.0,11.71,,,US,USD
+TARA,"Protara Therapeutics, Inc.",NASDAQ,224577853.20000002,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001359931,,,60,sec_fallback,38587260.0,5.82,,,US,USD
+MDWD,MediWound Ltd.,NASDAQ,223973332.6,micro,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001593984,,,60,sec_fallback,12835148.0,17.45,,,US,USD
+MHUAF,"Meihua International Medical Technologies Co., Ltd.",NASDAQ,223650320.68,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001835615,,,60,sec_fallback,31904468.0,7.01,,,US,USD
+PLX,"Protalix BioTherapeutics, Inc.",NYSE MKT,223570883.17999998,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001006281,,,60,sec_fallback,80421181.0,2.78,,,US,USD
+IPSC,"Century Therapeutics, Inc.",NASDAQ,223506152.96,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001850119,,,60,sec_fallback,87307091.0,2.56,,,US,USD
+FENC,FENNEC PHARMACEUTICALS INC.,NASDAQ,222966453.97,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001211583,,,60,sec_fallback,28116829.0,7.93,,,US,USD
+CVRX,"CVRx, Inc.",NASDAQ,220228150.58999997,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001235912,,,60,sec_fallback,26311607.0,8.37,,,US,USD
+ALEC,"Alector, Inc.",NASDAQ,218517910.38,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001653087,,,60,sec_fallback,110362581.0,1.98,,,US,USD
+VYGR,"Voyager Therapeutics, Inc.",NASDAQ,218508330.12,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001640266,,,60,sec_fallback,55600084.0,3.93,,,US,USD
+EPRX,EUPRAXIA PHARMACEUTICALS INC.,NASDAQ,216620390.10000002,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001581178,,,60,sec_fallback,27282165.0,7.94,,,US,USD
+KRMD,"KORU Medical Systems, Inc.",NASDAQ,214937119.2,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000704440,,,60,sec_fallback,46322655.0,4.64,,,US,USD
+OSUR,ORASURE TECHNOLOGIES INC,NASDAQ,214124587.04999998,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001116463,,,60,sec_fallback,71733530.0,2.985,,,US,USD
+SGHT,"Sight Sciences, Inc.",NASDAQ,213863696.64,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001531177,,,60,sec_fallback,54005984.0,3.96,,,US,USD
+CHRS,"Coherus Oncology, Inc.",NASDAQ,212732982.88,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001512762,,,60,sec_fallback,120871013.0,1.76,,,US,USD
+ANNX,"Annexon, Inc.",NASDAQ,209400157.95,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001528115,,,60,sec_fallback,38563565.0,5.43,,,US,USD
+UTMD,UTAH MEDICAL PRODUCTS INC,NASDAQ,208847377.68,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000706698,,,60,sec_fallback,3203672.0,65.19,,,US,USD
+ELTX,"Elicio Therapeutics, Inc.",NASDAQ,206726079.12,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001601485,,,60,sec_fallback,17489516.0,11.82,,,US,USD
+ARCT,Arcturus Therapeutics Holdings Inc.,NASDAQ,206067250.25,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001768224,,,60,sec_fallback,28423069.0,7.25,,,US,USD
+STXS,"Stereotaxis, Inc.",NYSE MKT,204381230.97,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001289340,,,60,sec_fallback,93324763.0,2.19,,,US,USD
+HUMA,"Humacyte, Inc.",NASDAQ,204125739.89000002,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001818382,,,60,sec_fallback,187271321.0,1.09,,,US,USD
+ABOS,"Acumen Pharmaceuticals, Inc.",NASDAQ,202315239.5,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001576885,,,60,sec_fallback,60573425.0,3.34,,,US,USD
+ELMD,"Electromed, Inc.",NYSE MKT,201752130.94,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001488917,,,60,sec_fallback,8275313.0,24.38,,,US,USD
+MOLN,MOLECULAR PARTNERS AG,NASDAQ,198990058.35,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001745114,,,60,sec_fallback,40363095.0,4.93,,,US,USD
+ACB,AURORA CANNABIS INC,NASDAQ,196819808.5,micro,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001683541,,,60,sec_fallback,56234231.0,3.5,,,US,USD
+PRLD,Prelude Therapeutics Inc,NASDAQ,196139642.4,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001678660,,,60,sec_fallback,62865270.0,3.12,,,US,USD
+INFU,"InfuSystem Holdings, Inc",NYSE MKT,195682739.12,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001337013,,,60,sec_fallback,20215159.0,9.68,,,US,USD
+PRE,Prenetics Global Ltd,NASDAQ,195681599.08,micro,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001876431,,,60,sec_fallback,12984844.0,15.07,,,US,USD
+GALT,GALECTIN THERAPEUTICS INC,NASDAQ,195352559.76,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001133416,,,60,sec_fallback,64472792.0,3.03,,,US,USD
+CGEN,COMPUGEN LTD,NASDAQ,193834041.54999998,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001119774,,,60,sec_fallback,94553191.0,2.05,,,US,USD
+LUCD,Lucid Diagnostics Inc.,NASDAQ,192512496.39999998,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001799011,,,60,sec_fallback,137508926.0,1.4,,,US,USD
+HRTX,"HERON THERAPEUTICS, INC. /DE/",NASDAQ,192307878.72,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000818033,,,60,sec_fallback,188537136.0,1.02,,,US,USD
+ANIK,"Anika Therapeutics, Inc.",NASDAQ,190960701.75,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000898437,,,60,sec_fallback,13400751.0,14.25,,,US,USD
+NBY,"NovaBay Pharmaceuticals, Inc.",NYSE MKT,186495908.52,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001389545,,,60,sec_fallback,126010749.0,1.48,,,US,USD
+RPID,"RAPID MICRO BIOSYSTEMS, INC.",NASDAQ,185710224.42,micro,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001380106,,,60,sec_fallback,44534826.0,4.17,,,US,USD
+EDIT,"Editas Medicine, Inc.",NASDAQ,184987360.7,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001650664,,,60,sec_fallback,97618660.0,1.895,,,US,USD
+NTHI,"NEONC TECHNOLOGIES HOLDINGS, INC.",NASDAQ,183642677.29,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001979414,,,60,sec_fallback,19474303.0,9.43,,,US,USD
+IMRN,Immuron Ltd,NASDAQ,182488030.14000002,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001660046,,,60,sec_fallback,233959013.0,0.78,,,US,USD
+SABS,"SAB Biotherapeutics, Inc.",NASDAQ,181382102.31,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001833214,,,60,sec_fallback,47606851.0,3.81,,,US,USD
+KLRS,"Kalaris Therapeutics, Inc.",NASDAQ,180945894.15,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001754068,,,60,sec_fallback,18702418.0,9.675,,,US,USD
+RNAC,"Cartesian Therapeutics, Inc.",NASDAQ,178904809.28,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001453687,,,60,sec_fallback,26003606.0,6.88,,,US,USD
+ADAG,Adagene Inc.,NASDAQ,177838570.88,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001818838,,,60,sec_fallback,58886944.0,3.02,,,US,USD
+PRQR,ProQR Therapeutics N.V.,NASDAQ,177809170.63,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001612940,,,60,sec_fallback,105212527.0,1.69,,,US,USD
+PAVM,PAVmed Inc.,NASDAQ,174754470.93,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001624326,,,60,sec_fallback,16787173.0,10.41,,,US,USD
+NKTX,"Nkarta, Inc.",NASDAQ,174732599.52,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001787400,,,60,sec_fallback,71029512.0,2.46,,,US,USD
+VXRT,"Vaxart, Inc.",NASDAQ,173114364.5084,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000072444,,,60,sec_fallback,240069844.0,0.7211,,,US,USD
+WHWK,"Whitehawk Therapeutics, Inc.",NASDAQ,168248252.34,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001422142,,,60,sec_fallback,47128362.0,3.57,,,US,USD
+SGMT,Sagimet Biosciences Inc.,NASDAQ,167177959.75,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001400118,,,60,sec_fallback,30674855.0,5.45,,,US,USD
+CRBU,"Caribou Biosciences, Inc.",NASDAQ,165249615.42,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001619856,,,60,sec_fallback,96637202.0,1.71,,,US,USD
+THAR,"Canton Strategic Holdings, Inc.",NASDAQ,164009720.16,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001861657,,,60,sec_fallback,35044812.0,4.68,,,US,USD
+MBOT,Microbot Medical Inc.,NASDAQ,161850886.04000002,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000883975,,,60,sec_fallback,67158044.0,2.41,,,US,USD
+KPTI,Karyopharm Therapeutics Inc.,NASDAQ,161793797.76,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001503802,,,60,sec_fallback,18343968.0,8.82,,,US,USD
+TNXP,Tonix Pharmaceuticals Holding Corp.,NASDAQ,161574156.24,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001430306,,,60,sec_fallback,11776542.0,13.72,,,US,USD
+PCSA,"Processa Pharmaceuticals, Inc.",NASDAQ,161436035.55,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001533743,,,60,sec_fallback,56644223.0,2.85,,,US,USD
+BCYC,BICYCLE THERAPEUTICS PLC,NASDAQ,160732650.1,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001761612,,,60,sec_fallback,30043486.0,5.35,,,US,USD
+TLSA,Tiziana Life Sciences Ltd,NASDAQ,160506168.48,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001723069,,,60,sec_fallback,111462617.0,1.44,,,US,USD
+FATE,FATE THERAPEUTICS INC,NASDAQ,160443573.42,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001434316,,,60,sec_fallback,116263459.0,1.38,,,US,USD
+EDAP,EDAP TMS SA,NASDAQ,158916365.5,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001041934,,,60,sec_fallback,37392086.0,4.25,,,US,USD
+OGI,ORGANIGRAM GLOBAL INC.,NASDAQ,158534818.32,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001620737,,,60,sec_fallback,108585492.0,1.46,,,US,USD
+ZNTL,"Zentalis Pharmaceuticals, Inc.",NASDAQ,157867952.115,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001725160,,,60,sec_fallback,72250779.0,2.185,,,US,USD
+CNTN,"Canton Strategic Holdings, Inc.",NASDAQ,157701654.0,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001861657,,,60,sec_fallback,35044812.0,4.5,,,US,USD
+IMDX,Insight Molecular Diagnostics Inc.,NASDAQ,157081114.76000002,micro,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0001642380,,,60,sec_fallback,28664437.0,5.48,,,US,USD
+ELDN,"Eledon Pharmaceuticals, Inc.",NASDAQ,157022395.44,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001404281,,,60,sec_fallback,59932212.0,2.62,,,US,USD
+PDEX,PRO DEX INC,NASDAQ,152636945.85,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000788920,,,60,sec_fallback,3205985.0,47.61,,,US,USD
+VOR,Vor Biopharma Inc.,NASDAQ,151578772.8,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001817229,,,60,sec_fallback,10410630.0,14.56,,,US,USD
+UNCY,"Unicycive Therapeutics, Inc.",NASDAQ,146786234.68,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001766140,,,60,sec_fallback,21491396.0,6.83,,,US,USD
+RCEL,"AVITA Medical, Inc.",NASDAQ,146419975.32,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001762303,,,60,sec_fallback,30631794.0,4.78,,,US,USD
+LNSR,"LENSAR, Inc.",NASDAQ,145842906.66,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001320350,,,60,sec_fallback,11944546.0,12.21,,,US,USD
+IMUX,"IMMUNIC, INC.",NASDAQ,144815955.75,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001280776,,,60,sec_fallback,130464825.0,1.11,,,US,USD
+PROK,PROKIDNEY CORP.,NASDAQ,144619542.85,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001850270,,,60,sec_fallback,61540231.0,2.35,,,US,USD
+SKIN,Beauty Health Co,NASDAQ,144078456.67,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001818093,,,60,sec_fallback,127503059.0,1.13,,,US,USD
+IKT,"Inhibikase Therapeutics, Inc.",NASDAQ,142081328.34,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001750149,,,60,sec_fallback,75175306.0,1.89,,,US,USD
+CODX,"Co-Diagnostics, Inc.",NASDAQ,141879716.06,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001692415,,,60,sec_fallback,60892582.0,2.33,,,US,USD
+ARTV,"Artiva Biotherapeutics, Inc.",NASDAQ,140887748.96,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001817241,,,60,sec_fallback,24544904.0,5.74,,,US,USD
+FTLF,"FITLIFE BRANDS, INC.",NASDAQ,140866080.0,micro,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001374328,,,60,sec_fallback,9391072.0,15.0,,,US,USD
+ASBP,"Aspire Biopharma Holdings, Inc.",NASDAQ,140795103.18,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001847345,,,60,sec_fallback,107477178.0,1.31,,,US,USD
+CRBP,"Corbus Pharmaceuticals Holdings, Inc.",NASDAQ,140775356.73999998,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001595097,,,60,sec_fallback,17553037.0,8.02,,,US,USD
+NYXH,Nyxoah SA,NASDAQ,139229425.8,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001857190,,,60,sec_fallback,37427265.0,3.72,,,US,USD
+CNTB,Connect Biopharma Holdings Ltd,NASDAQ,137522641.98,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001835268,,,60,sec_fallback,55903513.0,2.46,,,US,USD
+TNYA,"Tenaya Therapeutics, Inc.",NASDAQ,136418271.5805,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001858848,,,60,sec_fallback,166505885.0,0.8193,,,US,USD
+ORMP,ORAMED PHARMACEUTICALS INC.,NASDAQ,135726371.55,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001176309,,,60,sec_fallback,39802455.0,3.41,,,US,USD
+MIST,Milestone Pharmaceuticals Inc.,NASDAQ,135419256.96,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001408443,,,60,sec_fallback,85169344.0,1.59,,,US,USD
+MGNX,MACROGENICS INC,NASDAQ,135373258.48000002,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001125345,,,60,sec_fallback,63258532.0,2.14,,,US,USD
+IPHA,Innate Pharma SA,NASDAQ,132451930.88000001,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001598599,,,60,sec_fallback,83830336.0,1.58,,,US,USD
+OVID,Ovid Therapeutics Inc.,NASDAQ,131742853.05000001,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001636651,,,60,sec_fallback,71212353.0,1.85,,,US,USD
+IMRX,Immuneering Corp,NASDAQ,129171558.72000001,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001790340,,,60,sec_fallback,25938064.0,4.98,,,US,USD
+SPRO,"Spero Therapeutics, Inc.",NASDAQ,129016985.55,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001701108,,,60,sec_fallback,56339295.0,2.29,,,US,USD
+CRDF,"Cardiff Oncology, Inc.",NASDAQ,127842510.73,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001213037,,,60,sec_fallback,68364979.0,1.87,,,US,USD
+SGMO,"SANGAMO THERAPEUTICS, INC",NASDAQ,126824772.9041,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001001233,,,60,sec_fallback,336494489.0,0.3769,,,US,USD
+AARD,"Aardvark Therapeutics, Inc.",NASDAQ,124978581.28,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001774857,,,60,sec_fallback,21773272.0,5.74,,,US,USD
+ACOG,Alpha Cognition Inc.,NASDAQ,124799676.96000001,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001655923,,,60,sec_fallback,21742104.0,5.74,,,US,USD
+APYX,Apyx Medical Corp,NASDAQ,124668610.3,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000719135,,,60,sec_fallback,38241905.0,3.26,,,US,USD
+HELP,CYBIN INC.,NYSE MKT,121830813.11999999,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001833141,,,60,sec_fallback,21601208.0,5.64,,,US,USD
+GOSS,"Gossamer Bio, Inc.",NASDAQ,120773869.68460001,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001728117,,,60,sec_fallback,231456247.0,0.5218,,,US,USD
+BTMD,biote Corp.,NASDAQ,120517906.77,micro,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001819253,,,60,sec_fallback,58221211.0,2.07,,,US,USD
+TKNO,"Alpha Teknova, Inc.",NASDAQ,118428733.02,micro,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0001850902,,,60,sec_fallback,53587662.0,2.21,,,US,USD
+FONR,FONAR CORP,NASDAQ,118058440.74,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0000355019,,,60,sec_fallback,6357482.0,18.57,,,US,USD
+BDTX,"Black Diamond Therapeutics, Inc.",NASDAQ,116798571.64999999,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001701541,,,60,sec_fallback,56974913.0,2.05,,,US,USD
+ALXO,ALX ONCOLOGY HOLDINGS INC,NASDAQ,115484342.13,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001810182,,,60,sec_fallback,54218001.0,2.13,,,US,USD
+MBRX,"Moleculin Biotech, Inc.",NASDAQ,114039466.24000001,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001659617,,,60,sec_fallback,50910476.0,2.24,,,US,USD
+BDMD,Baird Medical Investment Holdings Ltd,NASDAQ,111116023.75,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001982444,,,60,sec_fallback,35728625.0,3.11,,,US,USD
+APVO,Aptevo Therapeutics Inc.,NASDAQ,108854191.24,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001671584,,,60,sec_fallback,16850494.0,6.46,,,US,USD
+EQ,"Equillium, Inc.",NASDAQ,107172178.08,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001746466,,,60,sec_fallback,60893283.0,1.76,,,US,USD
+OKUR,"OnKure Therapeutics, Inc.",NASDAQ,105635033.28,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001637715,,,60,sec_fallback,33428808.0,3.16,,,US,USD
+ALVOW,Alvotech,NASDAQ,105631986.94999999,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001898416,,,60,sec_fallback,301805677.0,0.35,,,US,USD
+SEER,"Seer, Inc.",NASDAQ,103814220.48,micro,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001726445,,,60,sec_fallback,56420772.0,1.84,,,US,USD
+JAGX,"Jaguar Health, Inc.",NASDAQ,103187069.96519999,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001585608,,,60,sec_fallback,171350166.0,0.6022,,,US,USD
+KRRO,"Korro Bio, Inc.",NASDAQ,103119380.25,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001703647,,,60,sec_fallback,9417295.0,10.95,,,US,USD
+GNLX,GENELUX Corp,NASDAQ,102359263.99,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001231457,,,60,sec_fallback,38051771.0,2.69,,,US,USD
+TTRX,Turn Therapeutics Inc.,NASDAQ,99524718.53999999,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002023016,,,60,sec_fallback,29445183.0,3.38,,,US,USD
+AGEN,AGENUS INC,NASDAQ,99304379.08,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001098972,,,60,sec_fallback,34008349.0,2.92,,,US,USD
+COYA,"Coya Therapeutics, Inc.",NASDAQ,99181921.44,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001835022,,,60,sec_fallback,20924456.0,4.74,,,US,USD
+SAVA,CASSAVA SCIENCES INC,NASDAQ,98548107.84,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001069530,,,60,sec_fallback,48307896.0,2.04,,,US,USD
+BMEA,"Biomea Fusion, Inc.",NASDAQ,96863985.43,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001840439,,,60,sec_fallback,70703639.0,1.37,,,US,USD
+STIM,"Neuronetics, Inc.",NASDAQ,96565150.02,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001227636,,,60,sec_fallback,68485922.0,1.41,,,US,USD
+ANIX,Anixa Biosciences Inc,NASDAQ,96458634.10000001,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000715446,,,60,sec_fallback,33376690.0,2.89,,,US,USD
+TLSIW,"TriSalus Life Sciences, Inc.",NASDAQ,95638041.72,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001826667,,,60,sec_fallback,61306437.0,1.56,,,US,USD
+CTOR,"CITIUS ONCOLOGY, INC.",NASDAQ,94454468.28,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001851484,,,60,sec_fallback,88275204.0,1.07,,,US,USD
+ICU,SeaStar Medical Holding Corp,NASDAQ,93001605.72,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001831868,,,60,sec_fallback,36047134.0,2.58,,,US,USD
+HSDT,Solana Co,NASDAQ,92928150.0,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001610853,,,60,sec_fallback,41301400.0,2.25,,,US,USD
+CGTX,COGNITION THERAPEUTICS INC,NASDAQ,91805228.32000001,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001455365,,,60,sec_fallback,88274258.0,1.04,,,US,USD
+IBIO,"iBio, Inc.",NASDAQ,91195001.04,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001420720,,,60,sec_fallback,34543561.0,2.64,,,US,USD
+DERM,Journey Medical Corp,NASDAQ,90718470.05,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001867066,,,60,sec_fallback,11556493.0,7.85,,,US,USD
+GANX,"Gain Therapeutics, Inc.",NASDAQ,90604815.36,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001819411,,,60,sec_fallback,36097536.0,2.51,,,US,USD
+INO,"INOVIO PHARMACEUTICALS, INC.",NASDAQ,90000414.0,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001055726,,,60,sec_fallback,53571675.0,1.68,,,US,USD
+TMCI,"TREACE MEDICAL CONCEPTS, INC.",NASDAQ,89780799.16999999,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001630627,,,60,sec_fallback,64590503.0,1.39,,,US,USD
+MXCT,"MAXCYTE, INC.",NASDAQ,89136803.5916,micro,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0001287098,,,60,sec_fallback,106674011.0,0.8356,,,US,USD
+XTNT,"Xtant Medical Holdings, Inc.",NYSE MKT,88650684.76799999,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001453593,,,60,sec_fallback,140004240.0,0.6332,,,US,USD
+ATYR,aTYR PHARMA INC,NASDAQ,88471608.5876,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001339970,,,60,sec_fallback,98051212.0,0.9023,,,US,USD
+MCRB,"Seres Therapeutics, Inc.",NASDAQ,86122860.88,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001609809,,,60,sec_fallback,9046519.0,9.52,,,US,USD
+PYXS,"Pyxis Oncology, Inc.",NASDAQ,84056690.25,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001782223,,,60,sec_fallback,62264215.0,1.35,,,US,USD
+ONCY,ONCOLYTICS BIOTECH INC,NASDAQ,84021137.55,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001129928,,,60,sec_fallback,80020131.0,1.05,,,US,USD
+VANI,"Vivani Medical, Inc.",NASDAQ,83895070.25,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001266806,,,60,sec_fallback,72952235.0,1.15,,,US,USD
+STEX,Streamex Corp.,NASDAQ,83826078.36,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001530766,,,60,sec_fallback,39540603.0,2.12,,,US,USD
+CRDL,Cardiol Therapeutics Inc.,NASDAQ,82608992.0,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001702123,,,60,sec_fallback,82608992.0,1.0,,,US,USD
+PMVP,"PMV Pharmaceuticals, Inc.",NASDAQ,81413605.71000001,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001699382,,,60,sec_fallback,53211507.0,1.53,,,US,USD
+HURA,"TuHURA Biosciences, Inc./NV",NASDAQ,79962612.60000001,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001498382,,,60,sec_fallback,51258085.0,1.56,,,US,USD
+CSBR,"CHAMPIONS ONCOLOGY, INC.",NASDAQ,79568647.98,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000771856,,,60,sec_fallback,13886326.0,5.73,,,US,USD
+PLRX,"PLIANT THERAPEUTICS, INC.",NASDAQ,79269706.65,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001746473,,,60,sec_fallback,61449385.0,1.29,,,US,USD
+PMI,"Picard Medical, Inc.",NYSE MKT,78860258.32000001,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0002030617,,,60,sec_fallback,73701176.0,1.07,,,US,USD
+PYPD,PolyPid Ltd.,NASDAQ,77002928.46000001,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001611842,,,60,sec_fallback,18204002.0,4.23,,,US,USD
+ACTU,"ACTUATE THERAPEUTICS, INC.",NASDAQ,74378649.60000001,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001652935,,,60,sec_fallback,23243328.0,3.2,,,US,USD
+TENX,"TENAX THERAPEUTICS, INC.",NASDAQ,73923928.0,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000034956,,,60,sec_fallback,6243575.0,11.84,,,US,USD
+SRTS,"Sensus Healthcare, Inc.",NASDAQ,70457612.52000001,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001494891,,,60,sec_fallback,16462059.0,4.28,,,US,USD
+XBIT,XBiotech Inc.,NASDAQ,70426658.61,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001626878,,,60,sec_fallback,30487731.0,2.31,,,US,USD
+DRTSW,Alpha Tau Medical Ltd.,NASDAQ,70380570.0,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001871321,,,60,sec_fallback,70380570.0,1.0,,,US,USD
+NSPR,"InspireMD, Inc.",NASDAQ,69488431.8,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001433607,,,60,sec_fallback,42370995.0,1.64,,,US,USD
+PTHS,Pelthos Therapeutics Inc.,NYSE MKT,68612271.21,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001919246,,,60,sec_fallback,3061681.0,22.41,,,US,USD
+GUTS,"FRACTYL HEALTH, INC.",NASDAQ,68330357.784,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001572616,,,60,sec_fallback,137044440.0,0.4986,,,US,USD
+DRIO,DarioHealth Corp.,NASDAQ,67614158.16,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001533998,,,60,sec_fallback,6768184.0,9.99,,,US,USD
+IMA,"ImageneBio, Inc.",NASDAQ,67537298.88,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001835579,,,60,sec_fallback,11181672.0,6.04,,,US,USD
+IBO,IMPACT BIOMEDICAL INC.,AMEX,67219140.91749999,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001834105,,,60,sec_fallback,104621231.0,0.6425,,,US,USD
+LUNG,Pulmonx Corp,NASDAQ,66407724.74,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001127537,,,60,sec_fallback,41247034.0,1.61,,,US,USD
+PFSA,"Profusa, Inc.",NASDAQ,66337767.58,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001859807,,,60,sec_fallback,65680958.0,1.01,,,US,USD
+ANVS,"Annovis Bio, Inc.",NYSE,65727164.72,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001477845,,,60,sec_fallback,26502889.0,2.48,,,US,USD
+SCLX,Scilex Holding Co,NASDAQ,63869455.32,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001820190,,,60,sec_fallback,7585446.0,8.42,,,US,USD
+MNOV,MEDICINOVA INC,NASDAQ,63760119.800000004,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001226616,,,60,sec_fallback,49046246.0,1.3,,,US,USD
+OKYO,OKYO Pharma Ltd,NASDAQ,63562042.44,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001849296,,,60,sec_fallback,37610676.0,1.69,,,US,USD
+EXOZ,EXOZYMES INC.,NASDAQ,63114056.25,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002010788,,,60,sec_fallback,8387250.0,7.525,,,US,USD
+OM,"Outset Medical, Inc.",NASDAQ,62900435.31,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001484612,,,60,sec_fallback,18311626.0,3.435,,,US,USD
+NRXS,"Neuraxis, INC",NYSE MKT,62638534.56,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001933567,,,60,sec_fallback,10652812.0,5.88,,,US,USD
+MGX,"Metagenomi Therapeutics, Inc.",NASDAQ,60569053.300000004,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001785279,,,60,sec_fallback,37620530.0,1.61,,,US,USD
+SPRC,SciSparc Ltd.,NASDAQ,60205075.559999995,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001611746,,,60,sec_fallback,10828251.0,5.56,,,US,USD
+ARAY,ACCURAY INC,NASDAQ,60199036.884,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001138723,,,60,sec_fallback,118782630.0,0.5068,,,US,USD
+ECOR,"electroCore, Inc.",NASDAQ,60129190.559999995,micro,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001560258,,,60,sec_fallback,7995903.0,7.52,,,US,USD
+LFVN,Lifevantage Corp,NASDAQ,60128787.300000004,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000849146,,,60,sec_fallback,12793359.0,4.7,,,US,USD
+BYSI,BeyondSpring Inc.,NASDAQ,60095156.8,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001677940,,,60,sec_fallback,40332320.0,1.49,,,US,USD
+DTIL,PRECISION BIOSCIENCES INC,NASDAQ,60053082.03,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001357874,,,60,sec_fallback,13256751.0,4.53,,,US,USD
+GRCE,"Grace Therapeutics, Inc.",NASDAQ,58182337.76,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001444192,,,60,sec_fallback,15474026.0,3.76,,,US,USD
+TIL,"Instil Bio, Inc.",NASDAQ,57985894.800000004,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001789769,,,60,sec_fallback,6781976.0,8.55,,,US,USD
+SPRB,"SPRUCE BIOSCIENCES, INC.",NASDAQ,57564498.6,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001683553,,,60,sec_fallback,1070370.0,53.78,,,US,USD
+ICCC,IMMUCELL CORP /DE/,NASDAQ,57441153.849999994,micro,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0000811641,,,60,sec_fallback,9045851.0,6.35,,,US,USD
+PLRZ,Polyrizon Ltd.,NASDAQ,57086396.449999996,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001893645,,,60,sec_fallback,4194445.0,13.61,,,US,USD
+MAIA,"MAIA Biotechnology, Inc.",NYSE MKT,56659429.71,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001878313,,,60,sec_fallback,37032307.0,1.53,,,US,USD
+ENTX,Entera Bio Ltd.,NASDAQ,56404407.66,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001638097,,,60,sec_fallback,45857242.0,1.23,,,US,USD
+QTTB,Q32 Bio Inc.,NASDAQ,55861758.08,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001661998,,,60,sec_fallback,12304352.0,4.54,,,US,USD
+CLNN,Clene Inc.,NASDAQ,54770094.0,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001822791,,,60,sec_fallback,10333980.0,5.3,,,US,USD
+IFRX,InflaRx N.V.,NASDAQ,54609508.371,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001708688,,,60,sec_fallback,59351710.0,0.9201,,,US,USD
+HYFT,MindWalk Holdings Corp.,NASDAQ,54000318.059999995,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001715925,,,60,sec_fallback,46154118.0,1.17,,,US,USD
+OSTX,OS Therapies Inc,NYSE MKT,53173671.52,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001795091,,,60,sec_fallback,35214352.0,1.51,,,US,USD
+CPIX,CUMBERLAND PHARMACEUTICALS INC,NASDAQ,52647327.04,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001087294,,,60,sec_fallback,14956627.0,3.52,,,US,USD
+STSS,Sharps Technology Inc.,NASDAQ,52218383.050000004,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001737995,,,60,sec_fallback,28226153.0,1.85,,,US,USD
+BKHAU,Black Hawk Acquisition Corp,NASDAQ,52168927.120000005,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002000775,,,60,sec_fallback,4153577.0,12.56,,,US,USD
+RANI,"Rani Therapeutics Holdings, Inc.",NASDAQ,52067040.0,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001856725,,,60,sec_fallback,38856000.0,1.34,,,US,USD
+GOVX,"GeoVax Labs, Inc.",NASDAQ,51687326.4,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000832489,,,60,sec_fallback,29705360.0,1.74,,,US,USD
+FTII,FutureTech II Acquisition Corp.,NASDAQ,51565331.22,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001889450,,,60,sec_fallback,4289961.0,12.02,,,US,USD
+INKT,"MiNK Therapeutics, Inc.",NASDAQ,51400997.25,micro,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001840229,,,60,sec_fallback,4694155.0,10.95,,,US,USD
+CTSO,Cytosorbents Corp,NASDAQ,50563745.9555,micro,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001175151,,,60,sec_fallback,62804305.0,0.8051,,,US,USD
+ACRV,"Acrivon Therapeutics, Inc.",NASDAQ,50488201.6,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001781174,,,60,sec_fallback,31555126.0,1.6,,,US,USD
+KZR,"Kezar Life Sciences, Inc.",NASDAQ,50017155.480000004,micro,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001645666,,,60,sec_fallback,7323156.0,6.83,,,US,USD
+NRXP,"NRX Pharmaceuticals, Inc.",NASDAQ,49732799.79,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001719406,,,60,sec_fallback,28097627.0,1.77,,,US,USD
+MIRA,"MIRA PHARMACEUTICALS, INC.",NASDAQ,49413782.66,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001904286,,,60,sec_fallback,41876087.0,1.18,,,US,USD
+VRCA,Verrica Pharmaceuticals Inc.,NASDAQ,49348182.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001660334,,,60,sec_fallback,9490035.0,5.2,,,US,USD
+BEAT,"HeartBeam, Inc.",NASDAQ,48220988.199999996,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001779372,,,60,sec_fallback,34443563.0,1.4,,,US,USD
+BKHA,Black Hawk Acquisition Corp,NASDAQ,47599992.42,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002000775,,,60,sec_fallback,4153577.0,11.46,,,US,USD
+ADIL,"ADIAL PHARMACEUTICALS, INC.",NASDAQ,47255546.39,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001513525,,,60,sec_fallback,23987587.0,1.97,,,US,USD
+ANTX,"AN2 Therapeutics, Inc.",NASDAQ,46857461.04,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001880438,,,60,sec_fallback,27402024.0,1.71,,,US,USD
+PRPO,"Precipio, Inc.",NASDAQ,46463225.64,nano,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001043961,,,60,sec_fallback,1752007.0,26.52,,,US,USD
+LPCN,Lipocine Inc.,NASDAQ,45470314.89,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001535955,,,60,sec_fallback,5551931.0,8.19,,,US,USD
+NXTC,"NextCure, Inc.",NASDAQ,45430831.6,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001661059,,,60,sec_fallback,3560410.0,12.76,,,US,USD
+TELO,"Telomir Pharmaceuticals, Inc.",NASDAQ,44695262.300000004,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001971532,,,60,sec_fallback,34380971.0,1.3,,,US,USD
+CING,Cingulate Inc.,NASDAQ,44326379.199999996,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001862150,,,60,sec_fallback,6757070.0,6.56,,,US,USD
+MDAI,"Spectral AI, Inc.",NASDAQ,43271341.949999996,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001833498,,,60,sec_fallback,30688895.0,1.41,,,US,USD
+NMTC,NEUROONE MEDICAL TECHNOLOGIES Corp,NASDAQ,42062890.8375,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001500198,,,60,sec_fallback,50525995.0,0.8325,,,US,USD
+ESLA,"Estrella Immunopharma, Inc.",NASDAQ,41542147.900000006,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001844417,,,60,sec_fallback,37765589.0,1.1,,,US,USD
+NERV,"Minerva Neurosciences, Inc.",NASDAQ,41540831.64,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001598646,,,60,sec_fallback,6993406.0,5.94,,,US,USD
+NEPH,NEPHROS INC,NASDAQ,41337796.870000005,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001196298,,,60,sec_fallback,10626683.0,3.89,,,US,USD
+LITS,"Lite Strategy, Inc.",NASDAQ,41089058.87,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001262104,,,60,sec_fallback,36361999.0,1.13,,,US,USD
+VERU,VERU INC.,NASDAQ,41088819.2,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000863894,,,60,sec_fallback,16050320.0,2.56,,,US,USD
+PSTV,"PLUS THERAPEUTICS, INC.",NASDAQ,40857658.0515,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001095981,,,60,sec_fallback,137429055.0,0.2973,,,US,USD
+TLPH,"TALPHERA, INC.",NASDAQ,40774093.826400004,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001427925,,,60,sec_fallback,46609618.0,0.8748,,,US,USD
+INCR,Intercure Ltd.,NASDAQ,40107171.1352,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001857030,,,60,sec_fallback,47162713.0,0.8504,,,US,USD
+PTN,PALATIN TECHNOLOGIES INC,AMEX,39342817.8,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000911216,,,60,sec_fallback,1772199.0,22.2,,,US,USD
+MTVA,MetaVia Inc.,NASDAQ,38501512.92,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001638287,,,60,sec_fallback,24214788.0,1.59,,,US,USD
+SNSE,"Sensei Biotherapeutics, Inc.",NASDAQ,38469345.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001829802,,,60,sec_fallback,1261290.0,30.5,,,US,USD
+JSPR,"Jasper Therapeutics, Inc.",NASDAQ,38338133.43,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001788028,,,60,sec_fallback,27984039.0,1.37,,,US,USD
+TVRD,"Tvardi Therapeutics, Inc.",NASDAQ,37713002.879999995,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001346830,,,60,sec_fallback,9381344.0,4.02,,,US,USD
+GLTO,"Galecto, Inc.",NASDAQ,37639732.32,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001800315,,,60,sec_fallback,1327212.0,28.36,,,US,USD
+LSTA,"LISATA THERAPEUTICS, INC.",NASDAQ,37311700.59,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000320017,,,60,sec_fallback,8820733.0,4.23,,,US,USD
+CRVO,CervoMed Inc.,NASDAQ,37103403.19,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001053691,,,60,sec_fallback,9252719.0,4.01,,,US,USD
+ICCM,IceCure Medical Ltd.,NASDAQ,36854702.8485,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001584371,,,60,sec_fallback,56568999.0,0.6515,,,US,USD
+ATNM,"Actinium Pharmaceuticals, Inc.",NYSE MKT,36811151.379999995,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001388320,,,60,sec_fallback,31195891.0,1.18,,,US,USD
+BGM,BGM Group Ltd.,NASDAQ,36465000.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001779578,,,60,sec_fallback,35750000.0,1.02,,,US,USD
+ATRA,"Atara Biotherapeutics, Inc.",NASDAQ,36051175.0,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001604464,,,60,sec_fallback,7210235.0,5.0,,,US,USD
+ZIVO,"Zivo Bioscience, Inc.",NASDAQ,35969503.75,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001101026,,,60,sec_fallback,3888595.0,9.25,,,US,USD
+ABVC,"ABVC BIOPHARMA, INC.",NASDAQ,35870973.87,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001173313,,,60,sec_fallback,25440407.0,1.41,,,US,USD
+OTLK,"Outlook Therapeutics, Inc.",NASDAQ,35868412.642000005,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001649989,,,60,sec_fallback,83067190.0,0.4318,,,US,USD
+ZYBT,Zhengye Biotechnology Holding Ltd,NASDAQ,35619773.28,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001975641,,,60,sec_fallback,45666376.0,0.78,,,US,USD
+SCYX,SCYNEXIS INC,NASDAQ,35396086.86,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001178253,,,60,sec_fallback,44663832.0,0.7925,,,US,USD
+MCAG,Mountain Crest Acquisition Corp. V,NASDAQ,35309452.669999994,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001859035,,,60,sec_fallback,2873023.0,12.29,,,US,USD
+BTAI,"BioXcel Therapeutics, Inc.",NASDAQ,35209880.510000005,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001720893,,,60,sec_fallback,21869491.0,1.61,,,US,USD
+RMTI,"ROCKWELL MEDICAL, INC.",NASDAQ,35074659.3102,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001041024,,,60,sec_fallback,39405302.0,0.8901,,,US,USD
+CYPH,CYPHERPUNK TECHNOLOGIES INC.,NASDAQ,34891868.256,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001509745,,,60,sec_fallback,56651840.0,0.6159,,,US,USD
+POCI,"PRECISION OPTICS CORPORATION, INC.",NASDAQ,34316417.905,nano,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0000867840,,,60,sec_fallback,7720229.0,4.445,,,US,USD
+TELA,"TELA Bio, Inc.",NASDAQ,34165245.9915,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001561921,,,60,sec_fallback,40341535.0,0.8469,,,US,USD
+CELU,Celularity Inc,NASDAQ,33994656.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001752828,,,60,sec_fallback,28328880.0,1.2,,,US,USD
+PLUR,Pluri Inc.,NASDAQ,33871003.910000004,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001158780,,,60,sec_fallback,10050743.0,3.37,,,US,USD
+CVM,CEL SCI CORP,NYSE MKT,33831868.0,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000725363,,,60,sec_fallback,8457967.0,4.0,,,US,USD
+INMB,"Inmune Bio, Inc.",NASDAQ,33630351.37,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001711754,,,60,sec_fallback,26585258.0,1.265,,,US,USD
+ONMD,OneMedNet Corp,NASDAQ,33102378.045,nano,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0001849380,,,60,sec_fallback,51005205.0,0.649,,,US,USD
+PDSB,PDS Biotechnology Corp,NASDAQ,32346594.7428,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001472091,,,60,sec_fallback,48980307.0,0.6604,,,US,USD
+RNTX,"Rein Therapeutics, Inc.",NASDAQ,31280794.58,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001420565,,,60,sec_fallback,26286382.0,1.19,,,US,USD
+FEMY,FEMASYS INC,NASDAQ,30877347.072,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001339005,,,60,sec_fallback,58479824.0,0.528,,,US,USD
+TVGN,Tevogen Bio Holdings Inc.,NASDAQ,30816806.7471,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001860871,,,60,sec_fallback,198689921.0,0.1551,,,US,USD
+RNXT,"RenovoRx, Inc.",NASDAQ,30804254.398000002,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001574094,,,60,sec_fallback,36649916.0,0.8405,,,US,USD
+LTRN,Lantern Pharma Inc.,NASDAQ,30533474.79,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001763950,,,60,sec_fallback,11184423.0,2.73,,,US,USD
+KLTO,"Klotho Neurosciences, Inc.",NASDAQ,30472676.912199996,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001907223,,,60,sec_fallback,72536722.0,0.4201,,,US,USD
+HOWL,"Werewolf Therapeutics, Inc.",NASDAQ,30158026.259999998,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001785530,,,60,sec_fallback,48540200.0,0.6213,,,US,USD
+EDSA,"Edesa Biotech, Inc.",NASDAQ,30136861.209999997,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001540159,,,60,sec_fallback,8348161.0,3.61,,,US,USD
+XLO,"Xilio Therapeutics, Inc.",NASDAQ,28423677.5792,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001840233,,,60,sec_fallback,52500328.0,0.5414,,,US,USD
+FBLG,"FibroBiologics, Inc.",NASDAQ,28335707.4624,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001958777,,,60,sec_fallback,67594722.0,0.4192,,,US,USD
+KYNB,"KYNTRA BIO, INC.",NASDAQ,27852888.825,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000921299,,,60,sec_fallback,4045445.0,6.885,,,US,USD
+AYTU,"AYTU BIOPHARMA, INC",NASDAQ,27845161.5144,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001385818,,,60,sec_fallback,10733208.0,2.5943,,,US,USD
+DYAI,DYADIC INTERNATIONAL INC,NASDAQ,27506345.2598,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001213809,,,60,sec_fallback,36187798.0,0.7601,,,US,USD
+TCRX,"TScan Therapeutics, Inc.",NASDAQ,27093944.459999997,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001783328,,,60,sec_fallback,23976942.0,1.13,,,US,USD
+ENLV,Enlivex Ltd.,NASDAQ,26489107.680000003,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001596812,,,60,sec_fallback,23650989.0,1.12,,,US,USD
+IGC,"IGC Pharma, Inc.",NYSE MKT,26467448.685,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001326205,,,60,sec_fallback,92868241.0,0.285,,,US,USD
+PASG,"Passage BIO, Inc.",NASDAQ,26047417.2,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001787297,,,60,sec_fallback,3207810.0,8.12,,,US,USD
+TXMD,"TherapeuticsMD, Inc.",NASDAQ,25810827.26,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000025743,,,60,sec_fallback,11574362.0,2.23,,,US,USD
+HBIO,HARVARD BIOSCIENCE INC,NASDAQ,25454988.714999996,nano,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001123494,,,60,sec_fallback,44579665.0,0.571,,,US,USD
+XCUR,"EXICURE, INC.",NASDAQ,25431737.310000002,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001698530,,,60,sec_fallback,6373869.0,3.99,,,US,USD
+HYPD,"HYPERION DEFI, INC.",NASDAQ,25102742.900000002,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001682639,,,60,sec_fallback,8097659.0,3.1,,,US,USD
+BOLD,"Boundless Bio, Inc.",NASDAQ,25071884.320000004,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001782303,,,60,sec_fallback,22385611.0,1.12,,,US,USD
+SNTI,"Senti Biosciences, Inc.",NASDAQ,24663435.127800003,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001854270,,,60,sec_fallback,26290838.0,0.9381,,,US,USD
+NEUP,Neuphoria Therapeutics Inc.,NASDAQ,24474663.3,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001191070,,,60,sec_fallback,5390895.0,4.54,,,US,USD
+VTGN,"Vistagen Therapeutics, Inc.",NASDAQ,24338760.733099997,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001411685,,,60,sec_fallback,39620317.0,0.6143,,,US,USD
+RVPH,"REVIVA PHARMACEUTICALS HOLDINGS, INC.",NASDAQ,24323392.0566,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001742927,,,60,sec_fallback,115058619.0,0.2114,,,US,USD
+VNRX,VOLITIONRX LTD,NYSE MKT,24167349.3696,nano,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0000093314,,,60,sec_fallback,122801572.0,0.1968,,,US,USD
+BRNS,Barinthus Biotherapeutics plc.,NASDAQ,24126655.5877,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001828185,,,60,sec_fallback,40830353.0,0.5909,,,US,USD
+IRIX,IRIDEX CORP,NASDAQ,23722173.779999997,nano,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001006045,,,60,sec_fallback,17189981.0,1.38,,,US,USD
+MBIO,"MUSTANG BIO, INC.",NASDAQ,23709991.1477,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001680048,,,60,sec_fallback,24976289.0,0.9493,,,US,USD
+SKYE,"Skye Bioscience, Inc.",NASDAQ,23658406.218,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001516551,,,60,sec_fallback,32057461.0,0.738,,,US,USD
+IOBT,"IO Biotech, Inc.",NASDAQ,23440932.7236,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001865494,,,60,sec_fallback,71948842.0,0.3258,,,US,USD
+MRKR,"Marker Therapeutics, Inc.",NASDAQ,23175646.529999997,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001094038,,,60,sec_fallback,16673127.0,1.39,,,US,USD
+CUE,"Cue Biopharma, Inc.",NASDAQ,22660720.4208,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001645460,,,60,sec_fallback,78737736.0,0.2878,,,US,USD
+HOOK,HOOKIPA Pharma Inc.,NASDAQ,22452306.240000002,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001760542,,,60,sec_fallback,21588756.0,1.04,,,US,USD
+DARE,"Dare Bioscience, Inc.",NASDAQ,22434089.53,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001401914,,,60,sec_fallback,14289229.0,1.57,,,US,USD
+APLM,Apollomics Inc.,NASDAQ,22243495.68,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001944885,,,60,sec_fallback,1103348.0,20.16,,,US,USD
+CTXR,"Citius Pharmaceuticals, Inc.",NASDAQ,21226278.6522,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001506251,,,60,sec_fallback,22376427.0,0.9486,,,US,USD
+LONA,"LeonaBio, Inc.",NASDAQ,21178673.19,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001620463,,,60,sec_fallback,3943887.0,5.37,,,US,USD
+RVP,RETRACTABLE TECHNOLOGIES INC,NYSE MKT,21045822.777,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000946563,,,60,sec_fallback,29937159.0,0.703,,,US,USD
+ADGM,"Adagio Medical Holdings, Inc.",NASDAQ,20542129.9263,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0002006986,,,60,sec_fallback,21179637.0,0.9699,,,US,USD
+NNVC,"NANOVIRICIDES, INC.",NYSE MKT,20003448.5,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001379006,,,60,sec_fallback,21595000.0,0.9263,,,US,USD
+NRSN,NeuroSense Therapeutics Ltd.,NASDAQ,19842161.4022,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001875091,,,60,sec_fallback,23228941.0,0.8542,,,US,USD
+VYNE,VYNE Therapeutics Inc.,NASDAQ,19410747.1075,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001566044,,,60,sec_fallback,33323171.0,0.5825,,,US,USD
+LEXX,Lexaria Bioscience Corp.,NASDAQ,19260394.459400002,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001348362,,,60,sec_fallback,24887446.0,0.7739,,,US,USD
+HUMAW,"Humacyte, Inc.",NASDAQ,18052955.3444,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001818382,,,60,sec_fallback,187271321.0,0.0964,,,US,USD
+NAII,NATURAL ALTERNATIVES INTERNATIONAL INC,NASDAQ,16986139.5,nano,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0000787253,,,60,sec_fallback,6176778.0,2.75,,,US,USD
+WOK,WORK Medical Technology Group LTD,NASDAQ,16780733.299999997,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001929783,,,60,sec_fallback,14591942.0,1.15,,,US,USD
+SER,"Serina Therapeutics, Inc.",NYSE MKT,16742580.48,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001708599,,,60,sec_fallback,10664064.0,1.57,,,US,USD
+CVKD,"Cadrenal Therapeutics, Inc.",NASDAQ,16596380.775,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001937993,,,60,sec_fallback,2075845.0,7.995,,,US,USD
+GNTA,Genenta Science S.p.A.,NASDAQ,16587079.4754,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001838716,,,60,sec_fallback,18289866.0,0.9069,,,US,USD
+HIND,"Vyome Holdings, Inc",NASDAQ,16425477.540000001,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001427570,,,60,sec_fallback,5644494.0,2.91,,,US,USD
+APUS,"Apimeds Pharmaceuticals US, Inc.",NYSE MKT,16348777.9,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001894525,,,60,sec_fallback,12575983.0,1.3,,,US,USD
+SCNX,"Scienture Holdings, Inc.",NASDAQ,16333587.63,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001382574,,,60,sec_fallback,40630815.0,0.402,,,US,USD
+ANEB,"Anebulo Pharmaceuticals, Inc.",NASDAQ,16313892.4,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001815974,,,60,sec_fallback,40784731.0,0.4,,,US,USD
+ALLR,"Allarity Therapeutics, Inc.",NASDAQ,16128123.72,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001860657,,,60,sec_fallback,15811886.0,1.02,,,US,USD
+HOTH,"Hoth Therapeutics, Inc.",NASDAQ,15669455.120000001,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001711786,,,60,sec_fallback,15514312.0,1.01,,,US,USD
+MODD,"Modular Medical, Inc.",NASDAQ,15618412.947,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001074871,,,60,sec_fallback,77703547.0,0.201,,,US,USD
+LIXT,"LIXTE BIOTECHNOLOGY HOLDINGS, INC.",NASDAQ,15230214.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001335105,,,60,sec_fallback,5704200.0,2.67,,,US,USD
+SNYR,Synergy CHC Corp.,NASDAQ,15077483.020000001,nano,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001562733,,,60,sec_fallback,11251853.0,1.34,,,US,USD
+GTBP,"GT Biopharma, Inc.",NASDAQ,14830329.239999998,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000109657,,,60,sec_fallback,31553892.0,0.47,,,US,USD
+IINN,Inspira Technologies OXY B.H.N. Ltd,NASDAQ,14565808.8576,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001837493,,,60,sec_fallback,24252096.0,0.6006,,,US,USD
+QCLS,"Q/C TECHNOLOGIES, INC.",NASDAQ,14500324.8,nano,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0001321834,,,60,sec_fallback,4166760.0,3.48,,,US,USD
+JUNS,"JUPITER NEUROSCIENCES, INC.",NASDAQ,14455626.4645,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001679628,,,60,sec_fallback,34426355.0,0.4199,,,US,USD
+COCP,"Cocrystal Pharma, Inc.",NASDAQ,13782686.5935,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001412486,,,60,sec_fallback,13784065.0,0.9999,,,US,USD
+KAPA,"Kairos Pharma, LTD.",NYSE MKT,13658807.568,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001962011,,,60,sec_fallback,20821353.0,0.656,,,US,USD
+PHIO,Phio Pharmaceuticals Corp.,NASDAQ,13592182.5,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001533040,,,60,sec_fallback,11617250.0,1.17,,,US,USD
+MDAIW,"Spectral AI, Inc.",NASDAQ,13349669.325,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001833498,,,60,sec_fallback,30688895.0,0.435,,,US,USD
+CRIS,CURIS INC,NASDAQ,13187430.06,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001108205,,,60,sec_fallback,12928853.0,1.02,,,US,USD
+IVF,"INVO Fertility, Inc.",NASDAQ,13133084.776,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001417926,,,60,sec_fallback,15130282.0,0.868,,,US,USD
+BCDA,"BioCardia, Inc.",NASDAQ,12788344.47,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000925741,,,60,sec_fallback,10612734.0,1.205,,,US,USD
+TRAW,"Traws Pharma, Inc.",NASDAQ,12785387.200000001,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001130598,,,60,sec_fallback,7990867.0,1.6,,,US,USD
+MTEX,MANNATECH INC,NASDAQ,12736231.0,nano,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001056358,,,60,sec_fallback,1900930.0,6.7,,,US,USD
+VVOS,"Vivos Therapeutics, Inc.",NASDAQ,12403586.28,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001716166,,,60,sec_fallback,8988106.0,1.38,,,US,USD
+AEON,"AEON Biopharma, Inc.",NYSE MKT,12193600.41,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001837607,,,60,sec_fallback,11838447.0,1.03,,,US,USD
+OSRH,"OSR Holdings, Inc.",NASDAQ,12040537.571999999,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001840425,,,60,sec_fallback,25672788.0,0.469,,,US,USD
+GDTC,CytoMed Therapeutics Ltd,NASDAQ,12001600.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001873093,,,60,sec_fallback,11540000.0,1.04,,,US,USD
+CLRB,"Cellectar Biosciences, Inc.",NASDAQ,11745157.33,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001279704,,,60,sec_fallback,4240129.0,2.77,,,US,USD
+SNGX,"SOLIGENIX, INC.",NASDAQ,11599049.5,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000812796,,,60,sec_fallback,10086130.0,1.15,,,US,USD
+BNGO,"Bionano Genomics, Inc.",NASDAQ,11498879.999999998,nano,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001411690,,,60,sec_fallback,10176000.0,1.13,,,US,USD
+NOTV,"Inotiv, Inc.",NASDAQ,11419678.172,nano,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0000720154,,,60,sec_fallback,34396621.0,0.332,,,US,USD
+CURX,Curanex Pharmaceuticals Inc,NASDAQ,11310818.0692,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002025942,,,60,sec_fallback,28340812.0,0.3991,,,US,USD
+SINT,"Sintx Technologies, Inc.",NASDAQ,10650658.34,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001269026,,,60,sec_fallback,3851956.0,2.765,,,US,USD
+CALC,"CalciMedica, Inc.",NASDAQ,10406728.476,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001534133,,,60,sec_fallback,15743916.0,0.661,,,US,USD
+TPST,"Tempest Therapeutics, Inc.",NASDAQ,10256771.91,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001544227,,,60,sec_fallback,4440161.0,2.31,,,US,USD
+IMNN,"Imunon, Inc.",NASDAQ,10254982.36,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000749647,,,60,sec_fallback,3070354.0,3.34,,,US,USD
+BIVI,BIOVIE INC.,NASDAQ,10108385.14,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001580149,,,60,sec_fallback,7543571.0,1.34,,,US,USD
+BFRI,Biofrontera Inc.,NASDAQ,10050173.0844,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001858685,,,60,sec_fallback,11648323.0,0.8628,,,US,USD
+CDIO,"Cardio Diagnostics Holdings, Inc.",NASDAQ,9805893.870000001,nano,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0001870144,,,60,sec_fallback,1826051.0,5.37,,,US,USD
+PHGE,BiomX Inc.,NYSE MKT,9163792.25,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001739174,,,60,sec_fallback,1593703.0,5.75,,,US,USD
+NCEL,NewcelX Ltd.,NASDAQ,8909888.7,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001783036,,,60,sec_fallback,3159535.0,2.82,,,US,USD
+LNAI,Lunai Bioworks Inc.,NASDAQ,8743729.194,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001527728,,,60,sec_fallback,24187356.0,0.3615,,,US,USD
+XAIR,"Beyond Air, Inc.",NASDAQ,8724614.4384,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001641631,,,60,sec_fallback,10529344.0,0.8286,,,US,USD
+SXTP,"60 DEGREES PHARMACEUTICALS, INC.",NASDAQ,8714722.88,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001946563,,,60,sec_fallback,4230448.0,2.06,,,US,USD
+RNAZ,"Transcode Therapeutics, Inc.",NASDAQ,8555311.44,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001829635,,,60,sec_fallback,916968.0,9.33,,,US,USD
+BOLT,"Bolt Biotherapeutics, Inc.",NASDAQ,8349568.35,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001641281,,,60,sec_fallback,1919441.0,4.35,,,US,USD
+NXL,"Nexalin Technology, Inc.",NASDAQ,8135975.7918,nano,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001527352,,,60,sec_fallback,18651939.0,0.4362,,,US,USD
+INAB,"IN8BIO, INC.",NASDAQ,8063849.04,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001740279,,,60,sec_fallback,4634396.0,1.74,,,US,USD
+NXGL,"NEXGEL, INC.",NASDAQ,7980270.34,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001468929,,,60,sec_fallback,8143133.0,0.98,,,US,USD
+PULM,"Pulmatrix, Inc.",NASDAQ,7815889.9,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001574235,,,60,sec_fallback,3652285.0,2.14,,,US,USD
+TCRT,"Alaunos Therapeutics, Inc.",NASDAQ,7599377.744999999,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001107421,,,60,sec_fallback,2231829.0,3.405,,,US,USD
+BTCY,BIOTRICITY INC.,NASDAQ,7592583.681000001,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001630113,,,60,sec_fallback,28436643.0,0.267,,,US,USD
+VACHW,Voyager Acquisition Corp./Cayman Islands,NASDAQ,7590000.0,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002006815,,,60,sec_fallback,25300000.0,0.3,,,US,USD
+BCTX,BriaCell Therapeutics Corp.,NASDAQ,7554463.06,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001610820,,,60,sec_fallback,1883906.0,4.01,,,US,USD
+ITRM,Iterum Therapeutics plc,NASDAQ,7471100.3738,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001659323,,,60,sec_fallback,44656906.0,0.1673,,,US,USD
+KPRX,KIORA PHARMACEUTICALS INC,NASDAQ,7466208.049999999,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001372514,,,60,sec_fallback,3677935.0,2.03,,,US,USD
+GRDX,GridAI Technologies Corp.,NASDAQ,7463424.660000001,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001604191,,,60,sec_fallback,3361903.0,2.22,,,US,USD
+GELS,Gelteq Ltd,NASDAQ,7456079.25,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001920092,,,60,sec_fallback,9438075.0,0.79,,,US,USD
+ALZN,"Alzamend Neuro, Inc.",NASDAQ,7413127.8,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001677077,,,60,sec_fallback,3801604.0,1.95,,,US,USD
+TVGNW,Tevogen Bio Holdings Inc.,NASDAQ,7351527.077,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001860871,,,60,sec_fallback,198689921.0,0.037,,,US,USD
+SYBX,"SYNLOGIC, INC.",NASDAQ,7194835.185,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001527599,,,60,sec_fallback,11698919.0,0.615,,,US,USD
+KLTOW,"Klotho Neurosciences, Inc.",NASDAQ,7181135.478,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001907223,,,60,sec_fallback,72536722.0,0.099,,,US,USD
+BCLI,BRAINSTORM CELL THERAPEUTICS INC.,NASDAQ,7173707.2275,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001137883,,,60,sec_fallback,11034775.0,0.6501,,,US,USD
+AIMD,"Ainos, Inc.",NASDAQ,7074571.9799999995,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001014763,,,60,sec_fallback,4812634.0,1.47,,,US,USD
+LIMN,"Liminatus Pharma, Inc.",NASDAQ,7063869.213,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001971387,,,60,sec_fallback,27064633.0,0.261,,,US,USD
+PRPH,"ProPhase Labs, Inc.",NASDAQ,6926852.55,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000868278,,,60,sec_fallback,46179017.0,0.15,,,US,USD
+INBS,INTELLIGENT BIO SOLUTIONS INC.,NASDAQ,6864191.24,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001725430,,,60,sec_fallback,1603783.0,4.28,,,US,USD
+BFRG,"BullFrog AI Holdings, Inc.",NASDAQ,6617652.1,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001829247,,,60,sec_fallback,11409745.0,0.58,,,US,USD
+TNON,"Tenon Medical, Inc.",NASDAQ,6598020.858,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001560293,,,60,sec_fallback,8605740.0,0.7667,,,US,USD
+PMCB,"PharmaCyte Biotech, Inc.",NASDAQ,6594297.912,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001157075,,,60,sec_fallback,10134160.0,0.6507,,,US,USD
+ALUR,"ALLURION TECHNOLOGIES, INC.",NYSE,6586624.9046,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001964979,,,60,sec_fallback,9262586.0,0.7111,,,US,USD
+DWTX,"Dogwood Therapeutics, Inc.",NASDAQ,6558443.319999999,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001818844,,,60,sec_fallback,2293162.0,2.86,,,US,USD
+TOVX,"Theriva Biologics, Inc.",NYSE MKT,6221590.1692,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000894158,,,60,sec_fallback,33739643.0,0.1844,,,US,USD
+QNCX,"Quince Therapeutics, Inc.",NASDAQ,6091555.006,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001662774,,,60,sec_fallback,55681490.0,0.1094,,,US,USD
+BKHAR,Black Hawk Acquisition Corp,NASDAQ,6022686.649999999,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002000775,,,60,sec_fallback,4153577.0,1.45,,,US,USD
+BMRA,BIOMERICA INC,NASDAQ,5949531.99,nano,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0000073290,,,60,sec_fallback,3020067.0,1.97,,,US,USD
+KTTA,Pasithea Therapeutics Corp.,NASDAQ,5880425.83,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001841330,,,60,sec_fallback,7443577.0,0.79,,,US,USD
+APRE,"Aprea Therapeutics, Inc.",NASDAQ,5816547.304099999,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001781983,,,60,sec_fallback,6310673.0,0.9217,,,US,USD
+BON,Bon Natural Life Ltd,NASDAQ,5797014.68,nano,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001816815,,,60,sec_fallback,3970558.0,1.46,,,US,USD
+XRTX,XORTX Therapeutics Inc.,NASDAQ,5650509.93,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001729214,,,60,sec_fallback,12989678.0,0.435,,,US,USD
+SBFM,Sunshine Biopharma Inc.,NASDAQ,5592777.3,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001402328,,,60,sec_fallback,4905945.0,1.14,,,US,USD
+CLDI,"Calidi Biotherapeutics, Inc.",NYSE MKT,5516994.853700001,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001855485,,,60,sec_fallback,7167721.0,0.7697,,,US,USD
+CYCN,"Cyclerion Therapeutics, Inc.",NASDAQ,5456186.46,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001755237,,,60,sec_fallback,3925314.0,1.39,,,US,USD
+BCAB,"BioAtla, Inc.",NASDAQ,5425739.0379,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001826892,,,60,sec_fallback,32315301.0,0.1679,,,US,USD
+AMRN,AMARIN CORP PLC\UK,NASDAQ,5398240.92,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000897448,,,60,sec_fallback,380694.0,14.18,,,US,USD
+XBIO,"Xenetic Biosciences, Inc.",NASDAQ,5200697.12,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001534525,,,60,sec_fallback,2291056.0,2.27,,,US,USD
+SLXN,Silexion Therapeutics Corp,NASDAQ,5158959.3,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002022416,,,60,sec_fallback,3126642.0,1.65,,,US,USD
+BDMDW,Baird Medical Investment Holdings Ltd,NASDAQ,5002007.500000001,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001982444,,,60,sec_fallback,35728625.0,0.14,,,US,USD
+VIVS,"VivoSim Labs, INC.",NASDAQ,4902968.56,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001497253,,,60,sec_fallback,2607962.0,1.88,,,US,USD
+NRSNW,NeuroSense Therapeutics Ltd.,NASDAQ,4854848.669,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001875091,,,60,sec_fallback,23228941.0,0.209,,,US,USD
+CELZ,"CREATIVE MEDICAL TECHNOLOGY HOLDINGS, INC.",NASDAQ,4773984.2,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001187953,,,60,sec_fallback,2580532.0,1.85,,,US,USD
+AMIX,"Autonomix Medical, Inc.",NASDAQ,4754273.6448,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001617867,,,60,sec_fallback,11409344.0,0.4167,,,US,USD
+BGMS,"Bio Green Med Solution, Inc.",NASDAQ,4704626.334199999,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001130166,,,60,sec_fallback,4900142.0,0.9601,,,US,USD
+BIAF,"bioAffinity Technologies, Inc.",NASDAQ,4633670.2700000005,nano,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0001712762,,,60,sec_fallback,4498709.0,1.03,,,US,USD
+REVB,"REVELATION BIOSCIENCES, INC.",NASDAQ,4613320.8,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001810560,,,60,sec_fallback,3720420.0,1.24,,,US,USD
+GNPX,"Genprex, Inc.",NASDAQ,4540692.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001595248,,,60,sec_fallback,2270346.0,2.0,,,US,USD
+SNOA,"Sonoma Pharmaceuticals, Inc.",NASDAQ,4509977.478,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001367083,,,60,sec_fallback,1730613.0,2.606,,,US,USD
+IINNW,Inspira Technologies OXY B.H.N. Ltd,NASDAQ,4438133.568,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001837493,,,60,sec_fallback,24252096.0,0.183,,,US,USD
+ASTC,ASTROTECH Corp,NASDAQ,4274255.79,nano,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001001907,,,60,sec_fallback,1758953.0,2.43,,,US,USD
+PRFX,PRF Technologies Ltd.,NASDAQ,4046383.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001801834,,,60,sec_fallback,1471412.0,2.75,,,US,USD
+APTOF,Aptose Biosciences Inc.,NASDAQ,4007313.5300000003,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000882361,,,60,sec_fallback,2552429.0,1.57,,,US,USD
+NDRA,ENDRA Life Sciences Inc.,NASDAQ,4000892.6300000004,nano,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001681682,,,60,sec_fallback,1166441.0,3.43,,,US,USD
+ONMDW,OneMedNet Corp,NASDAQ,3794787.252,nano,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0001849380,,,60,sec_fallback,51005205.0,0.0744,,,US,USD
+OGEN,ORAGENICS INC,NYSE MKT,3703466.1355,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001174940,,,60,sec_fallback,4168223.0,0.8885,,,US,USD
+MTNB,"Matinas BioPharma Holdings, Inc.",NYSE MKT,3689966.016,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001582554,,,60,sec_fallback,6406191.0,0.576,,,US,USD
+GRI,"GRI Bio, Inc.",NASDAQ,3468069.6,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001824293,,,60,sec_fallback,1445029.0,2.4,,,US,USD
+BJDX,"Bluejay Diagnostics, Inc.",NASDAQ,3446852.6999999997,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001704287,,,60,sec_fallback,1814133.0,1.9,,,US,USD
+DCOY,Decoy Therapeutics Inc.,NASDAQ,3414718.685,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001615219,,,60,sec_fallback,5862178.0,0.5825,,,US,USD
+INDP,"Indaptus Therapeutics, Inc.",NASDAQ,3327209.6999999997,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001857044,,,60,sec_fallback,1751163.0,1.9,,,US,USD
+MEHA,Functional Brands Inc.,NASDAQ,3184719.5324,nano,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001837254,,,60,sec_fallback,16323524.0,0.1951,,,US,USD
+ACXP,"Acurx Pharmaceuticals, Inc.",NASDAQ,3023776.35,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001736243,,,60,sec_fallback,2085363.0,1.45,,,US,USD
+CPHI,"CHINA PHARMA HOLDINGS, INC.",NYSE MKT,2971016.3832,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001106644,,,60,sec_fallback,5022002.0,0.5916,,,US,USD
+ESLAW,"Estrella Immunopharma, Inc.",NASDAQ,2870184.764,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001844417,,,60,sec_fallback,37765589.0,0.076,,,US,USD
+AZTR,"Azitra, Inc.",NYSE MKT,2849869.088,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001701478,,,60,sec_fallback,16192438.0,0.176,,,US,USD
+ASBPW,"Aspire Biopharma Holdings, Inc.",NASDAQ,2611695.4254,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001847345,,,60,sec_fallback,107477178.0,0.0243,,,US,USD
+INM,InMed Pharmaceuticals Inc.,NASDAQ,2569175.5986,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001728328,,,60,sec_fallback,2919186.0,0.8801,,,US,USD
+ARTL,"ARTELO BIOSCIENCES, INC.",NASDAQ,2485983.2399999998,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001621221,,,60,sec_fallback,2124772.0,1.17,,,US,USD
+NUWE,"Nuwellis, Inc.",NASDAQ,2455022.52,nano,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001506492,,,60,sec_fallback,1658799.0,1.48,,,US,USD
+ISPC,iSpecimen Inc.,NASDAQ,2413443.916,nano,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0001558569,,,60,sec_fallback,9771028.0,0.247,,,US,USD
+ERNA,Ernexa Therapeutics Inc.,NASDAQ,2409608.923,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000748592,,,60,sec_fallback,7848889.0,0.307,,,US,USD
+VTAK,"Catheter Precision, Inc.",NYSE MKT,2402460.0,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001716621,,,60,sec_fallback,1668375.0,1.44,,,US,USD
+LYRA,"Lyra Therapeutics, Inc.",NASDAQ,2289597.7800000003,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001327273,,,60,sec_fallback,1774882.0,1.29,,,US,USD
+AEMD,AETHLON MEDICAL INC,NASDAQ,2288291.4,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0000882291,,,60,sec_fallback,1315110.0,1.74,,,US,USD
+KALA,"KALA BIO, Inc.",NASDAQ,2257674.375,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001479419,,,60,sec_fallback,8209725.0,0.275,,,US,USD
+IMCC,IM Cannabis Corp.,NASDAQ,2128961.88,nano,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001792030,,,60,sec_fallback,3085452.0,0.69,,,US,USD
+ZVSA,"ZyVersa Therapeutics, Inc.",NASDAQ,2104939.46,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001859007,,,60,sec_fallback,8095921.0,0.26,,,US,USD
+RCKTW,"ROCKET PHARMACEUTICALS, INC.",NASDAQ,2073670.6312999998,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001281895,,,60,sec_fallback,108569143.0,0.0191,,,US,USD
+BFRGW,"BullFrog AI Holdings, Inc.",NASDAQ,2053754.0999999999,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001829247,,,60,sec_fallback,11409745.0,0.18,,,US,USD
+ENSC,"Ensysce Biosciences, Inc.",NASDAQ,1908386.0918,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001716947,,,60,sec_fallback,3541262.0,0.5389,,,US,USD
+MYNZ,MAINZ BIOMED N.V.,NASDAQ,1881923.0242,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001874252,,,60,sec_fallback,2319353.0,0.8114,,,US,USD
+BCTXL,BriaCell Therapeutics Corp.,NASDAQ,1865066.94,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001610820,,,60,sec_fallback,1883906.0,0.99,,,US,USD
+CNSP,"CNS Pharmaceuticals, Inc.",NASDAQ,1860870.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001729427,,,60,sec_fallback,620290.0,3.0,,,US,USD
+AIM,AIM ImmunoTech Inc.,AMEX,1828846.074,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000946644,,,60,sec_fallback,2853114.0,0.641,,,US,USD
+AKAN,AKANDA CORP.,NASDAQ,1777698.3756,nano,,Medicinal Chemicals & Botanical Products,2833,Medicinal Chemicals & Botanical Products,0001888014,,,60,sec_fallback,2047332.0,0.8683,,,US,USD
+CARM,Carisma Therapeutics Inc.,NASDAQ,1719832.7057999999,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001485003,,,60,sec_fallback,41845078.0,0.0411,,,US,USD
+HCWB,HCW Biologics Inc.,NASDAQ,1701742.2493,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001828673,,,60,sec_fallback,2701607.0,0.6299,,,US,USD
+SSKN,"STRATA Skin Sciences, Inc.",NASDAQ,1530931.74,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001051514,,,60,sec_fallback,5888199.0,0.26,,,US,USD
+UPC,Universe Pharmaceuticals INC,NASDAQ,1521012.6,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001809616,,,60,sec_fallback,563338.0,2.7,,,US,USD
+SABSW,"SAB Biotherapeutics, Inc.",NASDAQ,1513897.8618,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001833214,,,60,sec_fallback,47606851.0,0.0318,,,US,USD
+PBM,PSYENCE BIOMEDICAL LTD.,NASDAQ,1454133.76,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001985062,,,60,sec_fallback,568021.0,2.56,,,US,USD
+TIVC,"Tivic Health Systems, Inc.",NASDAQ,1428655.168,nano,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001787740,,,60,sec_fallback,1765952.0,0.809,,,US,USD
+OSRHW,"OSR Holdings, Inc.",NASDAQ,1399166.946,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001840425,,,60,sec_fallback,25672788.0,0.0545,,,US,USD
+SHPH,"Shuttle Pharmaceuticals Holdings, Inc.",NASDAQ,1392453.0225000002,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001757499,,,60,sec_fallback,1603285.0,0.8685,,,US,USD
+GCTK,"Glucotrack, Inc.",NASDAQ,1347818.24,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001506983,,,60,sec_fallback,910688.0,1.48,,,US,USD
+DRMA,"Dermata Therapeutics, Inc.",NASDAQ,1242012.97,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001853816,,,60,sec_fallback,1026457.0,1.21,,,US,USD
+ENVB,"Enveric Biosciences, Inc.",NASDAQ,1182016.44,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000890821,,,60,sec_fallback,596978.0,1.98,,,US,USD
+LSBCF,"LakeShore Biopharma Co., Ltd.",NYSE,1142159.205,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001946399,,,60,sec_fallback,20766531.0,0.055,,,US,USD
+NRXPW,"NRX Pharmaceuticals, Inc.",NASDAQ,1095807.453,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001719406,,,60,sec_fallback,28097627.0,0.039,,,US,USD
+CDT,CDT Equity Inc.,NASDAQ,1086974.0742000001,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001896212,,,60,sec_fallback,1629402.0,0.6671,,,US,USD
+GLMD,Galmed Pharmaceuticals Ltd.,NASDAQ,1042289.64,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001595353,,,60,sec_fallback,1654428.0,0.63,,,US,USD
+PTIX,"Protagenic Therapeutics, Inc.\new",NASDAQ,967439.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001022899,,,60,sec_fallback,1934878.0,0.5,,,US,USD
+ICUCW,SeaStar Medical Holding Corp,NASDAQ,962458.4778000001,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001831868,,,60,sec_fallback,36047134.0,0.0267,,,US,USD
+SCLXW,Scilex Holding Co,NASDAQ,958041.8298,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001820190,,,60,sec_fallback,7585446.0,0.1263,,,US,USD
+VRAX,Virax Biolabs Group Ltd,NASDAQ,898784.892,nano,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0001885827,,,60,sec_fallback,4341956.0,0.207,,,US,USD
+ONCO,"Onconetix, Inc.",NASDAQ,889580.7599999999,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001782107,,,60,sec_fallback,1560668.0,0.57,,,US,USD
+VERO,Venus Concept Inc.,NASDAQ,836605.35,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001409269,,,60,sec_fallback,1859123.0,0.45,,,US,USD
+CERO,"CERO THERAPEUTICS HOLDINGS, INC.",NASDAQ,738593.4850000001,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001870404,,,60,sec_fallback,21102671.0,0.035,,,US,USD
+SCPX,"Scorpius Holdings, Inc.",AMEX,733712.544,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001476963,,,60,sec_fallback,61142712.0,0.012,,,US,USD
+ELUT,ELUTIA INC.,NASDAQ,720033.6900000001,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001708527,,,60,sec_fallback,648679.0,1.11,,,US,USD
+LIPO,LIPELLA PHARMACEUTICALS INC.,NASDAQ,716229.735,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001347242,,,60,sec_fallback,4620837.0,0.155,,,US,USD
+JSPRW,"Jasper Therapeutics, Inc.",NASDAQ,559680.78,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001788028,,,60,sec_fallback,27984039.0,0.02,,,US,USD
+ERNAW,Ernexa Therapeutics Inc.,NASDAQ,549422.2300000001,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000748592,,,60,sec_fallback,7848889.0,0.07,,,US,USD
+ELAB,PMGC Holdings Inc.,NASDAQ,524977.3655,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001840563,,,60,sec_fallback,744121.0,0.7055,,,US,USD
+SBFMW,Sunshine Biopharma Inc.,NASDAQ,489613.311,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001402328,,,60,sec_fallback,4905945.0,0.0998,,,US,USD
+AIMDW,"Ainos, Inc.",NASDAQ,485113.5072,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001014763,,,60,sec_fallback,4812634.0,0.1008,,,US,USD
+WINT,WINDTREE THERAPEUTICS INC /DE/,NASDAQ,468552.0976,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0000946486,,,60,sec_fallback,33708784.0,0.0139,,,US,USD
+CINGW,Cingulate Inc.,NASDAQ,270958.507,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001862150,,,60,sec_fallback,6757070.0,0.0401,,,US,USD
+PRENW,Prenetics Global Ltd,NASDAQ,246712.036,nano,,Laboratory Analytical Instruments,3826,Laboratory Analytical Instruments,0001876431,,,60,sec_fallback,12984844.0,0.019,,,US,USD
+CELUW,Celularity Inc,NASDAQ,246461.256,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001752828,,,60,sec_fallback,28328880.0,0.0087,,,US,USD
+ADTX,"Aditxt, Inc.",NASDAQ,242742.75160000002,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001726711,,,60,sec_fallback,559444.0,0.4339,,,US,USD
+CMND,Clearmind Medicine Inc.,NASDAQ,170722.08000000002,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001892500,,,60,sec_fallback,158076.0,1.08,,,US,USD
+SRZNW,"Surrozen, Inc./DE",NASDAQ,169714.13580000002,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001824893,,,60,sec_fallback,8571421.0,0.0198,,,US,USD
+SXTPW,"60 DEGREES PHARMACEUTICALS, INC.",NASDAQ,169217.92,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001946563,,,60,sec_fallback,4230448.0,0.04,,,US,USD
+ALUR-WT,"ALLURION TECHNOLOGIES, INC.",NYSE,115782.32500000001,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001964979,,,60,sec_fallback,9262586.0,0.0125,,,US,USD
+CEROW,"CERO THERAPEUTICS HOLDINGS, INC.",NASDAQ,111844.1563,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001870404,,,60,sec_fallback,21102671.0,0.0053,,,US,USD
+SLXNW,Silexion Therapeutics Corp,NASDAQ,105055.1712,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002022416,,,60,sec_fallback,3126642.0,0.0336,,,US,USD
+TNONW,"Tenon Medical, Inc.",NASDAQ,76591.086,nano,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0001560293,,,60,sec_fallback,8605740.0,0.0089,,,US,USD
+VINC,"Vincerx Pharma, Inc.",NASDAQ,65428.4625,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001796129,,,60,sec_fallback,5234277.0,0.0125,,,US,USD
+PTIXW,"Protagenic Therapeutics, Inc.\new",NASDAQ,60755.1692,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001022899,,,60,sec_fallback,1934878.0,0.0314,,,US,USD
+CDIOW,"Cardio Diagnostics Holdings, Inc.",NASDAQ,54051.1096,nano,,In Vitro & In Vivo Diagnostic Substances,2835,In Vitro & In Vivo Diagnostic Substances,0001870144,,,60,sec_fallback,1826051.0,0.0296,,,US,USD
+FOXO,FOXO TECHNOLOGIES INC.,NYSE MKT,52652.030300000006,nano,,Services-Commercial Physical & Biological Research,8731,Services-Commercial Physical & Biological Research,0001812360,,,60,sec_fallback,526520303.0,0.0001,,,US,USD
+REVBW,"REVELATION BIOSCIENCES, INC.",NASDAQ,34227.864,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001810560,,,60,sec_fallback,3720420.0,0.0092,,,US,USD
+APLMW,Apollomics Inc.,NASDAQ,14233.1892,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001944885,,,60,sec_fallback,1103348.0,0.0129,,,US,USD
+PBMWW,PSYENCE BIOMEDICAL LTD.,NASDAQ,10906.0032,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001985062,,,60,sec_fallback,568021.0,0.0192,,,US,USD
+CDTTW,CDT Equity Inc.,NASDAQ,10754.0532,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001896212,,,60,sec_fallback,1629402.0,0.0066,,,US,USD
+ABPWW,"Abpro Holdings, Inc.",NASDAQ,5432.5560000000005,nano,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001893219,,,60,sec_fallback,2716278.0,0.002,,,US,USD
+BCTXW,BriaCell Therapeutics Corp.,NASDAQ,1695.5154,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001610820,,,60,sec_fallback,1883906.0,0.0009,,,US,USD
+RFL,"Rafael Holdings, Inc.",NYSE,145.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001713863,,,60,sec_fallback,100.0,1.45,,,US,USD
+QNTM,Quantum Biopharma Ltd.,NASDAQ,43.08,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001771885,,,60,sec_fallback,12.0,3.59,,,US,USD
+VTVT,vTv Therapeutics Inc.,NASDAQ,0.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001641489,,,60,sec_fallback,0.0,37.22,,,US,USD
+SXTC,"China SXT Pharmaceuticals, Inc.",NASDAQ,0.0,nano,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001723980,,,60,sec_fallback,0.0,2.04,,,US,USD
+HYPR,"Hyperfine, Inc.",NASDAQ,0.0,nano,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001833769,,,60,sec_fallback,0.0,1.09,,,US,USD
+AGMB,Agomab Therapeutics NV,NASDAQ,,,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0002020932,,,40,sec_fallback,,14.21,,,US,USD
+AKTS,"Aktis Oncology, Inc.",NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002035832,,,40,sec_fallback,,20.54,,,US,USD
+ANL,Adlai Nortye Ltd.,NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001944552,,,40,sec_fallback,,9.24,,,US,USD
+AZN,ASTRAZENECA PLC,NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000901832,,,40,sec_fallback,,197.52,,,US,USD
+CUBT,Curative Biotechnology Inc,NYSE MKT,,,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001400271,,,40,sec_fallback,,0.0074,,,US,USD
+EIKN,"Eikon Therapeutics, Inc.",NASDAQ,,,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001861123,,,40,sec_fallback,,14.54,,,US,USD
+GENB,"Generate Biomedicines, Inc.",NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002100782,,,40,sec_fallback,,12.45,,,US,USD
+GMAB,GENMAB A/S,NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001434265,,,40,sec_fallback,,27.48,,,US,USD
+GRFS,Grifols SA,NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001438569,,,40,sec_fallback,,8.59,,,US,USD
+ITOC,iTonic Holdings Ltd,NASDAQ,,,,Electromedical & Electrotherapeutic Apparatus,3845,Electromedical & Electrotherapeutic Apparatus,0001970544,,,40,sec_fallback,,0.3522,,,US,USD
+MANE,"Veradermics, Inc",NYSE,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001827635,,,40,sec_fallback,,48.62,,,US,USD
+MENS,Jyong Biotech Ltd.,NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001954488,,,40,sec_fallback,,2.2,,,US,USD
+MSLE,Satellos Bioscience Inc.,NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001421642,,,40,sec_fallback,,12.33,,,US,USD
+NSRX,Nasus Pharma Ltd,NYSE MKT,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002029039,,,40,sec_fallback,,4.99,,,US,USD
+NVO,NOVO NORDISK A S,NYSE,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0000353278,,,40,sec_fallback,,39.07,,,US,USD
+OCS,Oculis Holding AG,NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001953530,,,40,sec_fallback,,27.74,,,US,USD
+OCSAW,Oculis Holding AG,NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0001953530,,,40,sec_fallback,,16.365,,,US,USD
+OPTEY,Opthea Ltd,NASDAQ,,,,"Biological Products, (No Diagnostic Substances)",2836,"Biological Products, (No Diagnostic Substances)",0001815620,,,40,sec_fallback,,0.0215,,,US,USD
+PLSM,Pulsenmore Ltd.,NASDAQ,,,,Surgical & Medical Instruments & Apparatus,3841,Surgical & Medical Instruments & Apparatus,0002064764,,,40,sec_fallback,,4.24,,,US,USD
+PLYX,"Polaryx Therapeutics, Inc.",NASDAQ,,,,Pharmaceutical Preparations,2834,Pharmaceutical Preparations,0002075320,,,40,sec_fallback,,2.62,,,US,USD

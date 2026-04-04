@@ -119,6 +119,9 @@ def process_daily_signals(
 
     for pred in buy_predictions[:available_slots]:
         ticker = pred["ticker"]
+        # Re-check inside loop: a previous iteration may have opened this ticker
+        if ticker in open_tickers:
+            continue
         current_price = current_prices.get(ticker)
         if current_price is None or current_price <= 0:
             logger.warning("No price for BUY signal %s — skipping", ticker)
@@ -252,8 +255,12 @@ def fetch_prices_for_pipeline(tickers: list[str]) -> dict[str, float]:
             if response.status_code == 200:
                 data = response.json()
                 price = data.get("close") or data.get("previousClose")
-                if price and float(price) > 0:
-                    prices[ticker] = float(price)
+                if price is not None and str(price).upper() not in ("NA", "N/A", "NULL", "NONE", ""):
+                    val = float(price)
+                    if val > 0:
+                        prices[ticker] = val
+        except (ValueError, TypeError) as e:
+            logger.warning("Price parse failed for %s: %s", ticker, e)
         except Exception as e:
             logger.warning("Price fetch failed for %s: %s", ticker, e)
 

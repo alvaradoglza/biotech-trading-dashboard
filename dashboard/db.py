@@ -19,11 +19,11 @@ def get_supabase_client() -> Client:
     # Try Streamlit secrets first (for Streamlit Cloud deployment)
     try:
         url = st.secrets["SUPABASE_URL"]
-        key = st.secrets.get("SUPABASE_ANON_KEY") or st.secrets.get("SUPABASE_KEY")
+        key = st.secrets["SUPABASE_PUBLISHABLE_KEY"]
     except (AttributeError, KeyError):
         # Fall back to environment variables (local dev / GitHub Actions)
         url = os.environ.get("SUPABASE_URL", "")
-        key = os.environ.get("SUPABASE_ANON_KEY") or os.environ.get("SUPABASE_KEY", "")
+        key = os.environ.get("SUPABASE_PUBLISHABLE_KEY", "")
 
     if not url or not key:
         st.error(

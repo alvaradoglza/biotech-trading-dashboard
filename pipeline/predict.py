@@ -7,13 +7,10 @@ Strategy:
   - Predict on announcements without return_30d (new, unresolved)
   - Log metrics to Supabase model_runs table + optionally MLflow
   - Save model artifact to pipeline/models/
-
-Wraps feature engineering and model training from backtesting-biotech.
 """
 
 import logging
 import os
-import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any
@@ -27,22 +24,11 @@ from sklearn.metrics import (
 )
 from sklearn.preprocessing import OneHotEncoder
 
-# Allow imports from backtesting-biotech
-_BACKTEST_DIR = Path(__file__).parent.parent / "backtesting-biotech"
-sys.path.insert(0, str(_BACKTEST_DIR))
-
-try:
-    from backtest.features import (
-        build_feature_matrix, build_labels, fit_ohe, extract_structured,
-    )
-    from backtest.config import (
-        SF_COLS, GBM_N_ESTIMATORS, GBM_MAX_DEPTH, GBM_LEARNING_RATE,
-        RANDOM_STATE, P85_30D, P85_5D, DROP_FEATURES,
-    )
-    _BACKTEST_AVAILABLE = True
-except ImportError as e:
-    logging.getLogger(__name__).warning("backtesting-biotech imports failed: %s", e)
-    _BACKTEST_AVAILABLE = False
+from pipeline.features import build_feature_matrix, build_labels, fit_ohe
+from pipeline.ml_config import (
+    SF_COLS, GBM_N_ESTIMATORS, GBM_MAX_DEPTH, GBM_LEARNING_RATE,
+    RANDOM_STATE, P85_30D, P85_5D, DROP_FEATURES,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -72,10 +58,6 @@ def run_daily_prediction(
         - predictions: list of prediction dicts for announcements without return labels
         - metrics: dict with accuracy, precision, recall, specificity, f1_score, etc.
     """
-    if not _BACKTEST_AVAILABLE:
-        logger.error("backtesting-biotech not available — cannot run predictions")
-        return [], {}
-
     if announcements_df.empty:
         logger.warning("Empty announcements DataFrame — skipping prediction")
         return [], {}
@@ -308,6 +290,15 @@ def _log_mlflow(clf, metrics: dict) -> None:
         import mlflow.sklearn
 
         mlflow.set_tracking_uri(tracking_uri)
+
+        # DagsHub (and other hosted MLflow servers) require HTTP basic auth.
+        # Set MLFLOW_TRACKING_USERNAME and MLFLOW_TRACKING_PASSWORD in env/secrets.
+        username = os.environ.get("MLFLOW_TRACKING_USERNAME")
+        password = os.environ.get("MLFLOW_TRACKING_PASSWORD")
+        if username and password:
+            os.environ["MLFLOW_TRACKING_USERNAME"] = username
+            os.environ["MLFLOW_TRACKING_PASSWORD"] = password
+
         experiment_name = "biotech-trading-daily"
         mlflow.set_experiment(experiment_name)
 
