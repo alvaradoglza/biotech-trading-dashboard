@@ -1,0 +1,60 @@
+# Secrets & credentials
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Large data files (too heavy for git)
+backtesting-biotech/announcements2.parquet
+backtesting-biotech/data/ohlcv/
+biotech-monitor/data/prices/
+biotech-monitor/data/raw/
+biotech-monitor/data/text/
+biotech-monitor/logs/
+backtesting-biotech/output/
+
+# MLflow
+mlruns/
+mlartifacts/
+*.mlmodel
+
+# Saved model files
+pipeline/models/
+*.joblib
+*.pkl
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+logs/

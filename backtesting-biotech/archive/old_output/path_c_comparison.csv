@@ -1,0 +1,6 @@
+variant,total_return_pct,annualized_return_pct,sharpe_ratio,max_drawdown_pct,win_rate_pct,profit_factor,total_trades,avg_return_per_trade,avg_holding_days,exposure_pct
+C1_all_eq_1pct,9.916,4.3856,0.3727,27.5721,48.1786,1.1136,851,1.3721,38.18,100.0
+C2_all_eq_0.5pct,5.1385,2.3009,0.3563,14.2331,48.0792,1.1153,859,1.2993,38.22,100.0
+C3_all_invvol_1pct,10.7257,4.734,0.401,27.4998,48.1786,1.1265,851,1.3721,38.18,100.0
+C4_all_invvol_2pct,8.5963,3.8148,0.2787,46.2782,48.1375,1.0669,698,1.3534,38.39,100.0
+C5_model_invvol_10pct,-25.9848,-14.6953,-0.3775,52.4612,44.3548,0.7521,248,-1.524,39.17,100.0

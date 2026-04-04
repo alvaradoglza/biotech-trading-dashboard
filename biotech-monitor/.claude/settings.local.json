@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -m py_compile:*)",
+      "Bash(python3.11 -m venv:*)",
+      "Bash(source:*)",
+      "Bash(pip install:*)",
+      "Bash(python3:*)",
+      "Bash(python -c:*)",
+      "Bash(pytest:*)",
+      "Bash(python scripts/fetch_stock_list.py:*)",
+      "Bash(python scripts/enrich_stocks.py:*)",
+      "Bash(python scripts/find_ir_urls.py:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(python:*)",
+      "Bash(curl:*)",
+      "Bash(open:*)",
+      "Bash(wc:*)",
+      "Bash(grep:*)",
+      "Bash(chmod:*)",
+      "Bash(venv/bin/pip install:*)",
+      "Bash(ls -1 /Users/emilioalvarado/Documents/Alinea/biotech-monitor/tests/test_*.py)",
+      "Bash(xargs basename:*)",
+      "Bash(rm -f src/clients/edgar.py src/clients/sec.py src/extraction/edgar_extractor.py src/visualization/announcement_charts.py scripts/generate_announcement_charts.py scripts/debug_openfda.py scripts/find_ir_urls.py scripts/audit_price_fields.py scripts/test_fetch_announcements.py scripts/fetch_all_announcements.py scripts/enrich_stocks.py tests/test_edgar.py tests/test_sec.py tests/test_edgar_extraction.py)",
+      "Bash(rmdir src/visualization)"
+    ]
+  }
+}

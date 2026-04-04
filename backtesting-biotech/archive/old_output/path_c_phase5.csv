@@ -1,0 +1,5 @@
+total_return_pct,annualized_return_pct,sharpe_ratio,max_drawdown_pct,win_rate_pct,profit_factor,total_trades,avg_return_per_trade,avg_holding_days,exposure_pct,ex_top1_ret,ex_top5_ret,top1_pct,top5_pct,top1_ticker,y1_ret,y2_ret,penny_pnl,normal_pnl,label,grace
+13.9504,6.0923,0.4947,25.8003,51.0,1.1944,800,2.2058,58.54,100.0,11.14,5.79,20.2,58.5,AVTX,0.37,13.97,29274,46095,grace=0bars,0
+13.4886,5.8974,0.4826,25.5205,50.7538,1.1865,796,2.1319,58.86,100.0,10.93,5.21,18.9,61.3,AVTX,1.55,12.33,29274,29655,grace=2bars,2
+11.8253,5.1917,0.4286,26.3501,50.3778,1.1621,794,1.8579,59.25,100.0,9.27,3.93,21.6,66.8,AVTX,1.64,10.58,20853,22583,grace=3bars,3
+11.5204,5.0617,0.4211,26.2179,50.0,1.1577,792,1.8113,59.34,100.0,8.96,3.62,22.2,68.6,AVTX,1.86,10.05,23726,20590,grace=5bars,5

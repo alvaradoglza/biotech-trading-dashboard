@@ -1,0 +1,41 @@
+# EODHD API Configuration
+
+# Base URL for the API
+base_url: https://eodhd.com/api
+
+# Rate limiting
+rate_limit:
+  # Requests per second (adjust based on your plan)
+  # Free: 1 req/sec
+  # All-World: 5 req/sec
+  # Extended: 10 req/sec
+  requests_per_second: 5
+
+# Daily API call limits (adjust based on your plan)
+# Free: 20 calls/day
+# All-World: 100,000 calls/day
+# Extended: 100,000 calls/day
+daily_limit: 100000
+
+# Retry configuration
+retry:
+  max_attempts: 3
+  min_wait: 2
+  max_wait: 60
+
+# Request timeout in seconds
+timeout: 30
+
+# Caching
+cache:
+  # Cache fundamentals data for this many hours
+  fundamentals_ttl_hours: 24
+  # Cache exchange list for this many hours
+  exchange_list_ttl_hours: 168  # 1 week
+
+# Data filters for fundamentals requests
+fundamentals_filter:
+  # Only fetch these sections to reduce API usage
+  sections:
+    - General
+    - Highlights

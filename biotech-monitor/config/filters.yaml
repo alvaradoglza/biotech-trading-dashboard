@@ -1,0 +1,45 @@
+# Stock Filter Configuration
+# These filters are applied when building the biopharma stock universe
+
+# Exchanges to include (US exchanges only for now)
+exchanges:
+  - NASDAQ
+  - NYSE
+  - NYSE AMER
+  - AMEX
+  - NYSE MKT
+  - BATS
+
+# Industries to match (case-insensitive, partial match)
+industries:
+  - Biotechnology
+  - Pharmaceuticals
+  - Drug Manufacturers
+  - Drug Manufacturers - General
+  - Drug Manufacturers - Specialty & Generic
+  - Diagnostics & Research
+
+# Market cap filter (in USD)
+market_cap:
+  min: 0
+  max: 2000000000  # $2B (small-cap threshold)
+
+# Stock types to include
+stock_types:
+  - Common Stock
+
+# Include stocks with missing market cap data?
+# Set to true to avoid missing early-stage companies
+include_missing_market_cap: true
+
+# Countries to include (ISO codes)
+countries:
+  - US
+  - USA
+
+# Quality score thresholds
+quality:
+  # Minimum score to include in primary list
+  min_score: 0
+  # Score below which to flag for review
+  review_threshold: 50

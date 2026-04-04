@@ -1,0 +1,71 @@
+# API Configuration for Biopharma Monitor
+# This file contains configuration for all external API connections
+
+sec_edgar:
+  base_url: "https://data.sec.gov"
+  www_url: "https://www.sec.gov"
+  rate_limit: 10  # requests per second (SEC limit)
+  timeout: 30  # seconds
+  # Required headers
+  user_agent_template: "BiopharmaMonitor/1.0 ({email})"
+  # Contact email must be set in environment: SEC_CONTACT_EMAIL
+
+clinicaltrials:
+  base_url: "https://clinicaltrials.gov/api/v2"
+  rate_limit: 10  # requests per second (be respectful)
+  timeout: 30  # seconds
+  # API v2 endpoints
+  endpoints:
+    studies: "/studies"
+    study: "/studies/{nct_id}"
+  # Default fields to request
+  default_fields:
+    - NCTId
+    - BriefTitle
+    - OfficialTitle
+    - OverallStatus
+    - Phase
+    - Condition
+    - InterventionName
+    - LeadSponsorName
+    - StartDate
+    - CompletionDate
+    - LastUpdatePostDate
+    - EnrollmentCount
+    - HasResults
+
+openfda:
+  base_url: "https://api.fda.gov"
+  # Rate limits (per minute)
+  rate_limit_no_key: 40
+  rate_limit_with_key: 240
+  timeout: 30  # seconds
+  # Endpoints
+  endpoints:
+    drugsfda: "/drug/drugsfda.json"
+    label: "/drug/label.json"
+    event: "/drug/event.json"
+  # API key can be set in environment: OPENFDA_API_KEY
+
+# Common retry settings
+retry:
+  max_attempts: 3
+  initial_wait: 2  # seconds
+  max_wait: 60  # seconds
+  exponential_base: 2
+
+# Biopharma-relevant 8-K items to monitor
+biopharma_8k_items:
+  - "1.01"  # Material agreements (licensing, partnerships)
+  - "2.02"  # Earnings/financial results
+  - "5.02"  # Executive changes
+  - "7.01"  # Press releases, Reg FD
+  - "8.01"  # Other events (FDA approvals, trial results)
+
+# Clinical trial statuses to monitor
+monitored_trial_statuses:
+  - "RECRUITING"
+  - "ACTIVE_NOT_RECRUITING"
+  - "COMPLETED"
+  - "TERMINATED"
+  - "SUSPENDED"

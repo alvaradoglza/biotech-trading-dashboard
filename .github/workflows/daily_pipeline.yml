@@ -1,0 +1,65 @@
+name: Daily Pipeline
+
+on:
+  # Run every day at 7:07 AM America/Mexico_City (= 13:07 UTC, UTC-6)
+  schedule:
+    - cron: "7 13 * * *"
+
+  # Allow manual trigger from GitHub Actions UI
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Run without writing to Supabase"
+        required: false
+        default: "false"
+        type: boolean
+      skip_fetch:
+        description: "Skip API fetching (use existing Supabase data)"
+        required: false
+        default: "false"
+        type: boolean
+
+jobs:
+  run-pipeline:
+    name: Run Daily Pipeline
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run daily pipeline
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+          SEC_CONTACT_EMAIL: ${{ secrets.SEC_CONTACT_EMAIL }}
+          MLFLOW_TRACKING_URI: ${{ secrets.MLFLOW_TRACKING_URI }}
+        run: |
+          # Build CLI flags
+          FLAGS=""
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then
+            FLAGS="$FLAGS --dry-run"
+          fi
+          if [ "${{ github.event.inputs.skip_fetch }}" = "true" ]; then
+            FLAGS="$FLAGS --skip-fetch"
+          fi
+          python -m pipeline.run_daily $FLAGS
+
+      - name: Upload logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pipeline-logs-${{ github.run_id }}
+          path: "*.log"
+          retention-days: 7
