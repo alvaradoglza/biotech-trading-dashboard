@@ -114,6 +114,7 @@ def run_daily_prediction(
     if len(test_df) >= 5:
         X_test, y_test = _build_Xy(test_df, ohe_eval, horizon, threshold)
         metrics = _evaluate(clf_eval, X_test, y_test, train_df, test_df, horizon)
+        metrics["n_positive_train"] = int(y_train.sum())
     else:
         logger.warning(
             "Test set only %d rows — evaluation skipped (need ≥5). "
@@ -248,7 +249,6 @@ def _evaluate(
         "roc_auc": float(auc) if auc is not None else None,
         "n_train_samples": len(train_df),
         "n_test_samples": len(test_df),
-        "n_positive_train": int((y_test >= 0).sum()),  # placeholder; y_train not passed here
         "n_positive_test": int(y_test.sum()),
     }
 

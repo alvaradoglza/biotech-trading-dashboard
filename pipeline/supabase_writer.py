@@ -184,7 +184,8 @@ def upsert_predictions(predictions: list[dict], client: Client | None = None) ->
         response = sb.table("predictions").insert(rows).execute()
     count = len(response.data) if response.data else 0
     logger.info("Upserted %d predictions", count)
-    return count
+    # Return the inserted rows so callers can use the DB-assigned UUIDs
+    return response.data or []
 
 
 # ── signals ───────────────────────────────────────────────────────────────────
@@ -208,9 +209,13 @@ def insert_signals(signals: list[dict], client: Client | None = None) -> int:
             "score": sig.get("score"),
         })
 
-    response = sb.table("signals").insert(rows).execute()
+    response = (
+        sb.table("signals")
+        .upsert(rows, on_conflict="signal_date,ticker,action")
+        .execute()
+    )
     count = len(response.data) if response.data else 0
-    logger.info("Inserted %d signals", count)
+    logger.info("Upserted %d signals", count)
     return count
 
 

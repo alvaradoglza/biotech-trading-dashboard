@@ -186,6 +186,9 @@ def process_daily_signals(
     buy_predictions = sorted(buy_predictions, key=lambda p: p.get("predicted_probability", 0), reverse=True)
 
     available_slots = MAX_OPEN_POSITIONS - len(updated_positions)
+    if available_slots <= 0:
+        logger.info("Portfolio full (%d/%d positions) — no new entries", len(updated_positions), MAX_OPEN_POSITIONS)
+        buy_predictions = []
 
     for pred in buy_predictions[:available_slots]:
         ticker = pred["ticker"]

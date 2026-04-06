@@ -1,8 +1,13 @@
 """
 fetch_fda.py — Fetch FDA announcements (approvals + recalls) via OpenFDA API.
-Returns a list of announcement dicts ready for Supabase upsert.
+
+Strategy:
+  - Fetch ALL recent approvals and recalls (date-based, not per-ticker)
+  - Match results back to our ticker universe via sponsor/firm name
+  - OpenFDA client methods are async; we run them with asyncio.run()
 """
 
+import asyncio
 import logging
 from datetime import datetime, timedelta
 
@@ -14,136 +19,153 @@ logger = logging.getLogger(__name__)
 def fetch_fda_announcements(
     tickers: list[str],
     days_back: int = 7,
+    ticker_to_company: dict[str, str] | None = None,
 ) -> list[dict]:
-    """Fetch recent FDA announcements for the given tickers.
+    """Fetch recent FDA announcements and match to our ticker universe.
 
-    Queries both drug approvals and drug recalls from OpenFDA.
-    Returns a list of announcement dicts with keys matching the Supabase schema.
+    Fetches ALL recent approvals + recalls from OpenFDA (date-range query),
+    then matches each result to a ticker using sponsor/firm name lookup.
 
     Args:
-        tickers: List of stock tickers to query.
-        days_back: How many days back to look for announcements (default 7).
+        tickers: List of stock tickers in our universe.
+        days_back: How many days back to search.
+        ticker_to_company: Optional dict mapping ticker → company name.
+                           If provided, used to build reverse lookup for matching.
 
     Returns:
-        List of announcement dicts with keys:
-        source, ticker, company_name, event_type, title, announcement_url,
-        published_at, raw_text, external_id.
+        List of announcement dicts ready for Supabase upsert.
     """
-    since = datetime.utcnow() - timedelta(days=days_back)
+    return asyncio.run(_fetch_fda_async(tickers, days_back, ticker_to_company or {}))
+
+
+async def _fetch_fda_async(
+    tickers: list[str],
+    days_back: int,
+    ticker_to_company: dict[str, str],
+) -> list[dict]:
+    client = OpenFDAClient()
     announcements = []
 
-    client = OpenFDAClient()
+    # Build reverse lookup: normalized_company_name_fragment → ticker
+    name_to_ticker = _build_name_lookup(tickers, ticker_to_company)
 
-    for ticker in tickers:
-        try:
-            approvals = _fetch_approvals(client, ticker, since)
-            announcements.extend(approvals)
-        except Exception as e:
-            logger.warning("FDA approvals fetch failed for %s: %s", ticker, e)
+    # Fetch all recent approvals across all sponsors
+    try:
+        approvals = await client.get_recent_approvals(days_back=days_back)
+        logger.info("OpenFDA: %d recent approvals fetched", len(approvals))
+        for approval in approvals:
+            ticker = _match_ticker(approval.sponsor_name, name_to_ticker)
+            if ticker is None:
+                continue
+            published_at = approval.approval_date.isoformat() if approval.approval_date else None
+            announcements.append({
+                "source": "openfda",
+                "ticker": ticker,
+                "company_name": approval.sponsor_name,
+                "event_type": "FDA_APPROVAL",
+                "title": (approval.brand_name or approval.generic_name or "FDA Approval")[:500],
+                "announcement_url": approval.url,
+                "published_at": published_at,
+                "raw_text": _approval_text(approval),
+                "external_id": approval.application_number or None,
+            })
+    except Exception as e:
+        logger.warning("FDA approvals fetch failed: %s", e)
 
-        try:
-            recalls = _fetch_recalls(client, ticker, since)
-            announcements.extend(recalls)
-        except Exception as e:
-            logger.warning("FDA recalls fetch failed for %s: %s", ticker, e)
+    # Fetch all recent recalls across all firms
+    try:
+        recalls = await client.get_recent_recalls(days_back=days_back)
+        logger.info("OpenFDA: %d recent recalls fetched", len(recalls))
+        for recall in recalls:
+            ticker = _match_ticker(recall.recalling_firm, name_to_ticker)
+            if ticker is None:
+                continue
+            published_at = (recall.recall_initiation_date or recall.report_date)
+            announcements.append({
+                "source": "openfda",
+                "ticker": ticker,
+                "company_name": recall.recalling_firm,
+                "event_type": "FDA_RECALL",
+                "title": (recall.product_description or "FDA Recall")[:500],
+                "announcement_url": recall.url,
+                "published_at": published_at.isoformat() if published_at else None,
+                "raw_text": _recall_text(recall),
+                "external_id": recall.recall_number or None,
+            })
+    except Exception as e:
+        logger.warning("FDA recalls fetch failed: %s", e)
 
-    logger.info("Fetched %d FDA announcements for %d tickers", len(announcements), len(tickers))
+    logger.info("Fetched %d FDA announcements matched to ticker universe", len(announcements))
     return announcements
 
 
-def _fetch_approvals(client, ticker: str, since: datetime) -> list[dict]:
-    """Fetch FDA drug approvals for a single ticker and normalize to announcement dicts."""
-    try:
-        approvals = client.get_drug_approvals(company_name=ticker, limit=10)
-    except Exception:
-        return []
-
-    results = []
-    for approval in approvals:
-        published_at = _parse_date(getattr(approval, "action_date", None) or getattr(approval, "date", None))
-        if published_at and published_at < since:
+def _build_name_lookup(
+    tickers: list[str],
+    ticker_to_company: dict[str, str],
+) -> dict[str, str]:
+    """Build a {normalized_name_fragment: ticker} lookup for fuzzy matching."""
+    lookup: dict[str, str] = {}
+    for ticker in tickers:
+        company = ticker_to_company.get(ticker, "")
+        if not company:
             continue
-
-        # Build a text summary for ML feature extraction
-        raw_text = _build_approval_text(approval)
-        external_id = getattr(approval, "application_number", None) or getattr(approval, "id", None)
-
-        results.append({
-            "source": "openfda",
-            "ticker": ticker,
-            "company_name": getattr(approval, "sponsor_name", None),
-            "event_type": "FDA_APPROVAL",
-            "title": getattr(approval, "brand_name", None) or getattr(approval, "generic_name", None) or "FDA Approval",
-            "announcement_url": None,
-            "published_at": published_at.isoformat() if published_at else None,
-            "raw_text": raw_text,
-            "external_id": str(external_id) if external_id else None,
-        })
-    return results
+        # Index by ticker itself and several name fragments
+        for fragment in _name_fragments(company):
+            lookup[fragment] = ticker
+    return lookup
 
 
-def _fetch_recalls(client, ticker: str, since: datetime) -> list[dict]:
-    """Fetch FDA drug recalls for a single ticker and normalize to announcement dicts."""
-    try:
-        recalls = client.get_drug_recalls(company_name=ticker, limit=10)
-    except Exception:
-        return []
-
-    results = []
-    for recall in recalls:
-        published_at = _parse_date(getattr(recall, "recall_initiation_date", None) or getattr(recall, "date", None))
-        if published_at and published_at < since:
-            continue
-
-        raw_text = _build_recall_text(recall)
-        external_id = getattr(recall, "recall_number", None) or getattr(recall, "id", None)
-
-        results.append({
-            "source": "openfda",
-            "ticker": ticker,
-            "company_name": getattr(recall, "recalling_firm", None),
-            "event_type": "FDA_RECALL",
-            "title": getattr(recall, "product_description", None) or "FDA Recall",
-            "announcement_url": None,
-            "published_at": published_at.isoformat() if published_at else None,
-            "raw_text": raw_text,
-            "external_id": str(external_id) if external_id else None,
-        })
-    return results
+def _name_fragments(name: str) -> list[str]:
+    """Return normalized fragments of a company name for matching."""
+    name = name.lower().strip()
+    # Strip common legal suffixes
+    for suffix in [" inc.", " inc", " corp.", " corp", " ltd.", " ltd",
+                   " llc", " plc", " therapeutics", " pharmaceuticals",
+                   " biosciences", " bioscience", " biopharma"]:
+        name = name.replace(suffix, "")
+    fragments = [name.strip()]
+    # Also index first word if multi-word
+    parts = name.split()
+    if len(parts) >= 2:
+        fragments.append(parts[0].strip())
+    return [f for f in fragments if len(f) >= 4]
 
 
-def _build_approval_text(approval) -> str:
-    """Build a raw text summary from an FDA approval object for ML feature extraction."""
+def _match_ticker(company_name: str | None, lookup: dict[str, str]) -> str | None:
+    """Try to match a company name to a ticker using the lookup table."""
+    if not company_name or not lookup:
+        return None
+    normalized = company_name.lower().strip()
+    for fragment, ticker in lookup.items():
+        if fragment in normalized or normalized in fragment:
+            return ticker
+    return None
+
+
+def _approval_text(approval) -> str:
     parts = []
-    for attr in ["brand_name", "generic_name", "sponsor_name", "product_type",
-                 "action_type", "indication", "summary"]:
+    for attr, label in [
+        ("brand_name", "Brand"), ("generic_name", "Generic"),
+        ("sponsor_name", "Sponsor"), ("submission_type", "Type"),
+        ("submission_status", "Status"), ("dosage_form", "Form"),
+        ("route", "Route"),
+    ]:
         val = getattr(approval, attr, None)
         if val:
-            parts.append(f"{attr.replace('_', ' ').title()}: {val}")
+            parts.append(f"{label}: {val}")
+    if approval.active_ingredients:
+        parts.append(f"Ingredients: {', '.join(approval.active_ingredients)}")
     return " | ".join(parts)
 
 
-def _build_recall_text(recall) -> str:
-    """Build a raw text summary from an FDA recall object for ML feature extraction."""
+def _recall_text(recall) -> str:
     parts = []
-    for attr in ["product_description", "reason_for_recall", "recalling_firm",
-                 "classification", "voluntary_mandated", "status"]:
+    for attr, label in [
+        ("product_description", "Product"), ("reason_for_recall", "Reason"),
+        ("recalling_firm", "Firm"), ("classification", "Class"),
+        ("voluntary_mandated", "Type"), ("status", "Status"),
+    ]:
         val = getattr(recall, attr, None)
         if val:
-            parts.append(f"{attr.replace('_', ' ').title()}: {val}")
+            parts.append(f"{label}: {val}")
     return " | ".join(parts)
-
-
-def _parse_date(value) -> datetime | None:
-    """Parse a date string or datetime into a datetime object."""
-    if value is None:
-        return None
-    if isinstance(value, datetime):
-        return value
-    if isinstance(value, str):
-        for fmt in ["%Y%m%d", "%Y-%m-%d", "%Y-%m-%dT%H:%M:%S", "%Y-%m-%dT%H:%M:%SZ"]:
-            try:
-                return datetime.strptime(value, fmt)
-            except ValueError:
-                continue
-    return None

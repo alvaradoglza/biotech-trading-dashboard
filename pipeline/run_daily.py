@@ -65,8 +65,8 @@ def main(dry_run: bool = False, skip_fetch: bool = False) -> None:
     sb = None if dry_run else get_client()
 
     # ── Step 1: Load stock universe ───────────────────────────────────────────
-    tickers = _load_tickers()
-    logger.info("Step 1: Loaded %d tickers", len(tickers))
+    tickers, ticker_to_company = _load_tickers()
+    logger.info("Step 1: Loaded %d tickers (%d with company names)", len(tickers), len(ticker_to_company))
 
     # ── Steps 2–3: Fetch + upsert announcements ───────────────────────────────
     new_announcement_rows: list[dict] = []
@@ -79,7 +79,7 @@ def main(dry_run: bool = False, skip_fetch: bool = False) -> None:
 
         logger.info("Step 2: Fetching FDA announcements...")
         try:
-            fda = fetch_fda_announcements(tickers, days_back=7)
+            fda = fetch_fda_announcements(tickers, days_back=7, ticker_to_company=ticker_to_company)
             logger.info("  Fetched %d FDA announcements", len(fda))
             fetched.extend(fda)
         except Exception as e:
@@ -87,7 +87,7 @@ def main(dry_run: bool = False, skip_fetch: bool = False) -> None:
 
         logger.info("Step 3: Fetching ClinicalTrials announcements...")
         try:
-            ct = fetch_clinical_trials_announcements(tickers, days_back=7)
+            ct = fetch_clinical_trials_announcements(tickers, days_back=7, ticker_to_company=ticker_to_company)
             logger.info("  Fetched %d ClinicalTrials announcements", len(ct))
             fetched.extend(ct)
         except Exception as e:
@@ -204,8 +204,19 @@ def main(dry_run: bool = False, skip_fetch: bool = False) -> None:
     if predictions_list and not dry_run:
         for pred in predictions_list:
             pred["model_run_id"] = model_run_id
-        n = upsert_predictions(predictions_list, sb)
-        logger.info("  Wrote %d predictions", n)
+        inserted_preds = upsert_predictions(predictions_list, sb)
+        logger.info("  Wrote %d predictions", len(inserted_preds))
+
+        # Attach DB-assigned UUIDs back so signal.prediction_id is populated
+        ann_id_to_pred_uuid = {
+            row["announcement_id"]: row["id"]
+            for row in inserted_preds
+            if row.get("announcement_id") and row.get("id")
+        }
+        for pred in predictions_list:
+            ann_id = pred.get("announcement_id")
+            if ann_id and ann_id in ann_id_to_pred_uuid:
+                pred["id"] = ann_id_to_pred_uuid[ann_id]
 
     # ── Step 9: Open new positions from BUY signals ───────────────────────────
     logger.info("Step 9: Processing BUY signals...")
@@ -263,19 +274,31 @@ def main(dry_run: bool = False, skip_fetch: bool = False) -> None:
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
-def _load_tickers() -> list[str]:
+def _load_tickers() -> tuple[list[str], dict[str, str]]:
+    """Load tickers and company names from stocks.csv.
+
+    Returns:
+        (tickers list, ticker_to_company dict)
+    """
     stocks_path = Path(__file__).parent.parent / "data" / "stocks.csv"
     if stocks_path.exists():
         try:
             df = pd.read_csv(stocks_path)
-            col = next((c for c in df.columns if c.lower() in ["ticker", "symbol", "code"]), None)
-            if col:
-                return df[col].dropna().str.upper().tolist()[:500]
+            ticker_col = next((c for c in df.columns if c.lower() in ["ticker", "symbol", "code"]), None)
+            name_col = next((c for c in df.columns if c.lower() in ["company_name", "name", "company"]), None)
+            if ticker_col:
+                df = df.dropna(subset=[ticker_col]).head(500)
+                df[ticker_col] = df[ticker_col].str.upper()
+                tickers = df[ticker_col].tolist()
+                ticker_to_company: dict[str, str] = {}
+                if name_col:
+                    ticker_to_company = dict(zip(df[ticker_col], df[name_col].fillna("")))
+                return tickers, ticker_to_company
         except Exception as e:
             logger.warning("Could not load stocks.csv: %s", e)
     fallback = ["MRNA", "BNTX", "NVAX", "REGN", "BIIB", "GILD", "AMGN", "VRTX"]
     logger.warning("Using fallback ticker list (%d tickers)", len(fallback))
-    return fallback
+    return fallback, {}
 
 
 def _load_labeled_announcements_from_supabase(sb) -> pd.DataFrame:
