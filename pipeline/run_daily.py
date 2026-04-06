@@ -242,7 +242,16 @@ def main(dry_run: bool = False, skip_fetch: bool = False) -> None:
 
     if result and not dry_run:
         if result["new_signals"]:
-            insert_signals(result["new_signals"], sb)
+            inserted_signals = insert_signals(result["new_signals"], sb)
+            # Map ticker → signal UUID so trades carry the correct signal_id
+            signal_id_by_ticker = {
+                row["ticker"]: row["id"]
+                for row in inserted_signals
+                if row.get("ticker") and row.get("id")
+            }
+            for trade in result["new_trades"]:
+                if not trade.get("signal_id"):
+                    trade["signal_id"] = signal_id_by_ticker.get(trade["ticker"])
         if result["new_trades"]:
             insert_trades(result["new_trades"], sb)
         if result["updated_positions"]:
@@ -287,7 +296,7 @@ def _load_tickers() -> tuple[list[str], dict[str, str]]:
             ticker_col = next((c for c in df.columns if c.lower() in ["ticker", "symbol", "code"]), None)
             name_col = next((c for c in df.columns if c.lower() in ["company_name", "name", "company"]), None)
             if ticker_col:
-                df = df.dropna(subset=[ticker_col]).head(500)
+                df = df.dropna(subset=[ticker_col])
                 df[ticker_col] = df[ticker_col].str.upper()
                 tickers = df[ticker_col].tolist()
                 ticker_to_company: dict[str, str] = {}

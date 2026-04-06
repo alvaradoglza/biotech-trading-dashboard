@@ -1,9 +1,9 @@
 name: Daily Pipeline
 
 on:
-  # Run every day at 7:07 AM America/Mexico_City (= 13:07 UTC, UTC-6)
+  # Run every weekday at 10:00 AM ET (= 15:00 UTC) — after market open
   schedule:
-    - cron: "7 13 * * *"
+    - cron: "0 15 * * 1-5"
 
   # Allow manual trigger from GitHub Actions UI
   workflow_dispatch:

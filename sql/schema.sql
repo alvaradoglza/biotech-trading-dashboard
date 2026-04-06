@@ -103,6 +103,7 @@ CREATE TABLE IF NOT EXISTS trades (
     created_at  timestamptz  DEFAULT now()
 );
 
+CREATE UNIQUE INDEX IF NOT EXISTS uq_trades_date_ticker_side ON trades (trade_date, ticker, side);
 CREATE INDEX IF NOT EXISTS idx_trades_ticker ON trades (ticker);
 CREATE INDEX IF NOT EXISTS idx_trades_date   ON trades (trade_date DESC);
 
@@ -146,3 +147,35 @@ CREATE TABLE IF NOT EXISTS portfolio_config (
 INSERT INTO portfolio_config (id, initial_capital, cash)
 VALUES (1, 1000000.0, 1000000.0)
 ON CONFLICT (id) DO NOTHING;
+
+-- ── Row-Level Security ────────────────────────────────────────────────────────
+-- Enable RLS on all tables. The pipeline uses the service_role key (bypasses RLS).
+-- The dashboard uses the publishable/anon key → only SELECT is allowed.
+
+ALTER TABLE announcements       ENABLE ROW LEVEL SECURITY;
+ALTER TABLE model_runs          ENABLE ROW LEVEL SECURITY;
+ALTER TABLE predictions         ENABLE ROW LEVEL SECURITY;
+ALTER TABLE signals             ENABLE ROW LEVEL SECURITY;
+ALTER TABLE trades              ENABLE ROW LEVEL SECURITY;
+ALTER TABLE positions           ENABLE ROW LEVEL SECURITY;
+ALTER TABLE portfolio_snapshots ENABLE ROW LEVEL SECURITY;
+ALTER TABLE portfolio_config    ENABLE ROW LEVEL SECURITY;
+
+-- Allow public read access (dashboard uses anon key)
+CREATE POLICY IF NOT EXISTS "public_read_announcements"
+    ON announcements FOR SELECT TO anon USING (true);
+CREATE POLICY IF NOT EXISTS "public_read_model_runs"
+    ON model_runs FOR SELECT TO anon USING (true);
+CREATE POLICY IF NOT EXISTS "public_read_predictions"
+    ON predictions FOR SELECT TO anon USING (true);
+CREATE POLICY IF NOT EXISTS "public_read_signals"
+    ON signals FOR SELECT TO anon USING (true);
+CREATE POLICY IF NOT EXISTS "public_read_trades"
+    ON trades FOR SELECT TO anon USING (true);
+CREATE POLICY IF NOT EXISTS "public_read_positions"
+    ON positions FOR SELECT TO anon USING (true);
+CREATE POLICY IF NOT EXISTS "public_read_snapshots"
+    ON portfolio_snapshots FOR SELECT TO anon USING (true);
+CREATE POLICY IF NOT EXISTS "public_read_config"
+    ON portfolio_config FOR SELECT TO anon USING (true);
+-- Note: INSERT/UPDATE/DELETE require the service_role key (pipeline only).

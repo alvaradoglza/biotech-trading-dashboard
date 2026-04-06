@@ -46,15 +46,15 @@ async def _fetch_fda_async(
     client = OpenFDAClient()
     announcements = []
 
-    # Build reverse lookup: normalized_company_name_fragment → ticker
-    name_to_ticker = _build_name_lookup(tickers, ticker_to_company)
+    # Build reverse lookup: normalized company name → ticker
+    name_lookup = _build_name_lookup(tickers, ticker_to_company)
 
     # Fetch all recent approvals across all sponsors
     try:
         approvals = await client.get_recent_approvals(days_back=days_back)
         logger.info("OpenFDA: %d recent approvals fetched", len(approvals))
         for approval in approvals:
-            ticker = _match_ticker(approval.sponsor_name, name_to_ticker)
+            ticker = _match_ticker(approval.sponsor_name, name_lookup)
             if ticker is None:
                 continue
             published_at = approval.approval_date.isoformat() if approval.approval_date else None
@@ -77,7 +77,7 @@ async def _fetch_fda_async(
         recalls = await client.get_recent_recalls(days_back=days_back)
         logger.info("OpenFDA: %d recent recalls fetched", len(recalls))
         for recall in recalls:
-            ticker = _match_ticker(recall.recalling_firm, name_to_ticker)
+            ticker = _match_ticker(recall.recalling_firm, name_lookup)
             if ticker is None:
                 continue
             published_at = (recall.recall_initiation_date or recall.report_date)
@@ -102,43 +102,80 @@ async def _fetch_fda_async(
 def _build_name_lookup(
     tickers: list[str],
     ticker_to_company: dict[str, str],
-) -> dict[str, str]:
-    """Build a {normalized_name_fragment: ticker} lookup for fuzzy matching."""
-    lookup: dict[str, str] = {}
+) -> dict[str, tuple[str, str]]:
+    """Build a {normalized_full_name: (ticker, first_word)} lookup.
+
+    Returns dict mapping normalized full company name → ticker.
+    Also stores the first significant word for prefix matching.
+    """
+    lookup: dict[str, str] = {}          # full normalized name → ticker
+    prefix_lookup: dict[str, str] = {}   # first word (≥5 chars) → ticker
     for ticker in tickers:
         company = ticker_to_company.get(ticker, "")
         if not company:
             continue
-        # Index by ticker itself and several name fragments
-        for fragment in _name_fragments(company):
-            lookup[fragment] = ticker
-    return lookup
+        normalized = _normalize(company)
+        if len(normalized) >= 4:
+            lookup[normalized] = ticker
+        parts = normalized.split()
+        if parts and len(parts[0]) >= 5:
+            # Only add prefix if not already claimed by another ticker
+            if parts[0] not in prefix_lookup:
+                prefix_lookup[parts[0]] = ticker
+    return lookup, prefix_lookup
 
 
-def _name_fragments(name: str) -> list[str]:
-    """Return normalized fragments of a company name for matching."""
+def _normalize(name: str) -> str:
+    """Strip legal suffixes and lowercase a company name."""
     name = name.lower().strip()
-    # Strip common legal suffixes
-    for suffix in [" inc.", " inc", " corp.", " corp", " ltd.", " ltd",
-                   " llc", " plc", " therapeutics", " pharmaceuticals",
-                   " biosciences", " bioscience", " biopharma"]:
-        name = name.replace(suffix, "")
-    fragments = [name.strip()]
-    # Also index first word if multi-word
-    parts = name.split()
-    if len(parts) >= 2:
-        fragments.append(parts[0].strip())
-    return [f for f in fragments if len(f) >= 4]
+    for suffix in [
+        " incorporated", " inc.", " inc", " corporation", " corp.", " corp",
+        " limited", " ltd.", " ltd", " llc", " plc", " sa", " ag", " nv",
+        " therapeutics", " pharmaceutical", " pharmaceuticals",
+        " biosciences", " bioscience", " biopharma", " biopharmaceuticals",
+        " biopharmaceutical", " oncology", " genomics", " sciences", " science",
+        " health", " healthcare", " medical", " medicine", " labs", " laboratory",
+        " laboratories",
+    ]:
+        if name.endswith(suffix):
+            name = name[: -len(suffix)].strip()
+    return name.strip()
 
 
-def _match_ticker(company_name: str | None, lookup: dict[str, str]) -> str | None:
-    """Try to match a company name to a ticker using the lookup table."""
-    if not company_name or not lookup:
+def _match_ticker(
+    company_name: str | None,
+    lookup_pair: tuple[dict, dict],
+) -> str | None:
+    """Match a company name to a ticker with scored precision.
+
+    Priority:
+      1. Exact normalized match (highest confidence)
+      2. Candidate's normalized name is a prefix of our name (≥8 chars)
+      3. Long substring match only for fragments ≥ 10 chars (reduces false positives)
+    """
+    if not company_name:
         return None
-    normalized = company_name.lower().strip()
-    for fragment, ticker in lookup.items():
-        if fragment in normalized or normalized in fragment:
+    lookup, prefix_lookup = lookup_pair
+    normalized = _normalize(company_name)
+    if not normalized or len(normalized) < 4:
+        return None
+
+    # 1. Exact match
+    if normalized in lookup:
+        return lookup[normalized]
+
+    # 2. Our known name is contained in candidate (prefix / full-name contained)
+    for known, ticker in lookup.items():
+        if len(known) >= 8 and known in normalized:
             return ticker
+        if len(normalized) >= 8 and normalized in known:
+            return ticker
+
+    # 3. First-word prefix match (long words only, avoids "bio", "gen", etc.)
+    parts = normalized.split()
+    if parts and len(parts[0]) >= 7 and parts[0] in prefix_lookup:
+        return prefix_lookup[parts[0]]
+
     return None
 
 

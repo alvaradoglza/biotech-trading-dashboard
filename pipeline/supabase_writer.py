@@ -190,12 +190,14 @@ def upsert_predictions(predictions: list[dict], client: Client | None = None) ->
 
 # ── signals ───────────────────────────────────────────────────────────────────
 
-def insert_signals(signals: list[dict], client: Client | None = None) -> int:
-    """Insert trading signals. Each signal dict needs: prediction_id, signal_date,
-    ticker, action, reason, score.
+def insert_signals(signals: list[dict], client: Client | None = None) -> list[dict]:
+    """Upsert trading signals. Returns the inserted/updated rows (with DB-assigned UUIDs).
+
+    Each signal dict needs: prediction_id, signal_date, ticker, action, reason, score.
+    Deduplicates on (signal_date, ticker, action).
     """
     if not signals:
-        return 0
+        return []
     sb = client or get_client()
 
     rows = []
@@ -214,16 +216,18 @@ def insert_signals(signals: list[dict], client: Client | None = None) -> int:
         .upsert(rows, on_conflict="signal_date,ticker,action")
         .execute()
     )
-    count = len(response.data) if response.data else 0
-    logger.info("Upserted %d signals", count)
-    return count
+    inserted = response.data or []
+    logger.info("Upserted %d signals", len(inserted))
+    return inserted
 
 
 # ── trades ────────────────────────────────────────────────────────────────────
 
 def insert_trades(trades: list[dict], client: Client | None = None) -> int:
-    """Insert executed trades. Each trade dict needs: signal_id, trade_date,
-    ticker, side, quantity, price, amount_usd, status.
+    """Upsert executed trades. Deduplicates on (trade_date, ticker, side).
+
+    Each trade dict needs: signal_id, trade_date, ticker, side, quantity, price,
+    amount_usd, status. signal_id is optional but should be set for BUY trades.
     """
     if not trades:
         return 0
@@ -232,7 +236,7 @@ def insert_trades(trades: list[dict], client: Client | None = None) -> int:
     rows = []
     for trade in trades:
         rows.append({
-            "signal_id": trade.get("signal_id"),
+            "signal_id": _valid_uuid(trade.get("signal_id")),
             "trade_date": _to_iso(trade.get("trade_date")),
             "ticker": trade["ticker"],
             "side": trade["side"],
@@ -243,9 +247,13 @@ def insert_trades(trades: list[dict], client: Client | None = None) -> int:
             "exit_reason": trade.get("exit_reason"),
         })
 
-    response = sb.table("trades").insert(rows).execute()
+    response = (
+        sb.table("trades")
+        .upsert(rows, on_conflict="trade_date,ticker,side")
+        .execute()
+    )
     count = len(response.data) if response.data else 0
-    logger.info("Inserted %d trades", count)
+    logger.info("Upserted %d trades", count)
     return count
 
 

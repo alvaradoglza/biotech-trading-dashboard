@@ -46,8 +46,8 @@ async def _fetch_ct_async(
     client = ClinicalTrialsClient()
     announcements = []
 
-    # Build reverse lookup: normalized_name_fragment → ticker
-    name_to_ticker = _build_name_lookup(tickers, ticker_to_company)
+    # Build reverse lookup: normalized company name → ticker
+    name_lookup = _build_name_lookup(tickers, ticker_to_company)
 
     # Fetch ALL studies updated in the last `days_back` days using a date-range term.
     # ClinicalTrials API query.term supports AREA[LastUpdatePostDate]RANGE[...] syntax.
@@ -67,7 +67,7 @@ async def _fetch_ct_async(
             )
 
             for trial in trials:
-                ticker = _match_ticker(trial.sponsor, name_to_ticker)
+                ticker = _match_ticker(trial.sponsor, name_lookup)
                 if ticker is None:
                     continue
 
@@ -106,37 +106,75 @@ async def _fetch_ct_async(
 def _build_name_lookup(
     tickers: list[str],
     ticker_to_company: dict[str, str],
-) -> dict[str, str]:
+) -> tuple[dict, dict]:
+    """Build (full_name_lookup, prefix_lookup) for scored company matching."""
     lookup: dict[str, str] = {}
+    prefix_lookup: dict[str, str] = {}
     for ticker in tickers:
         company = ticker_to_company.get(ticker, "")
         if not company:
             continue
-        for fragment in _name_fragments(company):
-            lookup[fragment] = ticker
-    return lookup
+        normalized = _normalize(company)
+        if len(normalized) >= 4:
+            lookup[normalized] = ticker
+        parts = normalized.split()
+        if parts and len(parts[0]) >= 5:
+            if parts[0] not in prefix_lookup:
+                prefix_lookup[parts[0]] = ticker
+    return lookup, prefix_lookup
 
 
-def _name_fragments(name: str) -> list[str]:
+def _normalize(name: str) -> str:
+    """Strip legal suffixes and lowercase a company name."""
     name = name.lower().strip()
-    for suffix in [" inc.", " inc", " corp.", " corp", " ltd.", " ltd",
-                   " llc", " plc", " therapeutics", " pharmaceuticals",
-                   " biosciences", " bioscience", " biopharma"]:
-        name = name.replace(suffix, "")
-    fragments = [name.strip()]
-    parts = name.split()
-    if len(parts) >= 2:
-        fragments.append(parts[0].strip())
-    return [f for f in fragments if len(f) >= 4]
+    for suffix in [
+        " incorporated", " inc.", " inc", " corporation", " corp.", " corp",
+        " limited", " ltd.", " ltd", " llc", " plc", " sa", " ag", " nv",
+        " therapeutics", " pharmaceutical", " pharmaceuticals",
+        " biosciences", " bioscience", " biopharma", " biopharmaceuticals",
+        " biopharmaceutical", " oncology", " genomics", " sciences", " science",
+        " health", " healthcare", " medical", " medicine", " labs", " laboratory",
+        " laboratories",
+    ]:
+        if name.endswith(suffix):
+            name = name[: -len(suffix)].strip()
+    return name.strip()
 
 
-def _match_ticker(sponsor: str | None, lookup: dict[str, str]) -> str | None:
-    if not sponsor or not lookup:
+def _match_ticker(
+    sponsor: str | None,
+    lookup_pair: tuple[dict, dict],
+) -> str | None:
+    """Match a sponsor name to a ticker with scored precision.
+
+    Priority:
+      1. Exact normalized match
+      2. Long substring match (≥8 chars) in either direction
+      3. First-word prefix match (≥7 chars)
+    """
+    if not sponsor:
         return None
-    normalized = sponsor.lower().strip()
-    for fragment, ticker in lookup.items():
-        if fragment in normalized or normalized in fragment:
+    lookup, prefix_lookup = lookup_pair
+    normalized = _normalize(sponsor)
+    if not normalized or len(normalized) < 4:
+        return None
+
+    # 1. Exact match
+    if normalized in lookup:
+        return lookup[normalized]
+
+    # 2. Long substring in either direction
+    for known, ticker in lookup.items():
+        if len(known) >= 8 and known in normalized:
             return ticker
+        if len(normalized) >= 8 and normalized in known:
+            return ticker
+
+    # 3. First-word prefix match
+    parts = normalized.split()
+    if parts and len(parts[0]) >= 7 and parts[0] in prefix_lookup:
+        return prefix_lookup[parts[0]]
+
     return None
 
 
