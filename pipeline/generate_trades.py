@@ -30,6 +30,76 @@ STOP_LOSS_PCT = 1.00     # No stop loss for 30d (SL = 100%)
 HORIZON_DAYS = 50        # Max holding period (calendar days)
 
 
+def process_exits_only(
+    open_positions: list[dict],
+    cash: float,
+    current_prices: dict[str, float],
+    today: date | None = None,
+) -> dict:
+    """Check open positions for exits (TP / horizon). Does NOT open new positions.
+
+    Args:
+        open_positions: Current positions from Supabase.
+        cash: Current cash balance.
+        current_prices: Dict of {ticker: price}.
+        today: Date override (defaults to today).
+
+    Returns:
+        Dict with keys:
+        - new_trades: list of SELL trade dicts for closed positions
+        - remaining_positions: positions that were NOT closed (with updated market values)
+        - closed_positions: list of ticker strings to delete
+        - updated_cash: cash after proceeds from closes
+    """
+    today = today or date.today()
+    new_trades = []
+    remaining_positions = []
+    closed_tickers = []
+
+    for pos in open_positions:
+        ticker = pos["ticker"]
+        current_price = current_prices.get(ticker)
+
+        if current_price is None:
+            logger.warning("No price for open position %s — holding", ticker)
+            remaining_positions.append(pos)
+            continue
+
+        exit_result = _check_exit(pos, current_price, today)
+
+        if exit_result["should_exit"]:
+            qty = pos["quantity"]
+            exit_price = exit_result["exit_price"]
+            sell_proceeds = qty * exit_price * (1 - COMMISSION_PCT)
+            new_trades.append({
+                "ticker": ticker,
+                "side": "SELL",
+                "quantity": qty,
+                "price": exit_price,
+                "amount_usd": sell_proceeds,
+                "trade_date": today.isoformat(),
+                "status": "filled",
+                "exit_reason": exit_result["reason"],
+            })
+            cash += sell_proceeds
+            closed_tickers.append(ticker)
+            logger.info(
+                "Exit %s at $%.2f (reason: %s)", ticker, exit_price, exit_result["reason"]
+            )
+        else:
+            pos = pos.copy()
+            pos["market_value"] = pos["quantity"] * current_price
+            pos["unrealized_pnl"] = (current_price - pos["avg_cost"]) * pos["quantity"]
+            remaining_positions.append(pos)
+
+    return {
+        "new_trades": new_trades,
+        "remaining_positions": remaining_positions,
+        "closed_positions": closed_tickers,
+        "updated_cash": cash,
+    }
+
+
 def process_daily_signals(
     predictions: list[dict],
     open_positions: list[dict],

@@ -79,6 +79,35 @@ def upsert_announcements(announcements: list[dict], client: Client | None = None
     return count
 
 
+# ── new-announcement detection ────────────────────────────────────────────────
+
+def get_new_announcements_since(timestamp_iso: str, client: Client | None = None) -> list[dict]:
+    """Return announcements that were INSERTED (not updated) after timestamp_iso.
+
+    Works because created_at is set once on INSERT and is NOT included in
+    upsert rows, so on-conflict updates do not change it.
+
+    Args:
+        timestamp_iso: ISO 8601 string captured just before the upsert call.
+
+    Returns:
+        List of announcement dicts with Supabase UUIDs as 'id'.
+    """
+    sb = client or get_client()
+    try:
+        resp = (
+            sb.table("announcements")
+            .select("id, ticker, source, event_type, published_at, raw_text, return_30d, return_5d")
+            .gte("created_at", timestamp_iso)
+            .order("published_at", desc=False)
+            .execute()
+        )
+        return resp.data or []
+    except Exception as e:
+        logger.error("Failed to query new announcements since %s: %s", timestamp_iso, e)
+        return []
+
+
 # ── model_runs ────────────────────────────────────────────────────────────────
 
 def upsert_model_run(metrics: dict, client: Client | None = None) -> str | None:

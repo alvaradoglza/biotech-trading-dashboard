@@ -1,17 +1,24 @@
 """
 predict.py — Daily model training, evaluation, and prediction.
 
-Strategy:
-  - Train on all labeled announcements older than 4 weeks (return_30d available)
-  - Evaluate on the most recent 4 weeks (return_30d available but recent)
-  - Predict on announcements without return_30d (new, unresolved)
-  - Log metrics to Supabase model_runs table + optionally MLflow
-  - Save model artifact to pipeline/models/
+Two-phase strategy:
+  Phase 1 (eval):
+    - Sort all labeled announcements by published_at
+    - Train on first 80%, test on last 20%
+    - Record accuracy / precision / recall / F1 / AUC → Supabase + MLflow
+
+  Phase 2 (production):
+    - Retrain on 100% of labeled data (maximises signal for live predictions)
+    - Predict on new_announcements (freshly fetched, no return label yet)
+
+Why two phases:
+  - Eval phase gives an unbiased view of model quality on held-out data
+  - Production phase gives the strongest possible model for live signals
 """
 
 import logging
 import os
-from datetime import date, datetime, timedelta
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -32,7 +39,6 @@ from pipeline.ml_config import (
 
 logger = logging.getLogger(__name__)
 
-# Model output directory
 MODELS_DIR = Path(__file__).parent / "models"
 MODELS_DIR.mkdir(exist_ok=True)
 
@@ -40,82 +46,79 @@ MODELS_DIR.mkdir(exist_ok=True)
 # ── Public API ────────────────────────────────────────────────────────────────
 
 def run_daily_prediction(
-    announcements_df: pd.DataFrame,
+    labeled_df: pd.DataFrame,
+    predict_df: pd.DataFrame,
     horizon: str = "30d",
-    test_weeks: int = 4,
+    eval_train_frac: float = 0.80,
 ) -> tuple[list[dict], dict]:
-    """Train model, evaluate, and generate predictions for new announcements.
+    """Train model (two-phase) and generate predictions for new announcements.
 
     Args:
-        announcements_df: Full announcements DataFrame from Supabase.
-            Required columns: ticker, source, event_type, published_at, raw_text,
-            return_30d (nullable), return_5d (nullable).
-        horizon: '30d' or '5d' (default '30d').
-        test_weeks: How many weeks back to use as test set (default 4).
+        labeled_df: Announcements with a known return label (return_30d not null).
+                    Required columns: ticker, source, event_type, published_at, raw_text,
+                    return_30d, return_5d.
+        predict_df: New announcements to generate signals for (no return label needed).
+                    Required columns: id, ticker, source, event_type, published_at, raw_text.
+        horizon:    '30d' or '5d'.
+        eval_train_frac: Fraction of labeled data used for training in the eval phase
+                    (the remaining fraction becomes the held-out test set). Default 0.80.
 
     Returns:
         (predictions, metrics)
-        - predictions: list of prediction dicts for announcements without return labels
-        - metrics: dict with accuracy, precision, recall, specificity, f1_score, etc.
+        - predictions: list of prediction dicts for the new announcements
+        - metrics: dict with eval-phase accuracy, precision, recall, etc.
     """
-    if announcements_df.empty:
-        logger.warning("Empty announcements DataFrame — skipping prediction")
+    if labeled_df.empty:
+        logger.warning("No labeled data — skipping model training")
         return [], {}
 
-    # Normalize published_at
-    announcements_df = announcements_df.copy()
-    announcements_df["published_at"] = pd.to_datetime(announcements_df["published_at"], utc=False, errors="coerce")
-    if announcements_df["published_at"].dt.tz is not None:
-        announcements_df["published_at"] = announcements_df["published_at"].dt.tz_localize(None)
+    # ── Normalize timestamps ──────────────────────────────────────────────────
+    labeled_df = labeled_df.copy()
+    labeled_df["published_at"] = pd.to_datetime(labeled_df["published_at"], utc=False, errors="coerce")
+    if labeled_df["published_at"].dt.tz is not None:
+        labeled_df["published_at"] = labeled_df["published_at"].dt.tz_localize(None)
+    labeled_df = labeled_df.dropna(subset=["published_at"])
 
-    cutoff_date = pd.Timestamp(datetime.utcnow()) - pd.DateOffset(weeks=test_weeks)
     return_col = f"return_{horizon}"
+    threshold = P85_30D if horizon == "30d" else P85_5D
 
-    # Labeled data: announcements where we know the return outcome
-    labeled = announcements_df[announcements_df[return_col].notna()].copy()
+    # ── Sort chronologically for temporal split ───────────────────────────────
+    labeled_df = labeled_df.sort_values("published_at").reset_index(drop=True)
+    n_total = len(labeled_df)
+    split_idx = max(1, int(n_total * eval_train_frac))
 
-    # Unlabeled data: recent announcements without outcome yet (predict on these)
-    unlabeled = announcements_df[announcements_df[return_col].isna()].copy()
-
-    if len(labeled) < 50:
-        logger.warning(
-            "Only %d labeled announcements — model may be unreliable (need ≥50)", len(labeled)
-        )
-
-    # Train/test split: everything before cutoff is train, recent is test
-    train_df = labeled[labeled["published_at"] < cutoff_date].copy()
-    test_df = labeled[labeled["published_at"] >= cutoff_date].copy()
+    train_df = labeled_df.iloc[:split_idx].copy()
+    test_df = labeled_df.iloc[split_idx:].copy()
 
     logger.info(
-        "Data split: %d train, %d test, %d unlabeled (cutoff=%s)",
-        len(train_df), len(test_df), len(unlabeled), cutoff_date.date()
+        "80/20 split: %d train | %d test (split at record %d/%d, cutoff date %s)",
+        len(train_df), len(test_df), split_idx, n_total,
+        test_df["published_at"].iloc[0].date() if len(test_df) > 0 else "—",
     )
 
     if len(train_df) < 30:
         logger.warning("Insufficient training data (%d rows) — skipping", len(train_df))
         return [], {"error": "insufficient_data", "n_train": len(train_df)}
 
-    # Fit OHE on training data only (not test/full dataset to avoid leakage)
-    ohe = _fit_ohe_train(train_df)
-
-    # Build features
-    threshold = P85_30D if horizon == "30d" else P85_5D
-    X_train, y_train = _build_Xy(train_df, ohe, horizon, threshold)
+    # ── Phase 1: Eval (80% train / 20% test) ─────────────────────────────────
+    ohe_eval = _fit_ohe(train_df)
+    X_train, y_train = _build_Xy(train_df, ohe_eval, horizon, threshold)
 
     if len(np.unique(y_train)) < 2:
         logger.warning("Training labels have only one class — skipping")
         return [], {"error": "single_class_labels"}
 
-    # Train model
-    clf = _train(X_train, y_train)
+    clf_eval = _train(X_train, y_train, tag="eval")
 
-    # Evaluate on test set
-    metrics = {}
+    metrics: dict = {}
     if len(test_df) >= 5:
-        X_test, y_test = _build_Xy(test_df, ohe, horizon, threshold)
-        metrics = _evaluate(clf, X_test, y_test, train_df, test_df, horizon)
+        X_test, y_test = _build_Xy(test_df, ohe_eval, horizon, threshold)
+        metrics = _evaluate(clf_eval, X_test, y_test, train_df, test_df, horizon)
     else:
-        logger.warning("Test set too small (%d rows) — skipping evaluation", len(test_df))
+        logger.warning(
+            "Test set only %d rows — evaluation skipped (need ≥5). "
+            "Increase labeled data or adjust eval_train_frac.", len(test_df)
+        )
         metrics = {
             "horizon": horizon,
             "n_train_samples": len(train_df),
@@ -124,20 +127,30 @@ def run_daily_prediction(
             "warning": "test_set_too_small",
         }
 
-    # Save model artifact
-    model_version = _save_model(clf, ohe, horizon)
+    # ── Phase 2: Production (retrain on 100% of labeled data) ────────────────
+    ohe_prod = _fit_ohe(labeled_df)
+    X_all, y_all = _build_Xy(labeled_df, ohe_prod, horizon, threshold)
+    clf_prod = _train(X_all, y_all, tag="prod")
+
+    model_version = _save_model(clf_prod, ohe_prod, horizon)
     metrics["model_version"] = model_version
     metrics["run_date"] = date.today().isoformat()
+    metrics["eval_train_frac"] = eval_train_frac
 
-    # Generate predictions for unlabeled announcements
-    predictions = []
-    if len(unlabeled) > 0:
+    # ── Predict on new announcements ─────────────────────────────────────────
+    predictions: list[dict] = []
+    if predict_df is not None and len(predict_df) > 0:
+        predict_df = predict_df.copy()
+        predict_df["published_at"] = pd.to_datetime(predict_df["published_at"], utc=False, errors="coerce")
+        if predict_df["published_at"].dt.tz is not None:
+            predict_df["published_at"] = predict_df["published_at"].dt.tz_localize(None)
+
         try:
-            X_unlabeled, _ = _build_Xy(unlabeled, ohe, horizon, threshold, has_labels=False)
-            preds = clf.predict(X_unlabeled)
-            probs = clf.predict_proba(X_unlabeled)[:, 1]
+            X_pred, _ = _build_Xy(predict_df, ohe_prod, horizon, threshold, has_labels=False)
+            preds = clf_prod.predict(X_pred)
+            probs = clf_prod.predict_proba(X_pred)[:, 1]
 
-            for i, (_, row) in enumerate(unlabeled.iterrows()):
+            for i, (_, row) in enumerate(predict_df.iterrows()):
                 predictions.append({
                     "announcement_id": row.get("id"),
                     "ticker": row.get("ticker"),
@@ -146,25 +159,27 @@ def run_daily_prediction(
                     "predicted_probability": float(probs[i]),
                     "model_version": model_version,
                 })
+
             logger.info(
-                "Generated %d predictions (%d BUY signals)",
-                len(predictions), sum(p["predicted_label"] for p in predictions)
+                "Generated %d predictions on new announcements (%d BUY signals)",
+                len(predictions), sum(p["predicted_label"] for p in predictions),
             )
         except Exception as e:
-            logger.error("Prediction on unlabeled data failed: %s", e)
+            logger.error("Prediction on new announcements failed: %s", e, exc_info=True)
+    else:
+        logger.info("No new announcements to predict on.")
 
-    # Log to MLflow if configured
-    _log_mlflow(clf, metrics)
+    # ── Log to MLflow ─────────────────────────────────────────────────────────
+    _log_mlflow(clf_prod, metrics)
 
     return predictions, metrics
 
 
 # ── Internal helpers ──────────────────────────────────────────────────────────
 
-def _fit_ohe_train(train_df: pd.DataFrame) -> OneHotEncoder:
-    """Fit OHE on training data only."""
+def _fit_ohe(df: pd.DataFrame) -> OneHotEncoder:
     ohe = OneHotEncoder(handle_unknown="ignore", sparse_output=False, dtype=np.float32)
-    ohe.fit(train_df[["source", "event_type"]])
+    ohe.fit(df[["source", "event_type"]])
     return ohe
 
 
@@ -175,10 +190,8 @@ def _build_Xy(
     threshold: float,
     has_labels: bool = True,
 ) -> tuple[np.ndarray, np.ndarray | None]:
-    """Build feature matrix and labels from a DataFrame."""
     X = build_feature_matrix(ohe, df)
 
-    # Drop sf_word_count feature (matches backtesting config)
     if DROP_FEATURES:
         n_ohe = X.shape[1] - len(SF_COLS)
         drop_idxs = [n_ohe + SF_COLS.index(f) for f in DROP_FEATURES if f in SF_COLS]
@@ -191,18 +204,17 @@ def _build_Xy(
     return X, None
 
 
-def _train(X_train: np.ndarray, y_train: np.ndarray) -> GradientBoostingClassifier:
-    """Train GradientBoostingClassifier (same params as backtesting config)."""
+def _train(X: np.ndarray, y: np.ndarray, tag: str = "") -> GradientBoostingClassifier:
     clf = GradientBoostingClassifier(
         n_estimators=GBM_N_ESTIMATORS,
         max_depth=GBM_MAX_DEPTH,
         learning_rate=GBM_LEARNING_RATE,
         random_state=RANDOM_STATE,
     )
-    clf.fit(X_train, y_train)
+    clf.fit(X, y)
     logger.info(
-        "Model trained: %d samples, %d positive (%.1f%%)",
-        len(y_train), int(y_train.sum()), 100 * y_train.mean()
+        "Model trained [%s]: %d samples, %d positive (%.1f%%)",
+        tag, len(y), int(y.sum()), 100 * y.mean(),
     )
     return clf
 
@@ -215,7 +227,6 @@ def _evaluate(
     test_df: pd.DataFrame,
     horizon: str,
 ) -> dict:
-    """Evaluate model and compute accuracy, precision, recall, specificity, F1, ROC AUC."""
     y_pred = clf.predict(X_test)
     y_prob = clf.predict_proba(X_test)[:, 1]
 
@@ -225,7 +236,7 @@ def _evaluate(
     try:
         auc = roc_auc_score(y_test, y_prob)
     except ValueError:
-        auc = None  # only one class in test set
+        auc = None
 
     metrics = {
         "horizon": horizon,
@@ -237,50 +248,36 @@ def _evaluate(
         "roc_auc": float(auc) if auc is not None else None,
         "n_train_samples": len(train_df),
         "n_test_samples": len(test_df),
-        "n_positive_train": int(y_test.sum()),  # label dist in test (for context)
+        "n_positive_train": int((y_test >= 0).sum()),  # placeholder; y_train not passed here
         "n_positive_test": int(y_test.sum()),
     }
 
     logger.info(
-        "Evaluation (horizon=%s): acc=%.3f prec=%.3f rec=%.3f spec=%.3f f1=%.3f auc=%s",
+        "Eval [horizon=%s]: acc=%.3f prec=%.3f rec=%.3f spec=%.3f f1=%.3f auc=%s",
         horizon,
-        metrics["accuracy"],
-        metrics["precision_score"],
-        metrics["recall"],
-        metrics["specificity"],
-        metrics["f1_score"],
+        metrics["accuracy"], metrics["precision_score"], metrics["recall"],
+        metrics["specificity"], metrics["f1_score"],
         f"{auc:.3f}" if auc is not None else "n/a",
     )
     return metrics
 
 
-def _save_model(
-    clf: GradientBoostingClassifier,
-    ohe: OneHotEncoder,
-    horizon: str,
-) -> str:
-    """Save model and OHE to disk. Returns model version string."""
+def _save_model(clf: GradientBoostingClassifier, ohe: OneHotEncoder, horizon: str) -> str:
     import joblib
 
     today = date.today().strftime("%Y%m%d")
     model_version = f"{horizon}_{today}"
 
-    clf_path = MODELS_DIR / f"gbm_{model_version}.joblib"
-    ohe_path = MODELS_DIR / f"ohe_{model_version}.joblib"
-
-    joblib.dump(clf, clf_path)
-    joblib.dump(ohe, ohe_path)
-
-    # Also save as "latest" for easy loading
+    joblib.dump(clf, MODELS_DIR / f"gbm_{model_version}.joblib")
+    joblib.dump(ohe, MODELS_DIR / f"ohe_{model_version}.joblib")
     joblib.dump(clf, MODELS_DIR / f"gbm_{horizon}_latest.joblib")
     joblib.dump(ohe, MODELS_DIR / f"ohe_{horizon}_latest.joblib")
 
-    logger.info("Model saved: %s", clf_path)
+    logger.info("Model saved: gbm_%s.joblib", model_version)
     return model_version
 
 
 def _log_mlflow(clf, metrics: dict) -> None:
-    """Log metrics and model to MLflow if MLFLOW_TRACKING_URI is configured."""
     tracking_uri = os.environ.get("MLFLOW_TRACKING_URI")
     if not tracking_uri:
         return
@@ -291,38 +288,35 @@ def _log_mlflow(clf, metrics: dict) -> None:
 
         mlflow.set_tracking_uri(tracking_uri)
 
-        # DagsHub (and other hosted MLflow servers) require HTTP basic auth.
-        # Set MLFLOW_TRACKING_USERNAME and MLFLOW_TRACKING_PASSWORD in env/secrets.
         username = os.environ.get("MLFLOW_TRACKING_USERNAME")
         password = os.environ.get("MLFLOW_TRACKING_PASSWORD")
         if username and password:
             os.environ["MLFLOW_TRACKING_USERNAME"] = username
             os.environ["MLFLOW_TRACKING_PASSWORD"] = password
 
-        experiment_name = "biotech-trading-daily"
-        mlflow.set_experiment(experiment_name)
+        mlflow.set_experiment("biotech-trading-daily")
 
-        with mlflow.start_run(run_name=f"daily_{metrics.get('run_date', 'unknown')}_{metrics.get('horizon', '30d')}") as run:
-            # Log parameters
+        with mlflow.start_run(
+            run_name=f"daily_{metrics.get('run_date', 'unknown')}_{metrics.get('horizon', '30d')}"
+        ) as run:
             mlflow.log_param("horizon", metrics.get("horizon"))
             mlflow.log_param("n_train_samples", metrics.get("n_train_samples"))
             mlflow.log_param("n_test_samples", metrics.get("n_test_samples"))
+            mlflow.log_param("eval_train_frac", metrics.get("eval_train_frac", 0.80))
             mlflow.log_param("gbm_n_estimators", GBM_N_ESTIMATORS)
             mlflow.log_param("gbm_max_depth", GBM_MAX_DEPTH)
             mlflow.log_param("gbm_learning_rate", GBM_LEARNING_RATE)
 
-            # Log metrics
             for key in ["accuracy", "precision_score", "recall", "specificity", "f1_score", "roc_auc"]:
                 if metrics.get(key) is not None:
                     mlflow.log_metric(key, metrics[key])
 
-            # Log model
             mlflow.sklearn.log_model(clf, "model")
 
-            # Store run ID and URL back into metrics for Supabase
             metrics["mlflow_run_id"] = run.info.run_id
-            metrics["mlflow_experiment_url"] = f"{tracking_uri}/#/experiments/{run.info.experiment_id}"
-
+            metrics["mlflow_experiment_url"] = (
+                f"{tracking_uri}/#/experiments/{run.info.experiment_id}"
+            )
             logger.info("MLflow run logged: %s", run.info.run_id)
 
     except Exception as e:

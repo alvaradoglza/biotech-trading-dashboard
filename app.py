@@ -333,7 +333,7 @@ elif section == "Announcements":
 
 elif section == "ML Predictions":
     st.title("ML Predictions")
-    st.caption("GradientBoosting classifier trained daily on all labeled announcements")
+    st.caption("GBM trained on 100% of labeled data · Confidence = P(return > 7.22% in 30d) · BUY signal when confidence ≥ 50%")
 
     preds_df = load_recent_predictions(limit=100)
 
@@ -374,8 +374,9 @@ elif section == "ML Predictions":
 elif section == "Model Performance":
     st.title("Model Performance")
     st.caption(
-        "GBM trained daily · Train: all data except last 4 weeks · Test: last 4 weeks\n\n"
-        "Metrics track whether the model is improving or degrading over time."
+        "GBM trained daily · Two-phase: eval on 80/20 temporal split, then retrain on 100% for live predictions\n\n"
+        "Train = first 80% of labeled announcements (chronological) · Test = most recent 20% · "
+        "Confidence = P(return > 7.22% in 30d)"
     )
 
     model_df = load_model_runs(limit=90)
