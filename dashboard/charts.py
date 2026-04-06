@@ -205,6 +205,126 @@ def prediction_distribution_chart(df: pd.DataFrame) -> go.Figure:
     return fig
 
 
+# ── Portfolio composition donut ───────────────────────────────────────────────
+
+def portfolio_composition_chart(positions_df: pd.DataFrame, cash: float, total_value: float) -> go.Figure:
+    """Donut chart showing cash vs each stock position as share of total portfolio.
+
+    Args:
+        positions_df: Enriched positions DataFrame with live_market_value or market_value.
+        cash: Current cash balance.
+        total_value: Total portfolio value (cash + equity).
+    """
+    if total_value <= 0:
+        return _empty_chart("No portfolio data")
+
+    labels = []
+    values = []
+    colors = []
+
+    # Cash slice
+    labels.append("Cash")
+    values.append(max(cash, 0))
+    colors.append("#FF9F0A")
+
+    # One slice per position
+    palette = [
+        "#0A84FF", "#30D158", "#BF5AF2", "#FF375F", "#5AC8FA",
+        "#FFD60A", "#FF6961", "#77DD77", "#AEC6CF", "#CFCFC4",
+        "#B39EB5", "#FFB347", "#87CEEB", "#DDA0DD", "#98FB98",
+        "#F08080", "#20B2AA", "#FF7F50", "#9370DB", "#3CB371",
+    ]
+
+    mv_col = "live_market_value" if "live_market_value" in positions_df.columns else "market_value"
+
+    for i, (_, row) in enumerate(positions_df.iterrows()):
+        mv = row.get(mv_col) or 0
+        if mv > 0:
+            labels.append(row["ticker"])
+            values.append(mv)
+            colors.append(palette[i % len(palette)])
+
+    fig = go.Figure(go.Pie(
+        labels=labels,
+        values=values,
+        hole=0.55,
+        marker=dict(colors=colors, line=dict(color="#1a1a2e", width=2)),
+        textinfo="label+percent",
+        hovertemplate="%{label}<br>$%{value:,.0f}<br>%{percent}<extra></extra>",
+        sort=False,
+    ))
+
+    fig.update_layout(
+        **_dark_layout(),
+        title="Portfolio Composition",
+        showlegend=False,
+        annotations=[dict(
+            text=f"${total_value:,.0f}",
+            x=0.5, y=0.5,
+            font_size=14,
+            font_color="#FAFAFA",
+            showarrow=False,
+        )],
+        height=350,
+    )
+    return fig
+
+
+# ── Positions progress bars (TP progress) ─────────────────────────────────────
+
+def tp_progress_chart(positions_df: pd.DataFrame) -> go.Figure:
+    """Horizontal bullet chart showing current return vs 30% TP target per position."""
+    if positions_df.empty or "unrealized_pnl_pct" not in positions_df.columns:
+        return _empty_chart("No position data")
+
+    df = positions_df.dropna(subset=["unrealized_pnl_pct"]).copy()
+    if df.empty:
+        return _empty_chart("No live price data available")
+
+    df = df.sort_values("unrealized_pnl_pct", ascending=True)
+
+    fig = go.Figure()
+
+    # Background bar (0 → 30% = TP target)
+    fig.add_trace(go.Bar(
+        x=[30] * len(df),
+        y=df["ticker"],
+        orientation="h",
+        marker_color="rgba(255,255,255,0.05)",
+        showlegend=False,
+        hoverinfo="skip",
+    ))
+
+    # Current return bar
+    colors = ["#30D158" if v >= 0 else "#FF375F" for v in df["unrealized_pnl_pct"]]
+    fig.add_trace(go.Bar(
+        x=df["unrealized_pnl_pct"].clip(-30, 35),
+        y=df["ticker"],
+        orientation="h",
+        marker_color=colors,
+        text=df["unrealized_pnl_pct"].apply(lambda v: f"{v:+.1f}%"),
+        textposition="outside",
+        name="Current Return",
+        hovertemplate="%{y}: %{x:.2f}%<extra></extra>",
+    ))
+
+    # TP line at 30%
+    fig.add_vline(x=30, line_dash="dash", line_color="#FFD60A",
+                  annotation_text="TP 30%", annotation_position="top")
+    fig.add_vline(x=0, line_color="rgba(255,255,255,0.3)")
+
+    fig.update_layout(
+        **_dark_layout(),
+        title="Return vs Take-Profit Target",
+        xaxis_title="Return (%)",
+        xaxis_ticksuffix="%",
+        barmode="overlay",
+        height=max(280, len(df) * 35 + 100),
+        showlegend=False,
+    )
+    return fig
+
+
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _dark_layout() -> dict:

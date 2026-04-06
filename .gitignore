@@ -5,6 +5,10 @@
 .streamlit/secrets.toml
 secrets.toml
 
+# Extra calls
+.md
+.claude/
+
 # Python
 __pycache__/
 *.py[cod]

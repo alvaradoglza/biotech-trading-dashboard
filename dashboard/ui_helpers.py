@@ -2,8 +2,14 @@
 ui_helpers.py — Streamlit UI helper functions: formatting, badges, metric display.
 """
 
+from datetime import date, timedelta
+
 import pandas as pd
 import streamlit as st
+
+# Must match generate_trades.py constants
+_HORIZON_DAYS = 50
+_TAKE_PROFIT_PCT = 0.30
 
 
 # ── Metric display ────────────────────────────────────────────────────────────
@@ -121,8 +127,76 @@ def source_badge(source: str) -> str:
 
 # ── Table formatting ──────────────────────────────────────────────────────────
 
+def compute_position_extras(df: pd.DataFrame, total_value: float) -> pd.DataFrame:
+    """Add derived columns to positions DataFrame: days_held, days_remaining,
+    expiry_date, tp_price, portfolio_weight_pct.
+
+    Call this AFTER enrich_positions_with_prices so live_market_value is present.
+    """
+    if df.empty:
+        return df
+
+    today = date.today()
+    df = df.copy()
+
+    def _days_held(entry_str):
+        if not entry_str:
+            return None
+        try:
+            return (today - date.fromisoformat(str(entry_str)[:10])).days
+        except (ValueError, TypeError):
+            return None
+
+    df["days_held"] = df["entry_date"].apply(_days_held)
+    df["days_remaining"] = df["days_held"].apply(
+        lambda d: max(0, _HORIZON_DAYS - d) if d is not None else None
+    )
+    df["expiry_date"] = df["entry_date"].apply(
+        lambda s: (date.fromisoformat(str(s)[:10]) + timedelta(days=_HORIZON_DAYS)).isoformat()
+        if s else None
+    )
+    df["tp_price"] = df["avg_cost"] * (1 + _TAKE_PROFIT_PCT)
+
+    if total_value and total_value > 0:
+        mv_col = "live_market_value" if "live_market_value" in df.columns else "market_value"
+        df["portfolio_weight_pct"] = df[mv_col].fillna(0) / total_value * 100
+
+    return df
+
+
+def format_holdings_df(df: pd.DataFrame) -> pd.DataFrame:
+    """Format the enriched holdings DataFrame for display.
+
+    Expects compute_position_extras() to have been called first.
+    """
+    if df.empty:
+        return df
+
+    display = pd.DataFrame()
+    display["Ticker"] = df["ticker"]
+    display["Entry Date"] = df.get("entry_date", pd.Series([None] * len(df))).apply(fmt_date)
+    display["Days Held"] = df.get("days_held", pd.Series([None] * len(df))).apply(
+        lambda v: str(int(v)) if pd.notnull(v) else "—"
+    )
+    display["Days Left"] = df.get("days_remaining", pd.Series([None] * len(df))).apply(
+        lambda v: f"{int(v)}d" if pd.notnull(v) else "—"
+    )
+    display["Expiry"] = df.get("expiry_date", pd.Series([None] * len(df))).apply(fmt_date)
+    display["Entry Price"] = df["avg_cost"].apply(fmt_currency)
+    display["TP Price"] = df.get("tp_price", pd.Series([None] * len(df))).apply(fmt_currency)
+    display["Live Price"] = df.get("live_price", pd.Series([None] * len(df))).apply(fmt_currency)
+    display["Return"] = df.get("unrealized_pnl_pct", pd.Series([None] * len(df))).apply(fmt_pct)
+    display["PnL $"] = df.get("unrealized_pnl_live", df.get("unrealized_pnl", pd.Series([None] * len(df)))).apply(fmt_currency)
+    display["Weight"] = df.get("portfolio_weight_pct", pd.Series([None] * len(df))).apply(
+        lambda v: f"{v:.1f}%" if pd.notnull(v) else "—"
+    )
+    display["Mkt Value"] = df.get("live_market_value", df.get("market_value", pd.Series([None] * len(df)))).apply(fmt_currency)
+    display["Shares"] = df["quantity"].apply(fmt_shares)
+    return display
+
+
 def format_positions_df(df: pd.DataFrame) -> pd.DataFrame:
-    """Format the positions DataFrame for display."""
+    """Format the positions DataFrame for display (compact version)."""
     if df.empty:
         return df
     display = pd.DataFrame()
@@ -179,6 +253,59 @@ def format_predictions_df(df: pd.DataFrame) -> pd.DataFrame:
     display["Model"] = df.get("model_version", pd.Series([None] * len(df)))
     display["Date"] = df.get("created_at", pd.Series([None] * len(df))).apply(fmt_date)
     return display
+
+
+def format_journal_df(trades_df: pd.DataFrame, signals_df: pd.DataFrame, total_value: float) -> pd.DataFrame:
+    """Format the daily journal view: BUY trades merged with signal confidence scores.
+
+    Args:
+        trades_df: Trades for the selected date (any side).
+        signals_df: BUY signals for the selected date (with score column).
+        total_value: Estimated total portfolio value for weight calculation.
+    """
+    if trades_df.empty:
+        return pd.DataFrame()
+
+    buys = trades_df[trades_df["side"] == "BUY"].copy()
+    sells = trades_df[trades_df["side"] == "SELL"].copy()
+
+    result_rows = []
+
+    # BUY entries
+    if not buys.empty:
+        # Merge confidence score from signals
+        score_map = {}
+        if not signals_df.empty and "ticker" in signals_df.columns:
+            score_map = dict(zip(signals_df["ticker"], signals_df["score"]))
+
+        for _, row in buys.iterrows():
+            ticker = row["ticker"]
+            amount = row.get("amount_usd", 0) or 0
+            weight = (amount / total_value * 100) if total_value > 0 else None
+            result_rows.append({
+                "Side": "🟢 ENTRY",
+                "Ticker": ticker,
+                "Entry Price": fmt_currency(row.get("price")),
+                "Shares": fmt_shares(row.get("quantity")),
+                "Position Size": fmt_currency(amount),
+                "Portfolio Weight": f"{weight:.1f}%" if weight is not None else "—",
+                "Confidence": f"{score_map.get(ticker, 0):.1%}" if score_map.get(ticker) else "—",
+            })
+
+    # SELL exits
+    if not sells.empty:
+        for _, row in sells.iterrows():
+            result_rows.append({
+                "Side": "🔴 EXIT",
+                "Ticker": row["ticker"],
+                "Entry Price": fmt_currency(row.get("price")),
+                "Shares": fmt_shares(row.get("quantity")),
+                "Position Size": fmt_currency(row.get("amount_usd")),
+                "Portfolio Weight": "—",
+                "Confidence": f"({row.get('exit_reason', '—')})",
+            })
+
+    return pd.DataFrame(result_rows)
 
 
 def format_model_metrics_df(df: pd.DataFrame) -> pd.DataFrame:

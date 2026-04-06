@@ -200,6 +200,63 @@ def load_model_runs(limit: int = 90) -> pd.DataFrame:
     return df
 
 
+# ── Trade journal ─────────────────────────────────────────────────────────────
+
+@st.cache_data(ttl=3600)
+def load_trade_dates() -> list[str]:
+    """Return sorted list of unique dates that had BUY trades, newest first."""
+    sb = get_supabase_client()
+    resp = (
+        sb.table("trades")
+        .select("trade_date")
+        .eq("side", "BUY")
+        .order("trade_date", desc=True)
+        .execute()
+    )
+    if not resp.data:
+        return []
+    seen = set()
+    dates = []
+    for row in resp.data:
+        d = row["trade_date"]
+        if d not in seen:
+            seen.add(d)
+            dates.append(d)
+    return dates
+
+
+@st.cache_data(ttl=300)
+def load_trades_for_date(date_str: str) -> pd.DataFrame:
+    """Load all trades (BUY and SELL) for a specific date."""
+    sb = get_supabase_client()
+    resp = (
+        sb.table("trades")
+        .select("*")
+        .eq("trade_date", date_str)
+        .order("amount_usd", desc=True)
+        .execute()
+    )
+    if not resp.data:
+        return pd.DataFrame()
+    return pd.DataFrame(resp.data)
+
+
+@st.cache_data(ttl=300)
+def load_signals_for_date(date_str: str) -> pd.DataFrame:
+    """Load BUY signals for a specific date (includes confidence score)."""
+    sb = get_supabase_client()
+    resp = (
+        sb.table("signals")
+        .select("ticker, score, reason, action")
+        .eq("signal_date", date_str)
+        .eq("action", "BUY")
+        .execute()
+    )
+    if not resp.data:
+        return pd.DataFrame()
+    return pd.DataFrame(resp.data)
+
+
 # ── Cache invalidation ────────────────────────────────────────────────────────
 
 def invalidate_cache() -> None:
@@ -211,6 +268,9 @@ def invalidate_cache() -> None:
     load_recent_predictions.clear()
     load_portfolio_history.clear()
     load_model_runs.clear()
+    load_trade_dates.clear()
+    load_trades_for_date.clear()
+    load_signals_for_date.clear()
 
 
 # ── Helpers ───────────────────────────────────────────────────────────────────

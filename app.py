@@ -33,6 +33,9 @@ from dashboard.db import (
     load_recent_predictions,
     load_portfolio_history,
     load_model_runs,
+    load_trade_dates,
+    load_trades_for_date,
+    load_signals_for_date,
     invalidate_cache,
 )
 from dashboard.prices import get_live_prices, enrich_positions_with_prices
@@ -42,13 +45,18 @@ from dashboard.charts import (
     model_roc_auc_chart,
     positions_chart,
     prediction_distribution_chart,
+    portfolio_composition_chart,
+    tp_progress_chart,
 )
 from dashboard.ui_helpers import (
     portfolio_metrics_row,
+    compute_position_extras,
+    format_holdings_df,
     format_positions_df,
     format_trades_df,
     format_announcements_df,
     format_predictions_df,
+    format_journal_df,
     format_model_metrics_df,
     source_badge,
     label_badge,
@@ -72,7 +80,7 @@ with st.sidebar:
     st.subheader("Navigation")
     section = st.radio(
         "Go to",
-        ["Portfolio Summary", "Positions", "Trades", "Announcements", "ML Predictions", "Model Performance"],
+        ["Portfolio Summary", "Holdings", "Trade Journal", "Trades", "Announcements", "ML Predictions", "Model Performance"],
         label_visibility="collapsed",
     )
 
@@ -139,47 +147,127 @@ if section == "Portfolio Summary":
         st.info("No model runs recorded yet. Run the daily pipeline to train the model.")
 
 
-# ── Section: Positions ────────────────────────────────────────────────────────
+# ── Section: Holdings ────────────────────────────────────────────────────────
 
-elif section == "Positions":
-    st.title("Open Positions")
-    st.caption("Live prices fetched from EODHD · Cached 15 minutes")
+elif section == "Holdings":
+    st.title("Holdings")
+    st.caption("Live prices from EODHD · Cached 15 min · TP = +30% · Horizon = 50 days")
 
     positions_df = load_positions()
 
     if positions_df.empty:
         st.info("No open positions. Signals from the next pipeline run will open positions.")
     else:
-        # Fetch live prices
         tickers_tuple = tuple(positions_df["ticker"].tolist())
         with st.spinner("Fetching live prices..."):
             prices = get_live_prices(tickers_tuple)
 
         positions_enriched = enrich_positions_with_prices(positions_df, prices)
 
-        # Summary metrics
-        total_equity = positions_enriched["live_market_value"].sum() if "live_market_value" in positions_enriched.columns else 0
-        total_pnl = positions_enriched.get("unrealized_pnl_live", pd.Series([0])).sum()
+        # Cash from latest snapshot
+        cash = float(summary.get("cash", 0))
+        total_equity = positions_enriched["live_market_value"].dropna().sum() if "live_market_value" in positions_enriched.columns else float(summary.get("equity_value", 0))
+        total_value = cash + total_equity
 
-        cols = st.columns(3)
+        positions_enriched = compute_position_extras(positions_enriched, total_value)
+
+        total_pnl = positions_enriched.get("unrealized_pnl_live", pd.Series(dtype=float)).dropna().sum()
+        total_pnl_pct = total_pnl / total_equity * 100 if total_equity > 0 else 0
+        n_winning = int((positions_enriched.get("unrealized_pnl_pct", pd.Series(dtype=float)).fillna(0) > 0).sum())
+
+        # Top metrics
+        cols = st.columns(5)
         cols[0].metric("Open Positions", str(len(positions_enriched)))
-        cols[1].metric("Total Equity Value", fmt_currency(total_equity))
-        cols[2].metric("Total Unrealized PnL", fmt_currency(total_pnl))
+        cols[1].metric("Total Equity", fmt_currency(total_equity))
+        cols[2].metric("Unrealized PnL", fmt_currency(total_pnl), delta=fmt_pct(total_pnl_pct))
+        cols[3].metric("Cash", fmt_currency(cash))
+        cols[4].metric("Winning Positions", f"{n_winning}/{len(positions_enriched)}")
 
         st.divider()
 
-        # Positions bar chart
-        col1, col2 = st.columns([3, 2])
+        # Composition donut + TP progress side by side
+        col1, col2 = st.columns([1, 2])
         with col1:
-            st.plotly_chart(positions_chart(positions_enriched), use_container_width=True)
+            st.plotly_chart(
+                portfolio_composition_chart(positions_enriched, cash, total_value),
+                use_container_width=True,
+            )
+        with col2:
+            st.plotly_chart(
+                tp_progress_chart(positions_enriched),
+                use_container_width=True,
+            )
+
+        st.divider()
+
+        # Full holdings table
+        st.subheader("All Holdings")
+        st.caption("Entry Price → TP Price marks the 30% take-profit target. Days Left = calendar days before 50-day horizon exit.")
+        st.dataframe(
+            format_holdings_df(positions_enriched.sort_values("unrealized_pnl_pct", ascending=False, na_position="last")),
+            use_container_width=True,
+            hide_index=True,
+        )
+
+
+# ── Section: Trade Journal ────────────────────────────────────────────────────
+
+elif section == "Trade Journal":
+    st.title("Trade Journal")
+    st.caption("Browse positions opened or closed on any given trading day.")
+
+    trade_dates = load_trade_dates()
+
+    if not trade_dates:
+        st.info("No trades recorded yet. Run the daily pipeline to generate trades.")
+    else:
+        col1, col2 = st.columns([2, 3])
+        with col1:
+            selected_date = st.selectbox(
+                "Select trading day",
+                options=trade_dates,
+                format_func=lambda d: d,
+            )
+
+        trades_on_date = load_trades_for_date(selected_date)
+        signals_on_date = load_signals_for_date(selected_date)
+
+        buys_on_date = trades_on_date[trades_on_date["side"] == "BUY"] if not trades_on_date.empty else pd.DataFrame()
+        sells_on_date = trades_on_date[trades_on_date["side"] == "SELL"] if not trades_on_date.empty else pd.DataFrame()
 
         with col2:
-            st.subheader("Positions Table")
-            st.dataframe(
-                format_positions_df(positions_enriched),
-                use_container_width=True,
-                hide_index=True,
-            )
+            entry_count = len(buys_on_date)
+            exit_count = len(sells_on_date)
+            total_deployed = buys_on_date["amount_usd"].sum() if not buys_on_date.empty else 0
+            st.markdown(f"**{selected_date}** — {entry_count} entr{'y' if entry_count == 1 else 'ies'}, {exit_count} exit{'s' if exit_count != 1 else ''}")
+
+        if trades_on_date.empty:
+            st.info("No trades on this date.")
+        else:
+            # Use today's total value as proxy for weight calculation
+            total_value_est = float(summary.get("total_value", 1_000_000))
+
+            journal_df = format_journal_df(trades_on_date, signals_on_date, total_value_est)
+
+            if not journal_df.empty:
+                st.dataframe(journal_df, use_container_width=True, hide_index=True)
+
+            # Summary metrics for the day
+            if not buys_on_date.empty:
+                st.divider()
+                cols = st.columns(3)
+                cols[0].metric("Positions Opened", str(entry_count))
+                cols[1].metric("Capital Deployed", fmt_currency(total_deployed))
+                cols[2].metric(
+                    "Avg Confidence",
+                    f"{signals_on_date['score'].mean():.1%}" if not signals_on_date.empty and "score" in signals_on_date.columns else "—"
+                )
+
+                st.caption(
+                    "**Portfolio Weight** = position size ÷ total portfolio value at time of entry. "
+                    "Positions are sized at ~7% of portfolio (equal-weight). "
+                    "Confidence = GBM model predicted probability (higher = stronger signal)."
+                )
 
 
 # ── Section: Trades ───────────────────────────────────────────────────────────
