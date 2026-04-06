@@ -62,3 +62,6 @@ htmlcov/
 # Logs
 *.log
 logs/
+
+CLAUDE.md
+LOGBOOK.md
