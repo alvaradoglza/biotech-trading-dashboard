@@ -118,14 +118,20 @@ if section == "Portfolio Summary":
 
     with col2:
         st.subheader("Quick Stats")
+        initial_capital = float(summary.get("initial_capital", 1_000_000.0))
+        current_val = float(summary.get("total_value", 0))
+        if current_val > 0:
+            total_return_pct = (current_val - initial_capital) / initial_capital * 100
+            st.metric(
+                "Total Return",
+                fmt_pct(total_return_pct),
+                delta=fmt_currency(current_val - initial_capital),
+            )
         if not history_df.empty:
-            first_val = history_df["total_value"].iloc[0]
-            last_val = history_df["total_value"].iloc[-1]
-            total_return_pct = (last_val - first_val) / first_val * 100 if first_val > 0 else 0
-            st.metric("Total Return", fmt_pct(total_return_pct), delta=fmt_currency(last_val - first_val))
             st.metric("Days Tracked", str(len(history_df)))
             st.metric("Peak Value", fmt_currency(history_df["total_value"].max()))
             st.metric("Min Value", fmt_currency(history_df["total_value"].min()))
+        st.metric("Initial Capital", fmt_currency(initial_capital))
 
     # Recent model performance mini-view
     st.divider()

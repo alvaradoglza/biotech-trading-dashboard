@@ -65,6 +65,13 @@ def load_portfolio_summary() -> dict:
     )
     n_recent_trades = trades_resp.count or 0
 
+    # Initial capital from portfolio_config (single-row table)
+    try:
+        cfg_resp = sb.table("portfolio_config").select("initial_capital").limit(1).execute()
+        initial_capital = float(cfg_resp.data[0]["initial_capital"]) if cfg_resp.data else 1_000_000.0
+    except Exception:
+        initial_capital = 1_000_000.0
+
     return {
         "cash": float(snapshot.get("cash", 0)),
         "equity_value": float(snapshot.get("equity_value", 0)),
@@ -72,6 +79,7 @@ def load_portfolio_summary() -> dict:
         "n_positions": n_positions,
         "n_recent_trades": n_recent_trades,
         "snapshot_date": snapshot.get("snapshot_date"),
+        "initial_capital": initial_capital,
     }
 
 
