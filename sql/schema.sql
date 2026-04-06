@@ -161,21 +161,33 @@ ALTER TABLE positions           ENABLE ROW LEVEL SECURITY;
 ALTER TABLE portfolio_snapshots ENABLE ROW LEVEL SECURITY;
 ALTER TABLE portfolio_config    ENABLE ROW LEVEL SECURITY;
 
--- Allow public read access (dashboard uses anon key)
-CREATE POLICY IF NOT EXISTS "public_read_announcements"
+-- Allow public read access (dashboard uses anon key).
+-- DROP existing policies first so this script is idempotent (re-runnable).
+DO $$ BEGIN
+  DROP POLICY IF EXISTS "public_read_announcements" ON announcements;
+  DROP POLICY IF EXISTS "public_read_model_runs"    ON model_runs;
+  DROP POLICY IF EXISTS "public_read_predictions"   ON predictions;
+  DROP POLICY IF EXISTS "public_read_signals"       ON signals;
+  DROP POLICY IF EXISTS "public_read_trades"        ON trades;
+  DROP POLICY IF EXISTS "public_read_positions"     ON positions;
+  DROP POLICY IF EXISTS "public_read_snapshots"     ON portfolio_snapshots;
+  DROP POLICY IF EXISTS "public_read_config"        ON portfolio_config;
+END $$;
+
+CREATE POLICY "public_read_announcements"
     ON announcements FOR SELECT TO anon USING (true);
-CREATE POLICY IF NOT EXISTS "public_read_model_runs"
+CREATE POLICY "public_read_model_runs"
     ON model_runs FOR SELECT TO anon USING (true);
-CREATE POLICY IF NOT EXISTS "public_read_predictions"
+CREATE POLICY "public_read_predictions"
     ON predictions FOR SELECT TO anon USING (true);
-CREATE POLICY IF NOT EXISTS "public_read_signals"
+CREATE POLICY "public_read_signals"
     ON signals FOR SELECT TO anon USING (true);
-CREATE POLICY IF NOT EXISTS "public_read_trades"
+CREATE POLICY "public_read_trades"
     ON trades FOR SELECT TO anon USING (true);
-CREATE POLICY IF NOT EXISTS "public_read_positions"
+CREATE POLICY "public_read_positions"
     ON positions FOR SELECT TO anon USING (true);
-CREATE POLICY IF NOT EXISTS "public_read_snapshots"
+CREATE POLICY "public_read_snapshots"
     ON portfolio_snapshots FOR SELECT TO anon USING (true);
-CREATE POLICY IF NOT EXISTS "public_read_config"
+CREATE POLICY "public_read_config"
     ON portfolio_config FOR SELECT TO anon USING (true);
 -- Note: INSERT/UPDATE/DELETE require the service_role key (pipeline only).

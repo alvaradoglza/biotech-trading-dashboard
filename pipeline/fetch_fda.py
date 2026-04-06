@@ -102,31 +102,38 @@ async def _fetch_fda_async(
 def _build_name_lookup(
     tickers: list[str],
     ticker_to_company: dict[str, str],
-) -> dict[str, tuple[str, str]]:
-    """Build a {normalized_full_name: (ticker, first_word)} lookup.
+) -> tuple[dict, dict]:
+    """Build (full_name_lookup, prefix_lookup) for scored company matching.
 
-    Returns dict mapping normalized full company name → ticker.
-    Also stores the first significant word for prefix matching.
+    When two tickers share the same normalized company name (e.g. ALVO / ALVOW
+    warrants), keep the shorter ticker (base stock) so warrants don't shadow it.
     """
-    lookup: dict[str, str] = {}          # full normalized name → ticker
-    prefix_lookup: dict[str, str] = {}   # first word (≥5 chars) → ticker
+    lookup: dict[str, str] = {}        # normalized full name → ticker
+    prefix_lookup: dict[str, str] = {} # first word (≥6 chars) → ticker
     for ticker in tickers:
         company = ticker_to_company.get(ticker, "")
         if not company:
             continue
         normalized = _normalize(company)
-        if len(normalized) >= 4:
-            lookup[normalized] = ticker
+        if len(normalized) >= 3:
+            # Prefer shorter ticker (base stock beats warrant like ALVOW)
+            existing = lookup.get(normalized)
+            if existing is None or len(ticker) < len(existing):
+                lookup[normalized] = ticker
         parts = normalized.split()
-        if parts and len(parts[0]) >= 5:
-            # Only add prefix if not already claimed by another ticker
-            if parts[0] not in prefix_lookup:
+        if parts and len(parts[0]) >= 6:
+            existing_pre = prefix_lookup.get(parts[0])
+            if existing_pre is None or len(ticker) < len(existing_pre):
                 prefix_lookup[parts[0]] = ticker
     return lookup, prefix_lookup
 
 
 def _normalize(name: str) -> str:
-    """Strip legal suffixes and lowercase a company name."""
+    """Strip legal suffixes and lowercase a company name.
+
+    Only strips a suffix if the result remains ≥3 chars, so short names like
+    'ANI Pharmaceuticals' → 'ani' are preserved rather than dropped.
+    """
     name = name.lower().strip()
     for suffix in [
         " incorporated", " inc.", " inc", " corporation", " corp.", " corp",
@@ -138,7 +145,9 @@ def _normalize(name: str) -> str:
         " laboratories",
     ]:
         if name.endswith(suffix):
-            name = name[: -len(suffix)].strip()
+            candidate = name[: -len(suffix)].strip()
+            if len(candidate) >= 3:
+                name = candidate
     return name.strip()
 
 
@@ -150,30 +159,30 @@ def _match_ticker(
 
     Priority:
       1. Exact normalized match (highest confidence)
-      2. Candidate's normalized name is a prefix of our name (≥8 chars)
-      3. Long substring match only for fragments ≥ 10 chars (reduces false positives)
+      2. Long substring match (≥8 chars) in either direction
+      3. First-word prefix match (≥6 chars)
     """
     if not company_name:
         return None
     lookup, prefix_lookup = lookup_pair
     normalized = _normalize(company_name)
-    if not normalized or len(normalized) < 4:
+    if not normalized or len(normalized) < 3:
         return None
 
     # 1. Exact match
     if normalized in lookup:
         return lookup[normalized]
 
-    # 2. Our known name is contained in candidate (prefix / full-name contained)
+    # 2. Long substring in either direction
     for known, ticker in lookup.items():
         if len(known) >= 8 and known in normalized:
             return ticker
         if len(normalized) >= 8 and normalized in known:
             return ticker
 
-    # 3. First-word prefix match (long words only, avoids "bio", "gen", etc.)
+    # 3. First-word prefix match
     parts = normalized.split()
-    if parts and len(parts[0]) >= 7 and parts[0] in prefix_lookup:
+    if parts and len(parts[0]) >= 6 and parts[0] in prefix_lookup:
         return prefix_lookup[parts[0]]
 
     return None
