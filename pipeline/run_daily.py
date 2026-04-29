@@ -29,7 +29,8 @@ Usage:
 import argparse
 import logging
 import os
-from datetime import date, datetime, timezone
+from collections import defaultdict
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import pandas as pd
@@ -63,6 +64,10 @@ def main(dry_run: bool = False, skip_fetch: bool = False) -> None:
     )
 
     sb = None if dry_run else get_client()
+
+    # ── Step 0: Backfill return labels for mature unlabeled announcements ─────
+    logger.info("Step 0: Backfilling return labels for announcements ≥32 days old...")
+    _backfill_returns(sb, dry_run)
 
     # ── Step 1: Load stock universe ───────────────────────────────────────────
     tickers, ticker_to_company = _load_tickers()
@@ -334,8 +339,17 @@ def _load_labeled_announcements_from_supabase(sb) -> pd.DataFrame:
             offset += page_size
         if not all_rows:
             return pd.DataFrame()
-        logger.info("Loaded %d labeled announcements from Supabase", len(all_rows))
-        return pd.DataFrame(all_rows)
+        df = pd.DataFrame(all_rows)
+        # return_30d == 0.0 almost always means the price lookup failed at seed time,
+        # not a genuine 0% return. Training on these teaches the model that everything
+        # is negative and inflates the train-negative rate from ~85% to ~95%+.
+        before = len(df)
+        df = df[df["return_30d"] != 0.0].copy()
+        n_dropped = before - len(df)
+        if n_dropped:
+            logger.info("  Filtered %d zero-return rows (bad labels), %d remain", n_dropped, len(df))
+        logger.info("Loaded %d labeled announcements from Supabase", len(df))
+        return df
     except Exception as e:
         logger.error("Failed to load labeled announcements: %s", e)
         return pd.DataFrame()
@@ -401,6 +415,112 @@ def _save_snapshot_from_result(result: dict, sb, dry_run: bool = False) -> None:
         "[DRY RUN] " if dry_run else "",
         snap["total_value"], snap["cash"], snap["equity_value"], snap["n_positions"],
     )
+
+
+def _backfill_returns(sb, dry_run: bool = False) -> None:
+    """Compute return_30d / return_5d for announcements that are ≥32 days old and still unlabeled.
+
+    Groups by ticker so each ticker requires exactly one EODHD historical API call
+    regardless of how many announcements it has in the window.
+    """
+    if sb is None:
+        return
+
+    from pipeline.generate_trades import fetch_historical_eod_prices
+
+    cutoff = (date.today() - timedelta(days=32)).isoformat()
+
+    all_rows: list[dict] = []
+    offset = 0
+    page_size = 1000
+    while True:
+        resp = (
+            sb.table("announcements")
+            .select("id, ticker, published_at")
+            .is_("return_30d", "null")
+            .lte("published_at", cutoff)
+            .not_.is_("ticker", "null")
+            .range(offset, offset + page_size - 1)
+            .execute()
+        )
+        batch = resp.data or []
+        all_rows.extend(batch)
+        if len(batch) < page_size:
+            break
+        offset += page_size
+
+    if not all_rows:
+        logger.info("  No unlabeled announcements older than 32 days — nothing to backfill.")
+        return
+
+    logger.info("  %d announcements need return labels", len(all_rows))
+
+    by_ticker: dict[str, list] = defaultdict(list)
+    for row in all_rows:
+        by_ticker[row["ticker"]].append(row)
+
+    updates: list[dict] = []
+    for ticker, rows in by_ticker.items():
+        dates = []
+        for r in rows:
+            try:
+                dates.append(pd.to_datetime(r["published_at"]).date())
+            except Exception:
+                continue
+        if not dates:
+            continue
+
+        from_date = min(dates) + timedelta(days=1)
+        to_date = max(dates) + timedelta(days=40)
+
+        prices = fetch_historical_eod_prices(ticker, from_date, to_date)
+        if not prices:
+            logger.warning("  Backfill: no price data for %s — skipping", ticker)
+            continue
+        sorted_price_dates = sorted(prices.keys())
+
+        for row in rows:
+            try:
+                pub_date = pd.to_datetime(row["published_at"]).date()
+            except Exception:
+                continue
+
+            entry_price = _first_price_on_or_after(prices, sorted_price_dates, pub_date + timedelta(days=1))
+            if entry_price is None:
+                continue
+
+            ret_30d = None
+            p30 = _first_price_on_or_after(prices, sorted_price_dates, pub_date + timedelta(days=31))
+            if p30 is not None:
+                ret_30d = round((p30 - entry_price) / entry_price * 100, 4)
+
+            ret_5d = None
+            p5 = _first_price_on_or_after(prices, sorted_price_dates, pub_date + timedelta(days=6))
+            if p5 is not None:
+                ret_5d = round((p5 - entry_price) / entry_price * 100, 4)
+
+            if ret_30d is not None:
+                updates.append({"id": row["id"], "return_30d": ret_30d, "return_5d": ret_5d})
+
+    logger.info("  Backfill: computed %d return labels (%d skipped, no price data)", len(updates), len(all_rows) - len(updates))
+
+    if not dry_run and updates:
+        for upd in updates:
+            sb.table("announcements").update({
+                "return_30d": upd["return_30d"],
+                "return_5d": upd.get("return_5d"),
+            }).eq("id", upd["id"]).execute()
+        logger.info("  Backfill: wrote %d labels to Supabase", len(updates))
+    elif dry_run and updates:
+        logger.info("[DRY RUN] Would write %d return labels", len(updates))
+
+
+def _first_price_on_or_after(prices: dict, sorted_dates: list, target: date) -> float | None:
+    """Return the first closing price on or after target date (handles weekends/holidays)."""
+    for d in sorted_dates:
+        if d >= target:
+            return prices[d]
+    return None
 
 
 def _log_done() -> None:

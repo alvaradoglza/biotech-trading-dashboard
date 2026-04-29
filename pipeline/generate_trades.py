@@ -195,9 +195,22 @@ def process_daily_signals(
         # Re-check inside loop: a previous iteration may have opened this ticker
         if ticker in open_tickers:
             continue
+
+        # Always record the signal — decouple from whether a trade can execute.
+        # Signals with no price are still valid model output; hiding them loses visibility.
+        signal = {
+            "prediction_id": pred.get("id"),
+            "signal_date": today.isoformat(),
+            "ticker": ticker,
+            "action": "BUY",
+            "reason": f"ML BUY signal (prob={pred.get('predicted_probability', 0):.3f})",
+            "score": pred.get("predicted_probability"),
+        }
+        new_signals.append(signal)
+
         current_price = current_prices.get(ticker)
         if current_price is None or current_price <= 0:
-            logger.warning("No price for BUY signal %s — skipping", ticker)
+            logger.warning("No price for BUY signal %s — signal recorded, no trade opened", ticker)
             continue
 
         # Position sizing: MAX_WEIGHT of portfolio, limited by available cash
@@ -212,17 +225,6 @@ def process_daily_signals(
         qty = target_notional / current_price
         entry_cost = qty * current_price * (1 + COMMISSION_PCT)
         cash -= entry_cost
-
-        # Signal
-        signal = {
-            "prediction_id": pred.get("id"),
-            "signal_date": today.isoformat(),
-            "ticker": ticker,
-            "action": "BUY",
-            "reason": f"ML BUY signal (prob={pred.get('predicted_probability', 0):.3f})",
-            "score": pred.get("predicted_probability"),
-        }
-        new_signals.append(signal)
 
         # Trade
         trade = {
@@ -307,6 +309,51 @@ def _check_exit(position: dict, current_price: float, today: date) -> dict:
             pass
 
     return {"should_exit": False, "reason": None, "exit_price": current_price}
+
+
+def fetch_historical_eod_prices(
+    ticker: str,
+    from_date: "date",
+    to_date: "date",
+) -> "dict[date, float]":
+    """Fetch daily adjusted closing prices from EODHD historical endpoint.
+
+    Returns {date: adjusted_close} for each trading day in the range.
+    Used by the return-labeling backfill step.
+    """
+    api_key = os.environ.get("EODHD_API_KEY")
+    if not api_key:
+        logger.error("EODHD_API_KEY not set — cannot fetch historical prices")
+        return {}
+    try:
+        url = f"https://eodhd.com/api/eod/{ticker}.US"
+        resp = requests.get(
+            url,
+            params={
+                "from": from_date.isoformat(),
+                "to": to_date.isoformat(),
+                "period": "d",
+                "api_token": api_key,
+                "fmt": "json",
+            },
+            timeout=15,
+        )
+        if resp.status_code != 200:
+            logger.warning("EODHD historical HTTP %d for %s", resp.status_code, ticker)
+            return {}
+        result: dict = {}
+        for row in resp.json():
+            d_str = row.get("date")
+            price = row.get("adjusted_close") or row.get("close")
+            if d_str and price and str(price).upper() not in ("NA", "NULL", "N/A", "NONE", ""):
+                try:
+                    result[date.fromisoformat(d_str)] = float(price)
+                except (ValueError, TypeError):
+                    pass
+        return result
+    except Exception as e:
+        logger.warning("EODHD historical fetch failed for %s: %s", ticker, e)
+        return {}
 
 
 def fetch_prices_for_pipeline(tickers: list[str]) -> dict[str, float]:

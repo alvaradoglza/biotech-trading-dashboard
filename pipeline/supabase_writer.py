@@ -95,14 +95,24 @@ def get_new_announcements_since(timestamp_iso: str, client: Client | None = None
     """
     sb = client or get_client()
     try:
-        resp = (
-            sb.table("announcements")
-            .select("id, ticker, source, event_type, published_at, raw_text, return_30d, return_5d")
-            .gte("created_at", timestamp_iso)
-            .order("published_at", desc=False)
-            .execute()
-        )
-        return resp.data or []
+        all_rows: list[dict] = []
+        page_size = 1000
+        offset = 0
+        while True:
+            resp = (
+                sb.table("announcements")
+                .select("id, ticker, source, event_type, published_at, raw_text, return_30d, return_5d")
+                .gte("created_at", timestamp_iso)
+                .order("published_at", desc=False)
+                .range(offset, offset + page_size - 1)
+                .execute()
+            )
+            batch = resp.data or []
+            all_rows.extend(batch)
+            if len(batch) < page_size:
+                break
+            offset += page_size
+        return all_rows
     except Exception as e:
         logger.error("Failed to query new announcements since %s: %s", timestamp_iso, e)
         return []

@@ -196,19 +196,19 @@ def _classify(trial) -> str:
     status_str = status.value if hasattr(status, "value") else str(status).upper()
 
     if getattr(trial, "has_results", False):
-        return "TRIAL_RESULTS"
+        return "CT_COMPLETED"
 
     status_map = {
-        "COMPLETED": "TRIAL_RESULTS",
-        "TERMINATED": "TRIAL_UPDATE",
-        "SUSPENDED": "TRIAL_UPDATE",
-        "WITHDRAWN": "TRIAL_UPDATE",
-        "ACTIVE_NOT_RECRUITING": "TRIAL_UPDATE",
-        "RECRUITING": "TRIAL_START",
-        "NOT_YET_RECRUITING": "TRIAL_START",
-        "ENROLLING_BY_INVITATION": "TRIAL_START",
+        "COMPLETED": "CT_COMPLETED",
+        "TERMINATED": "CT_TERMINATED",
+        "SUSPENDED": "CT_SUSPENDED",
+        "WITHDRAWN": "CT_WITHDRAWN",
+        "ACTIVE_NOT_RECRUITING": "CT_ACTIVE_NOT_RECRUITING",
+        "RECRUITING": "CT_RECRUITING",
+        "NOT_YET_RECRUITING": "CT_NOT_YET_RECRUITING",
+        "ENROLLING_BY_INVITATION": "CT_ENROLLING_BY_INVITATION",
     }
-    return status_map.get(status_str, "TRIAL_UPDATE")
+    return status_map.get(status_str, "CT_UNKNOWN")
 
 
 def _trial_text(trial) -> str:

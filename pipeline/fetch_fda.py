@@ -58,11 +58,13 @@ async def _fetch_fda_async(
             if ticker is None:
                 continue
             published_at = approval.approval_date.isoformat() if approval.approval_date else None
+            sub_type = (getattr(approval, "submission_type", None) or "").upper()
+            fda_event_type = "FDA_SUPPL" if sub_type.startswith("SUPPL") else "FDA_ORIG"
             announcements.append({
                 "source": "openfda",
                 "ticker": ticker,
                 "company_name": approval.sponsor_name,
-                "event_type": "FDA_APPROVAL",
+                "event_type": fda_event_type,
                 "title": (approval.brand_name or approval.generic_name or "FDA Approval")[:500],
                 "announcement_url": approval.url,
                 "published_at": published_at,
