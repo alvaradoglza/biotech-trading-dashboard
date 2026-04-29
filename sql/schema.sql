@@ -148,6 +148,35 @@ INSERT INTO portfolio_config (id, initial_capital, cash)
 VALUES (1, 1000000.0, 1000000.0)
 ON CONFLICT (id) DO NOTHING;
 
+-- ── threshold_experiments ────────────────────────────────────────────────────
+-- Records from each run of scripts/compare_thresholds.py.
+-- Tracks how dynamic vs static threshold approaches compare over time
+-- as the labeled dataset grows with real production data.
+CREATE TABLE IF NOT EXISTS threshold_experiments (
+    id              uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+    run_date        date         NOT NULL,
+    approach        varchar(20)  NOT NULL,     -- 'dynamic' | 'static_new' | 'static_old'
+    eval_frac       float        NOT NULL,     -- train split fraction (0.65 … 0.85)
+    threshold       float,                     -- P85 threshold value used
+    pos_train       float,                     -- positive rate in train set
+    pos_test        float,                     -- positive rate in test set
+    specificity     float,
+    precision_score float,
+    recall          float,
+    f1              float,
+    auc             float,
+    n_buy           int,                       -- buy signals generated on predict_df
+    med_prob        float,
+    max_prob        float,
+    n_labeled_rows  int,                       -- clean labeled rows used for training
+    n_predict_rows  int,                       -- announcements scored
+    created_at      timestamptz  DEFAULT now(),
+    UNIQUE (run_date, approach, eval_frac)
+);
+
+CREATE INDEX IF NOT EXISTS idx_threshold_exp_date     ON threshold_experiments (run_date DESC);
+CREATE INDEX IF NOT EXISTS idx_threshold_exp_approach ON threshold_experiments (approach);
+
 -- ── Row-Level Security ────────────────────────────────────────────────────────
 -- Enable RLS on all tables. The pipeline uses the service_role key (bypasses RLS).
 -- The dashboard uses the publishable/anon key → only SELECT is allowed.
@@ -163,15 +192,18 @@ ALTER TABLE portfolio_config    ENABLE ROW LEVEL SECURITY;
 
 -- Allow public read access (dashboard uses anon key).
 -- DROP existing policies first so this script is idempotent (re-runnable).
+ALTER TABLE threshold_experiments ENABLE ROW LEVEL SECURITY;
+
 DO $$ BEGIN
-  DROP POLICY IF EXISTS "public_read_announcements" ON announcements;
-  DROP POLICY IF EXISTS "public_read_model_runs"    ON model_runs;
-  DROP POLICY IF EXISTS "public_read_predictions"   ON predictions;
-  DROP POLICY IF EXISTS "public_read_signals"       ON signals;
-  DROP POLICY IF EXISTS "public_read_trades"        ON trades;
-  DROP POLICY IF EXISTS "public_read_positions"     ON positions;
-  DROP POLICY IF EXISTS "public_read_snapshots"     ON portfolio_snapshots;
-  DROP POLICY IF EXISTS "public_read_config"        ON portfolio_config;
+  DROP POLICY IF EXISTS "public_read_announcements"        ON announcements;
+  DROP POLICY IF EXISTS "public_read_model_runs"           ON model_runs;
+  DROP POLICY IF EXISTS "public_read_predictions"          ON predictions;
+  DROP POLICY IF EXISTS "public_read_signals"              ON signals;
+  DROP POLICY IF EXISTS "public_read_trades"               ON trades;
+  DROP POLICY IF EXISTS "public_read_positions"            ON positions;
+  DROP POLICY IF EXISTS "public_read_snapshots"            ON portfolio_snapshots;
+  DROP POLICY IF EXISTS "public_read_config"               ON portfolio_config;
+  DROP POLICY IF EXISTS "public_read_threshold_experiments" ON threshold_experiments;
 END $$;
 
 CREATE POLICY "public_read_announcements"
@@ -190,4 +222,6 @@ CREATE POLICY "public_read_snapshots"
     ON portfolio_snapshots FOR SELECT TO anon USING (true);
 CREATE POLICY "public_read_config"
     ON portfolio_config FOR SELECT TO anon USING (true);
+CREATE POLICY "public_read_threshold_experiments"
+    ON threshold_experiments FOR SELECT TO anon USING (true);
 -- Note: INSERT/UPDATE/DELETE require the service_role key (pipeline only).

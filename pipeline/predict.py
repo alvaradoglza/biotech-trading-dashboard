@@ -34,7 +34,7 @@ from sklearn.preprocessing import OneHotEncoder
 from pipeline.features import build_feature_matrix, build_labels, fit_ohe
 from pipeline.ml_config import (
     SF_COLS, GBM_N_ESTIMATORS, GBM_MAX_DEPTH, GBM_LEARNING_RATE,
-    RANDOM_STATE, P85_30D, P85_5D, DROP_FEATURES,
+    RANDOM_STATE, DROP_FEATURES,
 )
 
 logger = logging.getLogger(__name__)
@@ -80,7 +80,6 @@ def run_daily_prediction(
     labeled_df = labeled_df.dropna(subset=["published_at"])
 
     return_col = f"return_{horizon}"
-    threshold = P85_30D if horizon == "30d" else P85_5D
 
     # ── Sort chronologically for temporal split ───────────────────────────────
     labeled_df = labeled_df.sort_values("published_at").reset_index(drop=True)
@@ -101,8 +100,12 @@ def run_daily_prediction(
         return [], {"error": "insufficient_data", "n_train": len(train_df)}
 
     # ── Phase 1: Eval (80% train / 20% test) ─────────────────────────────────
+    # Threshold is computed from train_df only — no look-ahead into test or predict data.
+    eval_threshold = float(np.percentile(train_df[return_col], 85))
+    logger.info("Dynamic P85 threshold [eval, %s]: %.4f%% (from %d train rows)", horizon, eval_threshold, len(train_df))
+
     ohe_eval = _fit_ohe(train_df)
-    X_train, y_train = _build_Xy(train_df, ohe_eval, horizon, threshold)
+    X_train, y_train = _build_Xy(train_df, ohe_eval, horizon, eval_threshold)
 
     if len(np.unique(y_train)) < 2:
         logger.warning("Training labels have only one class — skipping")
@@ -112,9 +115,10 @@ def run_daily_prediction(
 
     metrics: dict = {}
     if len(test_df) >= 5:
-        X_test, y_test = _build_Xy(test_df, ohe_eval, horizon, threshold)
+        X_test, y_test = _build_Xy(test_df, ohe_eval, horizon, eval_threshold)
         metrics = _evaluate(clf_eval, X_test, y_test, train_df, test_df, horizon)
         metrics["n_positive_train"] = int(y_train.sum())
+        metrics["threshold"] = eval_threshold
     else:
         logger.warning(
             "Test set only %d rows — evaluation skipped (need ≥5). "
@@ -125,12 +129,17 @@ def run_daily_prediction(
             "n_train_samples": len(train_df),
             "n_test_samples": len(test_df),
             "n_positive_train": int(y_train.sum()),
+            "threshold": eval_threshold,
             "warning": "test_set_too_small",
         }
 
     # ── Phase 2: Production (retrain on 100% of labeled data) ────────────────
+    # Recompute threshold from the full labeled set for the strongest production model.
+    prod_threshold = float(np.percentile(labeled_df[return_col], 85))
+    logger.info("Dynamic P85 threshold [prod, %s]: %.4f%% (from %d total rows)", horizon, prod_threshold, len(labeled_df))
+
     ohe_prod = _fit_ohe(labeled_df)
-    X_all, y_all = _build_Xy(labeled_df, ohe_prod, horizon, threshold)
+    X_all, y_all = _build_Xy(labeled_df, ohe_prod, horizon, prod_threshold)
     clf_prod = _train(X_all, y_all, tag="prod")
 
     model_version = _save_model(clf_prod, ohe_prod, horizon)
